@@ -10,9 +10,9 @@ public class Test_NV2 {
 	
 	
 	private String[] adresses = {
-			"99 Rue Mozart, Paris",
+			"99 Rue Mozart, Montreuil",
 			"77 Rue Picasso, Toulouse", 
-			"111 Rue des fleurs, Limoges",
+			"111 Rue des fleurs, Brive",
 	};
 
 	
