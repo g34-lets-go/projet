@@ -5,6 +5,7 @@ public class Test_NV2 {
 	
 	public void bonjour() {
 		System.out.println( "Bonsoir !" );
+		System.out.println( "Ca va ?" );
 	}
 	
 	
