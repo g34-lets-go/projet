@@ -38,7 +38,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 		showView( EnumView.Connexion);
 		
 		// Configure le stage
-		stage.setTitle( "Gestion de contacts" );
+		stage.setTitle( "Gestion de BOLS d'AIR" );
 		stage.setWidth(600);
 		stage.setHeight(440);
 		stage.setMinWidth(400);
