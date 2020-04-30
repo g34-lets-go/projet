@@ -2,14 +2,17 @@ SET search_path TO projet;
 
 
 -- Supprimer toutes les données
-DELETE FROM service;
-DELETE FROM concerner;
-DELETE FROM memo;
-DELETE FROM telephone;
-DELETE FROM personne;
-DELETE FROM categorie;
-DELETE FROM role;
 DELETE FROM compte;
+DELETE FROM velo;
+DELETE FROM type_benevole;
+DELETE FROM benevole;
+DELETE FROM participant;
+DELETE FROM course;
+DELETE FROM type_course;
+DELETE FROM poste;
+DELETE FROM equipe;
+DELETE FROM dossard;
+DELETE FROM etre_affecte;
 
 
 -- Compte
@@ -22,81 +25,71 @@ INSERT INTO compte (idcompte, pseudo, motdepasse, email ) VALUES
 ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
 
 
--- Role
+-- Velo
 
-INSERT INTO role (idcompte, role) VALUES 
-  ( 1, 'ADMINISTRATEUR' ),
-  ( 1, 'UTILISATEUR' ),
-  ( 2, 'UTILISATEUR' ),
-  ( 3, 'UTILISATEUR' );
+INSERT INTO velo (id_velo, type_velo, ) VALUES 
+  ( 1, 'VTT' ),
+  ( 2, 'VTT electrique' );
 
+ALTER TABLE velo ALTER COLUMN id_velo RESTART WITH 3;
 
--- Categorie
+-- type_benevole
   
-INSERT INTO categorie (idcategorie, libelle ) VALUES 
-  (1, 'Employés' ),
-  (2, 'Partenaires' ),
-  (3, 'Clients' ),
-  (4, 'Fournisseurs' ),
-  (5, 'Dirigeants' );
+INSERT INTO type_benevole (id_type_benevole  , nom_type_benevole ) VALUES 
+  (1, 'Capitain' ),
+  (2, 'Equipier' ),
+  (3, 'Capitain' ),
+  (4, 'Equipier' );
 
-ALTER TABLE categorie ALTER COLUMN idcategorie RESTART WITH 6;
-
-
--- Personne
-
-INSERT INTO personne (idpersonne, idcategorie, nom, prenom) VALUES 
-  ( 1, 1, 'GRASSET', 'Jérôme' ),
-  ( 2, 1, 'BOUBY', 'Claude' ),
-  ( 3, 1, 'AMBLARD', 'Emmanuel' );
-
-ALTER TABLE personne ALTER COLUMN idpersonne RESTART WITH 4;
+ALTER TABLE type_benevole ALTER COLUMN id_type_benevole RESTART WITH 5;
 
 
--- Telephone
+-- Benevole
 
-INSERT INTO telephone (idtelephone, idpersonne, libelle, numero ) VALUES 
-  ( 11, 1, 'Portable', '06 11 11 11 11' ),
-  ( 12, 1, 'Fax', '05 55 99 11 11' ),
-  ( 13, 1, 'Bureau', '05 55 11 11 11' ),
-  ( 21, 2, 'Portable', '06 22 22 22 22' ),
-  ( 22, 2, 'Fax', '05 55 99 22 22' ),
-  ( 23, 2, 'Bureau', '05 55 22 22 22' ),
-  ( 31, 3, 'Portable', '06 33 33 33 33' ),
-  ( 32, 3, 'Fax', '05 55 99 33 33' ),
-  ( 33, 3, 'Bureau', '05 55 33 33 33' );
+INSERT INTO benevole (matricule_b, nom, prenom, adresse, email, poste_souhaite, permis_conduire, date_naissance, id_type_benevole) VALUES 
+  ( 2020, 'MOUAFO', 'Paul Denilson', '184 avenue albert thomas', 'mouafo@gmail.com', true, 06/06/2020, 1),
+  ( 2021, 'MOUAFO', 'Paul Denilson', '184 avenue albert thomas', 'mouafo@gmail.com', true, 06/06/2020, 2);
 
-ALTER TABLE telephone ALTER COLUMN idtelephone RESTART WITH 100;
+ALTER TABLE personne ALTER COLUMN idpersonne RESTART WITH 3;
+
+
+-- Participant
+
+INSERT INTO participant (matricule_p, nom, prenom, date_naiss, telephone, sexe, attestation_medical_pieds, attestation_medical_velo, attestation_medical_canoe, frais_paye, repas_supplementaire, id_equipe, id_equipe_etre_coequipier, id_velo ) VALUES 
+  ( 1, 'MOUAFO', 'Paul Denilson' 02/02/2020, '05 55 99 11 11'),
+  ( 2, 'Fax', '05 55 99 11 11' );
+
+ALTER TABLE participant ALTER COLUMN participant RESTART WITH 3;
 
 
 -- Memo
-
-INSERT INTO memo (idmemo, titre, description, flagurgent, statut, effectif, budget, echeance, idcategorie ) VALUES 
-  ( 1, 'Mémo n°1', 'Texte du mémo n°1', TRUE,  2,   2,   1234.56,   {d  '2020-02-25' }, 1 ),
-  ( 2, 'Mémo n°2', 'Texte du mémo n°2', FALSE, 1,   4,   5000.00,   {d  '2020-05-18' }, 2 ),
-  ( 3, 'Mémo n°3', NULL, TRUE, 0, NULL, NULL, NULL, NULL );
-
-ALTER TABLE memo ALTER COLUMN idmemo RESTART WITH 4;
-
-
--- Concerner
-
-INSERT INTO concerner (idmemo, idPersonne) VALUES 
-  ( 1, 1 ),
-  ( 1, 2 ),
-  ( 1, 3 ),
-  ( 2, 1 ),
-  ( 2, 2 );
-
-
--- Service
-
-INSERT INTO service ( idservice, nom, anneecreation, flagsiege ) VALUES 
-  ( 1, 'Direction', 2007, TRUE ),
-  ( 2, 'Comptabilité', NULL, TRUE ),
-  ( 3, 'Agence Limoges', 2008, FALSE ),
-  ( 4, 'Agence Brive', 2014, FALSE );
-
-
-ALTER TABLE service ALTER COLUMN idservice RESTART WITH 5;
+--
+--INSERT INTO memo (idmemo, titre, description, flagurgent, statut, effectif, budget, echeance, idcategorie ) VALUES 
+--  ( 1, 'Mémo n°1', 'Texte du mémo n°1', TRUE,  2,   2,   1234.56,   {d  '2020-02-25' }, 1 ),
+--  ( 2, 'Mémo n°2', 'Texte du mémo n°2', FALSE, 1,   4,   5000.00,   {d  '2020-05-18' }, 2 ),
+--  ( 3, 'Mémo n°3', NULL, TRUE, 0, NULL, NULL, NULL, NULL );
+--
+--ALTER TABLE memo ALTER COLUMN idmemo RESTART WITH 4;
+--
+--
+---- Concerner
+--
+--INSERT INTO concerner (idmemo, idPersonne) VALUES 
+--  ( 1, 1 ),
+--  ( 1, 2 ),
+--  ( 1, 3 ),
+--  ( 2, 1 ),
+--  ( 2, 2 );
+--
+--
+---- Service
+--
+--INSERT INTO service ( idservice, nom, anneecreation, flagsiege ) VALUES 
+--  ( 1, 'Direction', 2007, TRUE ),
+--  ( 2, 'Comptabilité', NULL, TRUE ),
+--  ( 3, 'Agence Limoges', 2008, FALSE ),
+--  ( 4, 'Agence Brive', 2014, FALSE );
+--
+--
+--ALTER TABLE service ALTER COLUMN idservice RESTART WITH 5;
 

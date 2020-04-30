@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.participant.ControllerParticipant">
+   <top>
+      <HBox style="-fx-background-color: #06B9C7;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/logo.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="89.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="49.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Participants" />
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Résultat" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="54.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="61.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
+               <HBox.margin>
+                  <Insets left="170.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="286.0" prefWidth="100.0" style="-fx-background-color: #8FAF9E;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="200.0" left="5.0" right="5.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Lister" />
+            <Button mnemonicParsing="false" onAction="#doParticipantAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Ajouter" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Justificatifs" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <GridPane prefHeight="277.0" prefWidth="475.0" style="-fx-background-color: #16818A;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Label text="Id" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Nom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Prenom" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="Engagement" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <HBox GridPane.columnIndex="3">
+               <children>
+                  <TextField prefHeight="25.0" prefWidth="78.0">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="Ok" />
+               </children>
+               <GridPane.margin>
+                  <Insets right="5.0" top="5.0" />
+               </GridPane.margin>
+            </HBox>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
