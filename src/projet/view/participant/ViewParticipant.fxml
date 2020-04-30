@@ -23,7 +23,7 @@
                </image>
             </ImageView>
             <Button mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="89.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doBenevole" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="49.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Participants" />
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Résultat" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="54.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />

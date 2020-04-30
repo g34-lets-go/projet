@@ -33,7 +33,7 @@ public enum EnumView implements IEnumView {
 	ParticipantAjouter  ( "participant/ViewParticipantAjouter.fxml" ),
 	
 	Benevole			( "benevole/ViewBenevole.fxml"),
-	BenevoleAjouter  ( "benevole/ViewBenevoleAjouter.fxml" ),
+	BenevoleAjouter     ( "benevole/ViewBenevoleAjouter.fxml" ),
 	;
 
 	

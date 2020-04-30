@@ -24,6 +24,10 @@ public class ControllerBenevoleAjouter {
 		managerGui.showView( EnumView.Accueil);
 	}
 	
+	@FXML public void doBenevole() {
+		managerGui.showView( EnumView.Benevole);
+	}
+	
 	@FXML public void doParticipant() {
 		managerGui.showView( EnumView.Participant);
 	}

@@ -18,4 +18,8 @@ public class ControllerAccueil {
 	@FXML public void doParticipant() {
 		managerGui.showView( EnumView.Participant);
 	}
+	
+	@FXML public void doBenevole() {
+		managerGui.showView( EnumView.Benevole);
+	}
 }
