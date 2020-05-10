@@ -60,11 +60,16 @@ public class ControllerConnexion {
 		managerGui.execTask( () -> {
 			modelConnexion.ouvrirSessionUtilisateur();
 			Platform.runLater( () -> {
-         			modelInfo.titreProperty().setValue( "Bienvenue" );
+         			modelInfo.titreProperty().setValue( "Bienvenue "+fieldPseudo.getText().toUpperCase().charAt(0)+fieldPseudo.getText().substring(1) );
         			modelInfo.messageProperty().setValue( "Connexion réussie" );
         			managerGui.showView(EnumView.Info);
             }) ;
 		} );
+	}
+	
+	@FXML
+	private void doQuitter() {
+		managerGui.exit();
 	}
 	
 

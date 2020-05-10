@@ -35,14 +35,14 @@ public class ManagerGui extends ManagerGuiAbstract {
 	protected void configureStage()  {
 		
 		// Choisit la vue à afficher
-		showView( EnumView.Connexion);
+		showView( EnumView.Accueil);
 		
 		// Configure le stage
-		stage.setTitle( "Gestion de contacts" );
-		stage.setWidth(600);
+		stage.setTitle( "Gestion de BOLS d'AIR" );
+		/*stage.setWidth(600);
 		stage.setHeight(440);
 		stage.setMinWidth(400);
-		stage.setMinHeight(300);
+		stage.setMinHeight(300);*/
 		stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
 		
 		// Configuration par défaut pour les boîtes de dialogue
