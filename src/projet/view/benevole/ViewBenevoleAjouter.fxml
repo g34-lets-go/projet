@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -24,14 +25,15 @@
                   <Image url="@../../../img/logo.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="89.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Bénévoles" />
-            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="49.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="73.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="54.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="61.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
+            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
+            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Bénévoles" />
+            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070" />
+            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070" />
+            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
+            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070" />
+            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
-                  <Insets left="170.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>
@@ -86,7 +88,7 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="nom" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="nom" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -111,22 +113,17 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="prenom" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="prenom" maxWidth="300.0" prefHeight="26.0" prefWidth="348.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="dateN" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="tel" maxWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="tel" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets right="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="adresse" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <TextField fx:id="adresse" maxWidth="400.0" promptText="Nom et numero de rue, Code postal Ville, Pays" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -136,7 +133,7 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <TextField fx:id="email" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -147,6 +144,7 @@
                      </font></Label>
                   <Label text="Poste souhaité " GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <DatePicker maxWidth="200.0" prefHeight="26.0" prefWidth="332.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
                <VBox.margin>
                   <Insets />

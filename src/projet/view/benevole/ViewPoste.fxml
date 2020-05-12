@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevole">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerPoste">
    <top>
       <HBox style="-fx-background-color: #06B9C7;" BorderPane.alignment="CENTER">
          <children>
@@ -23,10 +23,10 @@
                </image>
             </ImageView>
             <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
-            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Bénévoles" />
+            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Bénévoles" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070" />
-            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070" />
+            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
