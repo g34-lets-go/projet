@@ -1,17 +1,18 @@
 package test.git;
 
-public class Test_JF {
+public class Test_JF2 {
 	
 	
 	public void bonjour() {
 		System.out.println( "Bonjoour" );
+		System.out.println( "Ca va ?" ); 
 	}
 	
 	
 	private String[] adresses = {
-			"14 Rue Mozart, Paris",
+			"99 Rue Mozart, Montreuil",
 			"77 Rue Picasso, Toulouse", 
-			"53 Rue des fleurs, Limoges",
+			"111 Rue des fleurs, Brive",
 	};
 
 	
@@ -20,7 +21,7 @@ public class Test_JF {
 		if ( 0 <= i && i < adresses.length ) {
 			return adresses[i];
 		} else {
-			return null;
+			return "Erreur";
 		}
 	}
 	
