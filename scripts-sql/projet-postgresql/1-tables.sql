@@ -36,7 +36,7 @@ CREATE TABLE benevole (
     permis_conduire  	BOOLEAN ,
     date_naissance   	DATE			NOT NULL ,
     type_benevole		INT				NOT NULL ,
-	PRIMARY KEY (matricule_b),
+	PRIMARY KEY (matricule_b)
 );
 
 

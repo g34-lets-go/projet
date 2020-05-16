@@ -7,8 +7,6 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 public class Benevole {
 	
@@ -22,7 +20,7 @@ public class Benevole {
 	private final StringProperty	emailBene		= new SimpleStringProperty();
 	private final StringProperty	posteBene		= new SimpleStringProperty();
 	private final Property<Boolean> permisBene 	= new SimpleObjectProperty<>(false);
-	private final ObservableList<Integer> typeBene 	= FXCollections.observableArrayList();
+	private final Property<Integer> typeBene 	= new SimpleObjectProperty<>();
 	
 	
 //	Getters et setters 
@@ -136,20 +134,16 @@ public class Benevole {
 	}
 	
 	
-	public final ObservableList<Integer> getTypeBenevole() {
-		return this.typeBene;
+	public final Property<Integer> typeBeneProperty() {
+		return typeBene;
+	}
+
+	public final Integer getTypeBene() {
+		return typeBene.getValue();
 	}
 	
-	public boolean isInRole( Integer typeBenevole ) {
-		
-		if ( typeBenevole != null ) {
-			for ( Integer type : typeBene ) {
-				if ( typeBenevole.equals( type ) ) {
-					return true;
-				}
-			}
-		}
-		return false;
+	public final void setTypeBene(Integer typeBene) {
+		this.typeBene.setValue(typeBene);
 	}
 	
 	

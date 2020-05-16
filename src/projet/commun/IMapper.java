@@ -9,6 +9,7 @@ import projet.data.Compte;
 import projet.data.Memo;
 import projet.data.Personne;
 import projet.data.Service;
+import projet.data.Benevole;
 
 
 @Mapper
@@ -25,5 +26,7 @@ public interface IMapper {
 	Memo update( @MappingTarget Memo target, Memo source );
 
 	Service update( @MappingTarget Service target, Service source );
+	
+	Benevole update( @MappingTarget Benevole target, Benevole source );
 	
 }
