@@ -32,11 +32,13 @@ CREATE TABLE benevole (
     prenom          	VARCHAR (50) 	NOT NULL ,
     adresse          	VARCHAR (50) 	NOT NULL ,
     email            	VARCHAR (50) 	NOT NULL ,
-    poste_souhaite   	TEXT 			NOT NULL ,
+    id_poste		  	INT 			NOT NULL ,
     permis_conduire  	BOOLEAN ,
     date_naissance   	DATE			NOT NULL ,
     type_benevole		INT				NOT NULL ,
 	PRIMARY KEY (matricule_b)
+	FOREIGN KEY (id_poste) REFERENCES poste(id_poste)
+	
 );
 
 
@@ -59,7 +61,7 @@ CREATE TABLE participant (
 	nom                  		VARCHAR (50) 	NOT NULL ,
     prenom                    	VARCHAR (50) 	NOT NULL ,
     date_naiss                	VARCHAR 		NOT NULL ,
-    telephone                 	INT 			NOT NULL ,
+    telephone                 	VARCHAR (25) 	NOT NULL ,
     email                      	VARCHAR (50) 	NOT NULL ,
     adresse                    	VARCHAR (50) 	NOT NULL ,
     attestation_medical_pieds 	BOOLEAN  ,

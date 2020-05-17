@@ -32,7 +32,7 @@ public class DaoBenevole {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO benevole ( nom, prenom, adresse, email, poste_souhaite, permis_conduite, date_naissance, type_benevole) VALUES( ?, ?, ?, ?, ?, ?, ?, ?) ";
+			sql = "INSERT INTO benevole ( nom, prenom, adresse, email, id_poste, permis_conduite, date_naissance, type_benevole) VALUES( ?, ?, ?, ?, ?, ?, ?, ?) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, benevole.getNomBene());
 			stmt.setObject( 2, benevole.getPrenomBene());
@@ -75,7 +75,7 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Modifie le bénévole
-			sql = "UPDATE benevole SET nom = ?, prenom = ?, adresse = ?, email = ?, poste_souhaite = ?, permis_conduite = ?, date_naissance = ?, type_benevole = ? WHERE matricule_b =  ?";
+			sql = "UPDATE benevole SET nom = ?, prenom = ?, adresse = ?, email = ?, id_poste = ?, permis_conduite = ?, date_naissance = ?, type_benevole = ? WHERE matricule_b =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, benevole.getNomBene());
 			stmt.setObject( 2, benevole.getPrenomBene());

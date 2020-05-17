@@ -18,7 +18,7 @@ public class Benevole {
 	private final Property<LocalDate>	dateNaiBene	= new SimpleObjectProperty<>();
 	private final StringProperty	adresseBene		= new SimpleStringProperty();
 	private final StringProperty	emailBene		= new SimpleStringProperty();
-	private final StringProperty	posteBene		= new SimpleStringProperty();
+	private final Property<Poste>	posteBene		= new SimpleObjectProperty<>();
 	private final Property<Boolean> permisBene 	= new SimpleObjectProperty<>(false);
 	private final Property<Integer> typeBene 	= new SimpleObjectProperty<>();
 	
@@ -103,16 +103,16 @@ public class Benevole {
 	}
 	
 	
-	public final StringProperty posteBeneProperty() {
+	public final Property<Poste> posteBeneProperty() {
 		return posteBene;
 	}
 	
-	public final String getPosteBene() {
-		return posteBeneProperty().get();
+	public final projet.data.Poste getPosteBene() {
+		return posteBeneProperty().getValue();
 	}
 	
-	public final void setPosteBene(String posteBene) {
-		this.posteBeneProperty().set(posteBene);
+	public final void setPosteBene(final projet.data.Poste posteBene) {
+		this.posteBeneProperty().setValue(posteBene);
 	}
 	
 	
@@ -126,11 +126,6 @@ public class Benevole {
 	
 	public final void setPermisBene(Boolean permisBene) {
 		this.permisBene.setValue(permisBene);
-	}
-	
-	
-	public final StringProperty prenomeProperty() {
-		return this.posteBene;
 	}
 	
 	

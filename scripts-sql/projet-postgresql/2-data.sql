@@ -3,15 +3,9 @@ SET search_path TO projet;
 
 -- Supprimer toutes les données
 --DELETE FROM compte;
---DELETE FROM velo;
---DELETE FROM type_benevole;
 --DELETE FROM benevole;
 --DELETE FROM participant;
---DELETE FROM course;
---DELETE FROM type_course;
 --DELETE FROM poste;
---DELETE FROM equipe;
---DELETE FROM dossard;
 --DELETE FROM etre_affecte;
 
 
@@ -25,39 +19,38 @@ SET search_path TO projet;
 --ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
 
 
--- Velo
-
---INSERT INTO velo (id_velo, type_velo, ) VALUES 
---  ( 1, 'VTT' ),
---  ( 2, 'VTT electrique' );
-
---ALTER TABLE velo ALTER COLUMN id_velo RESTART WITH 3;
-
--- type_benevole
-  
---INSERT INTO type_benevole (id_type_benevole  , nom_type_benevole ) VALUES 
- -- (1, 'Capitain' ),
-  --(2, 'Equipier' ),
- -- (3, 'Capitain' ),
- -- (4, 'Equipier' );
-
---ALTER TABLE type_benevole ALTER COLUMN id_type_benevole RESTART WITH 5;
-
-
 -- Benevole
 
 --INSERT INTO benevole (matricule_b, nom, prenom, adresse, email, poste_souhaite, permis_conduire, date_naissance, id_type_benevole) VALUES 
---  ( 2020, 'MOUAFO', 'Paul Denilson', '184 avenue albert thomas', 'mouafo@gmail.com', true, 06/06/2020, 1),
---  ( 2021, 'MOUAFO', 'Paul Denilson', '184 avenue albert thomas', 'mouafo@gmail.com', true, 06/06/2020, 2);
+--  ( 1, 'MOUAFO', 'Paul Denilson', '184 avenue albert thomas', 'mouafo@gmail.com', TRUE, '2020-06-07', 1),
+--  ( 2, 'MOUAPO', 'Mark', '154 avenue albert thomas', 'mouapo@gmail.com', FALSE, '2020-06-06', 2);
+--  ( 3, 'MOUABO', 'Jeremy', '14 avenue albert', 'mouabo@gmail.com', TRUE, '2020-05-06', 1);
 
---ALTER TABLE benevole ALTER COLUMN matricule_b RESTART WITH 3;
+--ALTER TABLE benevole ALTER COLUMN matricule_b RESTART WITH 4;
+
+
+-- Poste
+  
+--INSERT INTO poste (id_poste, nom_poste, description_poste, horaires_poste, personnel_poste, localisation_poste, Equipement_necessaire, id_course) VALUES 
+--  (1, 'Signaleur', 'Signaler les participants', '08:00', 37, 'Partout', 'Rien', 1),
+--  (2, 'Ravitaillement', 'Ravitailler les points', '08:00', 6, 'Au club', 'Rien', 1),
+--  (3, 'Sécurité sur l''eau', 'Assurer la sécurité des participants sur l''eau', '08:00', 6, 'Sur l''eau', 'Gilet de sauvetage', 1),
+
+--ALTER TABLE categorie ALTER COLUMN idcategorie RESTART WITH 4;
+
+---- Etre_affecte
+--
+--INSERT INTO etre_affecte (matricule_b, id_poste) VALUES 
+--  ( 1, 1 ),
+--  ( 2, 2 ),
+--  ( 3, 3 );
 
 
 -- Participant
 
 --INSERT INTO participant (matricule_p, nom, prenom, date_naiss, telephone, sexe, attestation_medical_pieds, attestation_medical_velo, attestation_medical_canoe, frais_paye, repas_supplementaire, id_equipe, id_equipe_etre_coequipier, id_velo ) VALUES 
-  --( 1, 'MOUAFO', 'Paul Denilson' 02/02/2020, '05 55 99 11 11'),
-  --( 2, 'Fax', '05 55 99 11 11' );
+  --( 1, 'MOUAFO', 'Paul Denilson', '2020-02-03', '05 55 99 11 11'),
+  --( 2, 'MALO', 'Paul', '2020-03-02', '05 55 99 11 11' );
 
 --ALTER TABLE participant ALTER COLUMN participant RESTART WITH 3;
 
@@ -70,16 +63,6 @@ SET search_path TO projet;
 --  ( 3, 'Mémo n°3', NULL, TRUE, 0, NULL, NULL, NULL, NULL );
 --
 --ALTER TABLE memo ALTER COLUMN idmemo RESTART WITH 4;
---
---
----- Concerner
---
---INSERT INTO concerner (idmemo, idPersonne) VALUES 
---  ( 1, 1 ),
---  ( 1, 2 ),
---  ( 1, 3 ),
---  ( 2, 1 ),
---  ( 2, 2 );
 --
 --
 ---- Service

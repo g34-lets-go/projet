@@ -12,6 +12,7 @@ import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Benevole;
+import projet.data.Poste;
 import projet.view.EnumView;
 
 public class ControllerBenevoleAjouter {
@@ -31,7 +32,7 @@ public class ControllerBenevoleAjouter {
 	@FXML 
 	private TextField		textFieldEmail;
 	@FXML 
-	private TextField		textFieldPoste; //Pas fixe
+	private ComboBox<Poste>		comboBoxPoste; //Pas fixe
 	@FXML 
 	private ComboBox<Integer>		comboBoxType;
 	@FXML
@@ -55,7 +56,7 @@ public class ControllerBenevoleAjouter {
 			textFieldPrenom.textProperty().bindBidirectional( courant.prenomBeneProperty() );
 			textFieldAdresse.textProperty().bindBidirectional( courant.adresseBeneProperty() );
 			textFieldEmail.textProperty().bindBidirectional( courant.emailBeneProperty() );
-			textFieldPoste.textProperty().bindBidirectional( courant.posteBeneProperty() );
+			
 
 	        
 			// Configuration de la combo box
@@ -63,7 +64,12 @@ public class ControllerBenevoleAjouter {
 			// Data binding
 			comboBoxType.setItems(  modelBenevole.getListeType());
 	        comboBoxType.valueProperty().bindBidirectional( courant.typeBeneProperty() );
+	        
+			comboBoxPoste.setItems(  modelBenevole.getPostes());
+	        comboBoxPoste.valueProperty().bindBidirectional( courant.posteBeneProperty() );
 		
+	        
+	        
 	        // Permis de conduire
 	        checkBoxPermis.selectedProperty().bindBidirectional( courant.permisBeneProperty() );
 	        

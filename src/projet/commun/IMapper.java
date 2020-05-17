@@ -8,6 +8,7 @@ import projet.data.Categorie;
 import projet.data.Compte;
 import projet.data.Memo;
 import projet.data.Personne;
+import projet.data.Poste;
 import projet.data.Service;
 import projet.data.Benevole;
 
@@ -29,4 +30,5 @@ public interface IMapper {
 	
 	Benevole update( @MappingTarget Benevole target, Benevole source );
 	
+	Poste update( @MappingTarget Poste target, Poste source );
 }
