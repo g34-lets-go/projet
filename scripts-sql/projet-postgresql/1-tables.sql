@@ -99,7 +99,7 @@ CREATE TABLE benevole (
     id_poste		  	INT 			NOT NULL ,
     permis_conduire  	BOOLEAN ,
     date_naissance   	DATE			NOT NULL ,
-    type_benevole		INT				NOT NULL ,
+    membre_ok			BOOLEAN			NOT NULL ,
 	PRIMARY KEY (matricule_b),
 	FOREIGN KEY (id_poste) REFERENCES poste(id_poste)
 	

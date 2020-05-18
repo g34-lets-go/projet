@@ -20,7 +20,7 @@ public class Benevole {
 	private final StringProperty	emailBene		= new SimpleStringProperty();
 	private final Property<Poste>	posteBene		= new SimpleObjectProperty<>();
 	private final Property<Boolean> permisBene 	= new SimpleObjectProperty<>(false);
-	private final Property<Integer> typeBene 	= new SimpleObjectProperty<>();
+	private final Property<Boolean> membreClub 	= new SimpleObjectProperty<>(false);
 	
 	
 	
@@ -73,7 +73,7 @@ public class Benevole {
 		return dateNaiBeneProperty().getValue();
 	}
 	
-	public final void setDateNc(LocalDate dateNais) {
+	public final void setDateNaiBene(LocalDate dateNais) {
 		this.dateNaiBeneProperty().setValue(dateNais);
 	}
 	
@@ -86,7 +86,7 @@ public class Benevole {
 		return adresseBeneProperty().get();
 	}
 	
-	public final void setAdressec(String adresseBene) {
+	public final void setAdresseBene(String adresseBene) {
 		this.adresseBeneProperty().set(adresseBene);
 	}
 	
@@ -99,7 +99,7 @@ public class Benevole {
 		return emailBeneProperty().get();
 	}
 	
-	public final void setEmailc(String emailBene) {
+	public final void setEmailBene(String emailBene) {
 		this.emailBeneProperty().set(emailBene);
 	}
 	
@@ -130,16 +130,16 @@ public class Benevole {
 	}
 	
 	
-	public final Property<Integer> typeBeneProperty() {
-		return typeBene;
+	public final Property<Boolean> membreClubProperty() {
+		return membreClub;
 	}
 
-	public final Integer getTypeBene() {
-		return typeBene.getValue();
+	public final Boolean getMembreCLub() {
+		return membreClub.getValue();
 	}
 	
-	public final void setTypeBene(Integer typeBene) {
-		this.typeBene.setValue(typeBene);
+	public final void setMembreClub(Boolean membreClub) {
+		this.membreClub.setValue(membreClub);
 	}
 	
 	

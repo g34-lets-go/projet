@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class DaoPoste {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO poste ( nom_poste, description_poste, horaires_poste, personnel_poste, localisation_poste, equipement_poste, id_course, nb_personnel ) VALUES( ?, ?, ?, ?, ?, ?, ?, ? ) ";
+			sql = "INSERT INTO poste ( nom_poste, description_poste, horaires_poste, personnel_poste, localisation_poste, Equipement_necessaire, id_course, nb_personnel ) VALUES( ?, ?, ?, ?, ?, ?, ?, ? ) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, poste.getNom_Poste() );
 			stmt.setObject( 2, poste.getDescription() );
@@ -70,7 +70,7 @@ public class DaoPoste {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "UPDATE poste SET nom_poste = ?, description_poste = ?, horaires_poste = ?, personnel_poste = ?, localisation_poste = ?, equipement_poste = ?, id_course = ?, nb_poste = ? WHERE id_poste =  ?";
+			sql = "UPDATE poste SET nom_poste = ?, description_poste = ?, horaires_poste = ?, personnel_poste = ?, localisation_poste = ?, Equipement_necessaire = ?, id_course = ?, nb_personnel = ? WHERE id_poste =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, poste.getNom_Poste() );
 			stmt.setObject( 2, poste.getDescription() );
@@ -173,11 +173,11 @@ public class DaoPoste {
 		poste.setId_Poste( rs.getObject( "id_poste", Integer.class ) );
 		poste.setNom_Poste( rs.getObject( "nom_poste", String.class ) );
 		poste.setDescription( rs.getObject( "description_poste", String.class ) );
-		poste.setHoraires( rs.getObject( "horaires_poste", LocalDateTime.class ) );
+		poste.setHoraires( rs.getObject( "horaires_poste", LocalTime.class ) );
 		poste.setLocalisation( rs.getObject( "localisation_poste", String.class ) );
-		poste.setEquipement( rs.getObject( "equipement_poste", String.class ) );
+		poste.setEquipement( rs.getObject( "Equipement_necessaire", String.class ) );
 		poste.setPersonnel( rs.getObject( "personnel_poste", Integer.class ) );
-		poste.setPersonnel_actu( rs.getObject( "personnel_actuel_poste", Integer.class ) );
+		poste.setPersonnel_actu( rs.getObject( "nb_personnel", Integer.class ) );
 		poste.setId_Course( rs.getObject( "id_course", Integer.class ) );
 		
 		return poste;

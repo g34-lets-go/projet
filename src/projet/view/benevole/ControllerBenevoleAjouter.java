@@ -34,7 +34,7 @@ public class ControllerBenevoleAjouter {
 	@FXML 
 	private ComboBox<Poste>		comboBoxPoste; //Pas fixe
 	@FXML 
-	private ComboBox<Integer>		comboBoxType;
+	private CheckBox		checkBoxMembre;
 	@FXML
 	private CheckBox		checkBoxPermis;
 
@@ -43,6 +43,8 @@ public class ControllerBenevoleAjouter {
 	private IManagerGui			managerGui;
 	@Inject
 	private ModelBenevole 		modelBenevole;
+	@Inject
+	private ModelPoste			modelPoste;
 	
 	// Initialisation du controller
 	
@@ -60,22 +62,27 @@ public class ControllerBenevoleAjouter {
 
 	        
 			// Configuration de la combo box
-
-			// Data binding
-			comboBoxType.setItems(  modelBenevole.getListeType());
-	        comboBoxType.valueProperty().bindBidirectional( courant.typeBeneProperty() );
 	        
-			comboBoxPoste.setItems(  modelBenevole.getPostes());
+			comboBoxPoste.setItems(  modelPoste.getListe());
 	        comboBoxPoste.valueProperty().bindBidirectional( courant.posteBeneProperty() );
 		
 	        
 	        
 	        // Permis de conduire
 	        checkBoxPermis.selectedProperty().bindBidirectional( courant.permisBeneProperty() );
+
+	        // Permis de conduire
+	        checkBoxMembre.selectedProperty().bindBidirectional( courant.membreClubProperty() );
 	        
 	        //Date de Naissance
 	        UtilFX.bindBidirectional( datePickerDateNais.getEditor(), courant.dateNaiBeneProperty(), new ConverterStringLocalDate() );
 		
+		}
+		
+//		Refresh
+		
+		public void refresh() {
+			modelPoste.actualiserListe();
 		}
 	
 	

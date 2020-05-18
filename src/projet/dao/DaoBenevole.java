@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class DaoBenevole {
 	
 	@Inject
 	private DataSource		dataSource;
+	@Inject
+	private DaoPoste		daoPoste;
+	
 	
 	public int inserer (Benevole benevole) {
 		
@@ -32,17 +36,16 @@ public class DaoBenevole {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO benevole ( nom, prenom, adresse, email, id_poste, permis_conduite, date_naissance, type_benevole) VALUES( ?, ?, ?, ?, ?, ?, ?, ?) ";
+			sql = "INSERT INTO benevole ( nom, prenom, adresse, email, id_poste, permis_conduire, date_naissance, membre_ok) VALUES( ?, ?, ?, ?, ?, ?, ?, ?) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, benevole.getNomBene());
 			stmt.setObject( 2, benevole.getPrenomBene());
 			stmt.setObject( 3, benevole.getAdresseBene());
 			stmt.setObject( 4, benevole.getEmailBene());
-			stmt.setObject( 5, benevole.getPosteBene());
+			stmt.setObject( 5, benevole.getPosteBene().getId_Poste());
 			stmt.setObject( 6, benevole.getPermisBene());
 			stmt.setObject( 7, benevole.getDateNaiBene());
-			benevole.setTypeBene(2);
-			stmt.setObject( 8, benevole.getTypeBene());
+			stmt.setObject( 8, benevole.getMembreCLub());
 			stmt.executeUpdate();
 			
 			//Les benevoles doivent être à 2 niveaux 
@@ -75,7 +78,7 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Modifie le bénévole
-			sql = "UPDATE benevole SET nom = ?, prenom = ?, adresse = ?, email = ?, id_poste = ?, permis_conduite = ?, date_naissance = ?, type_benevole = ? WHERE matricule_b =  ?";
+			sql = "UPDATE benevole SET nom = ?, prenom = ?, adresse = ?, email = ?, id_poste = ?, permis_conduire = ?, date_naissance = ?, membre_ok = ? WHERE matricule_b =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, benevole.getNomBene());
 			stmt.setObject( 2, benevole.getPrenomBene());
@@ -84,8 +87,7 @@ public class DaoBenevole {
 			stmt.setObject( 5, benevole.getPosteBene());
 			stmt.setObject( 6, benevole.getPermisBene());
 			stmt.setObject( 7, benevole.getDateNaiBene());
-			benevole.setTypeBene(2);
-			stmt.setObject( 8, benevole.getTypeBene());
+			stmt.setObject( 8, benevole.getMembreCLub());
 			stmt.setObject( 9, benevole.getMatBene());
 			stmt.executeUpdate();
 			
@@ -191,7 +193,7 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			sql = "SELECT b.* FROM benevole b" 
-				+ " INNER JOIN etre_affecte a ON b.matricule_b = a.matricule" 
+				+ " INNER JOIN poste p ON b.id_poste = p.id_poste" 
 				+ " WHERE a.id_poste = ?" 
 				+ " ORDER BY nom, prenom";
 			stmt = cn.prepareStatement(sql);
@@ -276,10 +278,14 @@ public class DaoBenevole {
 			benevole.setMatBene(rs.getObject( "matricule_b", Integer.class ));
 			benevole.setNomBene(rs.getObject( "nom", String.class ));
 			benevole.setPrenomBene(rs.getObject( "prenom", String.class ));
-
+			benevole.setAdresseBene(rs.getObject( "adresse", String.class ));
+			benevole.setEmailBene(rs.getObject( "email", String.class ));
+			benevole.setDateNaiBene(rs.getObject( "date_naissance", LocalDate.class ));
+			benevole.setMembreClub(rs.getObject( "membre_ok", Boolean.class ));
+			
 			if ( flagComplet ) {
-			//	personne.setCategorie( daoCategorie.retrouver( rs.getObject("idcategorie", Integer.class) ) );
-			//	personne.getTelephones().addAll( daoTelephone.listerPourPersonne( personne ) );
+				benevole.setPosteBene( daoPoste.retrouver( rs.getObject("id_poste", Integer.class) ) );
+			
 			}
 			
 			return benevole;

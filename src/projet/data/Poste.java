@@ -1,6 +1,7 @@
 package projet.data;
 
-import java.time.LocalDateTime;
+
+import java.time.LocalTime;
 import java.util.Objects;
 
 import javafx.beans.property.Property;
@@ -18,7 +19,7 @@ public class Poste  {
 	private final Property<Integer>	id_poste			= new SimpleObjectProperty<>();
 	private final StringProperty	nom_poste			= new SimpleStringProperty();
 	private final StringProperty	description_poste	= new SimpleStringProperty();
-	private final Property<LocalDateTime>	horaire_poste		= new SimpleObjectProperty<>();
+	private final Property<LocalTime>	horaire_poste		= new SimpleObjectProperty<>();
 	private final Property<Integer>	personnel			= new SimpleObjectProperty<>();
 	private final Property<Integer>	personnel_actuel	= new SimpleObjectProperty<>();
 	private final StringProperty	localisation		= new SimpleStringProperty();
@@ -31,10 +32,11 @@ public class Poste  {
 	public Poste() {
 	}
 
-	public Poste( final int id, final String nom, final String description, final int personnel,final int personnel_actu, final String localisation, final String equipement, final int id_course ) {
+	public Poste( final int id, final String nom, final String description, final LocalTime horaire_poste, final int personnel,final int personnel_actu, final String localisation, final String equipement, final int id_course ) {
 		setId_Poste(id);
 		setNom_Poste(nom);
 		setDescription(description);
+		setHoraires(horaire_poste);
 		setPersonnel(personnel);
 		setPersonnel_actu(personnel_actu);
 		setLocalisation(localisation);
@@ -84,15 +86,15 @@ public class Poste  {
 	}
 	
 	
-	public final Property<LocalDateTime> horairesProperty() {
+	public final Property<LocalTime> horairesProperty() {
 		return horaire_poste;
 	}
 	
-	public final LocalDateTime getHoraires() {
+	public final LocalTime getHoraires() {
 		return horairesProperty().getValue();
 	}
 	
-	public final void setHoraires(LocalDateTime horaires) {
+	public final void setHoraires(LocalTime horaires) {
 		this.horairesProperty().setValue(horaires);
 	}
 	
