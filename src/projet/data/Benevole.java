@@ -23,6 +23,7 @@ public class Benevole {
 	private final Property<Integer> typeBene 	= new SimpleObjectProperty<>();
 	
 	
+	
 //	Getters et setters 
 	
 	public final Property<Integer> matBeneProperty() {
