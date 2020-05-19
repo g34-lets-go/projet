@@ -55,8 +55,9 @@ ALTER TABLE participant ALTER COLUMN matricule_p RESTART WITH 5;
 
 INSERT INTO course (id_course, nom_course, heure_depart, lieu_depart, lieu_arrivee) VALUES 
   ( 1, 'Mini Bol d''air', '09:00', 'Village du Dognon (Ste Marie de Vaux)', 'Club de Canoë Kayak de St Victurnien'),
-  ( 2, 'Bol d''air', '09:00', 'Club de Canoë Kayak', 'Club de Canoë Kayak de St Victurnien');
-
+  ( 2, 'Bol d''air', '09:00', 'Club de Canoë Kayak', 'Club de Canoë Kayak de St Victurnien'),
+  ( 3, 'Les 2 bol d''air', '09:00', 'CLub de Canoë Kayak', 'Club de Canoë Kayak de St Victurnien');	
+  
      
 --Equipe
 
@@ -70,11 +71,19 @@ ALTER TABLE equipe ALTER COLUMN id_equipe RESTART WITH 3;
 -- Poste
   
 INSERT INTO poste (id_poste, nom_poste, description_poste, horaires_poste, personnel_poste, localisation_poste, Equipement_necessaire, id_course, nb_personnel) VALUES 
-  (1, 'Signaleur', 'Signaler les participants', '08:00', 37, 'Partout', 'Rien', 1, 0),
-  (2, 'Ravitaillement', 'Ravitailler les points', '08:00', 6, 'Au club', 'Rien', 1, 0),
-  (3, 'Sécurité sur l''eau', 'Assurer la sécurité des participants sur l''eau', '08:00', 6, 'Sur l''eau', 'Gilet de sauvetage', 1, 0),
-  (4, 'Superviseur', 'Assurer le bon déroulement de la course', '07:00', 6, 'Partout', 'Rien', 1, 0);
-
+	  (1, 'Signaleur', 'Signaler les participants', '08:30', 37, 'Partout', 'Rien', 3, 0),
+	  (2, 'Ravitaillement', 'Ravitailler les points', '09:00', 6, 'Au club', 'Rien', 3, 0),
+	  (3, 'Sécurité sur l''eau', 'Assurer la sécurité des participants sur l''eau', '09:00', 6, 'Sur l''eau', 'Gilet de sauvetage', 3, 0),
+	  (4, 'Parking voiture', 'Vueiller sur les voitures', '07:00', 1, 'Parking voiture', 'Aucun', 3, 0),
+	  (5, 'Parking vélo', 'Vueiller sue les vélos', '07:00', 1, 'Parking vélo', 'Aucun', 3, 0),
+	  (6, 'Remise des dossards', 'Remettre les dossards aux participants', '07:00', 4, 'Départ course', 'Dossards', 3, 0),
+	  (7, 'Chronométrage', 'Chronomètre les 3 courses de chacun des bols', '09:30', 2, 'Départ et arrivée des différentes courses', '1 Chrono pour chaque course = 6 chronos', 3, 0),
+	  (8, 'Moto (fermeture)', 'Clôturer les différentees courses des bols', '09:00', 2, 'Derrière les courses', 'Moto', 3, 0),
+	  (9, 'Buvette', 'Fournir à boire aux participants', '07:00', 5, 'Point sur les parcours', 'Verre, bouteille d''eau et sucre', 3, 0),
+	  (10, 'Repas', 'Charger des diférents des bols', '11:00', 3, 'Club', 'Courvets de cuisine', 3, 0),
+	  (11, 'Récuperer dossards et puces', 'Récupérer les puces et dossars aux participants', '12:00', 1, 'Club', 'Aucun', 3, 0),
+  	  (12, 'Photographe', 'Photographier les différentees courses des bols', '07:00', 2, 'Partout', 'Appareil photo', 3, 0);
+  
 ALTER TABLE poste ALTER COLUMN id_poste RESTART WITH 5;
 
 
