@@ -2,7 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -54,43 +55,43 @@
       </VBox>
    </left>
    <center>
-      <GridPane prefHeight="277.0" prefWidth="475.0" style="-fx-background-color: #16818A;" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
-         </BorderPane.margin>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Id" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Nom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Prenom" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="Engagement" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <HBox GridPane.columnIndex="3">
+            <GridPane prefHeight="277.0" prefWidth="475.0" style="-fx-background-color: #16818A;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <TextField prefHeight="25.0" prefWidth="78.0">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="Ok" />
+                  <HBox GridPane.columnIndex="3">
+                     <children>
+                        <TextField prefHeight="25.0" prefWidth="78.0">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="Ok" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </HBox>
                </children>
-               <GridPane.margin>
-                  <Insets right="5.0" top="5.0" />
-               </GridPane.margin>
-            </HBox>
+            </GridPane>
+            <TableView prefHeight="645.0" prefWidth="590.0">
+              <columns>
+                <TableColumn prefWidth="69.60004580020905" text="id" />
+                <TableColumn prefWidth="174.39995574951172" text="Nom" />
+                  <TableColumn prefWidth="156.79998779296875" text="Prenom" />
+                  <TableColumn prefWidth="188.79998779296875" text="Engagement" />
+              </columns>
+            </TableView>
          </children>
-      </GridPane>
+      </VBox>
    </center>
 </BorderPane>

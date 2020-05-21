@@ -213,7 +213,7 @@ public class DaoBenevole {
 		}
 	}
 	
-/*	
+	
 	public List<Benevole> listerParType( int id_poste )   {
 
 		Connection			cn		= null;
@@ -244,7 +244,7 @@ public class DaoBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-*/
+
 	
 	public int compterParPoste(int id_poste) {
     	
