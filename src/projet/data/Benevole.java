@@ -3,26 +3,45 @@ package projet.data;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.inject.Inject;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import projet.dao.DaoPoste;
 
 public class Benevole {
 	
 // Propriétés
 
-	private final Property<Integer>	matBene 	= new SimpleObjectProperty<>();
-	private final StringProperty	nomBene 		= new SimpleStringProperty();
-	private final StringProperty	prenomBene		= new SimpleStringProperty();
+	private  Property<Integer>	matBene 	= new SimpleObjectProperty<>();
+	private  StringProperty	nomBene 		= new SimpleStringProperty();
+	private  StringProperty	prenomBene		= new SimpleStringProperty();
 	private final Property<LocalDate>	dateNaiBene	= new SimpleObjectProperty<>();
-	private final StringProperty	adresseBene		= new SimpleStringProperty();
+	private  StringProperty	adresseBene		= new SimpleStringProperty();
 	private final StringProperty	emailBene		= new SimpleStringProperty();
-	private final Property<Poste>	posteBene		= new SimpleObjectProperty<>();
+	private final Property<Poste>	 posteBene		= new SimpleObjectProperty<>();
 	private final Property<Boolean> permisBene 	= new SimpleObjectProperty<>(false);
 	private final Property<Boolean> membreClub 	= new SimpleObjectProperty<>(false);
 	
+
+	//@Inject	public DaoPoste daoPoste;
 	
+//constructeurs
+	public Benevole() {
+		super();
+	}
+	
+	public Benevole(Property<Integer> mat,StringProperty nom,StringProperty prenom,StringProperty adresse) {
+		
+		super();
+		this.matBene = mat;
+		this.nomBene=nom;
+		this.prenomBene=prenom;
+		this.adresseBene=adresse;
+		//this.setPosteBene(daoPoste.retrouverPoste(id_poste)); 
+	}
 	
 //	Getters et setters 
 	

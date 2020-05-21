@@ -137,6 +137,36 @@ public class DaoPoste {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+	
+	
+	
+	
+	public Poste retrouverPoste( int id_poste ) {
+
+		Connection			cn 		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+			sql = "SELECT nom FROM poste WHERE id_poste = ?";
+			stmt = cn.prepareStatement( sql );
+			stmt.setObject(1, id_poste);
+			rs = stmt.executeQuery();
+
+			if ( rs.next() ) {
+				return construirePoste( rs );
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
 
 
 	public List<Poste> listerTout() {

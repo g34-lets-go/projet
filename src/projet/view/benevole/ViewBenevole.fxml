@@ -51,7 +51,7 @@
                   <Insets left="65.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+            <Button mnemonicParsing="false" onAction="#viewBenevoles" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Justificatifs" textFill="#707070" />
@@ -100,12 +100,12 @@
                   </HBox>
                </children>
             </GridPane>
-            <TableView fx:id="tableViewBenevoles" maxHeight="500.0" prefHeight="388.0" prefWidth="590.0">
+            <TableView fx:id="tableViewBenevoles" maxHeight="500.0" onSort="#viewBenevoles" prefHeight="388.0" prefWidth="590.0">
               <columns>
                 <TableColumn fx:id="columnId" prefWidth="75.0" text="Matricule" />
                 <TableColumn fx:id="columnNom" prefWidth="200.0" text="Nom" />
                   <TableColumn fx:id="columnPrenom" minWidth="2.39996337890625" prefWidth="200.0" text="Prenom" />
-                  <TableColumn fx:id="columnPoste" prefWidth="115.0" text="Poste" />
+                  <TableColumn fx:id="columnAdresse" prefWidth="115.0" text="Poste" />
               </columns>
             </TableView>
          </children>
