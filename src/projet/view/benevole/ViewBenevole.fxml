@@ -53,8 +53,8 @@
             </ImageView>
             <Button mnemonicParsing="false" onAction="#viewBenevoles" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Justificatifs" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doBenevoleEditer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />

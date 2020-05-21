@@ -282,6 +282,7 @@ public class DaoBenevole {
 			benevole.setEmailBene(rs.getObject( "email", String.class ));
 			benevole.setDateNaiBene(rs.getObject( "date_naissance", LocalDate.class ));
 			benevole.setMembreClub(rs.getObject( "membre_ok", Boolean.class ));
+			benevole.setPermisBene(rs.getObject( "permis_conduire", Boolean.class ));
 			
 			if ( flagComplet ) {
 				benevole.setPosteBene( daoPoste.retrouver( rs.getObject("id_poste", Integer.class) ) );

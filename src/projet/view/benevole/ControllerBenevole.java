@@ -18,6 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 //import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Benevole;
@@ -145,6 +147,7 @@ public class ControllerBenevole implements Initializable{
 	public void doAccueil() {
 		managerGui.showView( EnumView.Accueil);
 	}
+	
 	@FXML 
 	public void doParticipant() {
 	managerGui.showView( EnumView.Participant);
@@ -159,34 +162,34 @@ public class ControllerBenevole implements Initializable{
 		modelBenevole.preparerAjouter();;
 		managerGui.showView( EnumView.BenevoleAjouter );
 	}
-/*
+
 	@FXML
 	public void doBenevoleEditer() {
-		Service item = listView.getSelectionModel().getSelectedItem();
+		Benevole item = tableViewBenevoles.getSelectionModel().getSelectedItem();
 		if ( item == null ) {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
 			modelBenevole.preparerModifier(item);
-			managerGui.showView( EnumView.BenevoleAjouter );
+			managerGui.showView( EnumView.BenevoleEditer );
 		}
 	}
-*/
+
 	// Gestion des évènements
-/*
+
 	// Clic sur la liste
 	@FXML
 	private void gererClicSurListe( MouseEvent event ) {
 		if (event.getButton().equals(MouseButton.PRIMARY)) {
 			if (event.getClickCount() == 2) {
-				if ( listView.getSelectionModel().getSelectedIndex() == -1 ) {
+				if ( tableViewBenevoles.getSelectionModel().getSelectedIndex() == -1 ) {
 					managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 				} else {
-//					doBenevoleEditer();
+					doBenevoleEditer();
 				}
 			}
 		}
 	}
-*/	
+	
 	
 	// Méthodes auxiliaires
 /*	
