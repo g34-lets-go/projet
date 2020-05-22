@@ -16,12 +16,12 @@ public class Poste  {
 	// Données observables
 	//Revoir horaires
 	
-	private final Property<Integer>	id_poste			= new SimpleObjectProperty<>();
-	private final StringProperty	nom_poste			= new SimpleStringProperty();
-	private final StringProperty	description_poste	= new SimpleStringProperty();
+	private Property<Integer>	id_poste			= new SimpleObjectProperty<>();
+	private StringProperty	nom_poste			= new SimpleStringProperty();
+	private StringProperty	description_poste	= new SimpleStringProperty();
 	private final Property<LocalTime>	horaire_poste		= new SimpleObjectProperty<>();
-	private final Property<Integer>	personnel			= new SimpleObjectProperty<>();
-	private final Property<Integer>	personnel_actuel	= new SimpleObjectProperty<>();
+	private Property<Integer>	personnel			= new SimpleObjectProperty<>();
+	private Property<Integer>	personnel_actuel	= new SimpleObjectProperty<>();
 	private final StringProperty	localisation		= new SimpleStringProperty();
 	private final StringProperty	equipement			= new SimpleStringProperty();
 	private final Property<Integer>	id_course			= new SimpleObjectProperty<>();
@@ -35,13 +35,22 @@ public class Poste  {
 	public Poste( final int id, final String nom, final String description, final LocalTime horaire_poste, final int personnel,final int personnel_actu, final String localisation, final String equipement, final int id_course ) {
 		setId_Poste(id);
 		setNom_Poste(nom);
-		setDescription(description);
-		setHoraires(horaire_poste);
+		setDescription_poste(description);
+		setHoraire_poste(horaire_poste);
 		setPersonnel(personnel);
-		setPersonnel_actu(personnel_actu);
+		setPersonnel_actuel(personnel_actu);
 		setLocalisation(localisation);
 		setEquipement(equipement);
 		setId_Course(id_course);
+	}
+	
+	public Poste(Property<Integer> id, StringProperty nom, StringProperty description, Property<Integer> personnel_actuel, Property<Integer> personnel) {
+		super();
+		this.id_poste=id;
+		this.nom_poste=nom;
+		this.description_poste=description;
+		this.personnel_actuel=personnel_actuel;
+		this.personnel=personnel;
 	}
 	
 	
@@ -73,29 +82,29 @@ public class Poste  {
 	}
 	
 	
-	public final StringProperty descriptionProperty() {
+	public final StringProperty description_posteProperty() {
 		return this.description_poste;
 	}
 
-	public final String getDescription() {
-		return this.descriptionProperty().getValue();
+	public final String getDescription_poste() {
+		return this.description_posteProperty().getValue();
 	}
 
-	public final void setDescription(final String description) {
-		this.descriptionProperty().setValue(description);
+	public final void setDescription_poste(final String description) {
+		this.description_posteProperty().setValue(description);
 	}
 	
 	
-	public final Property<LocalTime> horairesProperty() {
+	public final Property<LocalTime> horaire_posteProperty() {
 		return horaire_poste;
 	}
 	
-	public final LocalTime getHoraires() {
-		return horairesProperty().getValue();
+	public final LocalTime getHoraire_poste() {
+		return horaire_posteProperty().getValue();
 	}
 	
-	public final void setHoraires(LocalTime horaires) {
-		this.horairesProperty().setValue(horaires);
+	public final void setHoraire_poste(LocalTime horaires) {
+		this.horaire_posteProperty().setValue(horaires);
 	}
 	
 	
@@ -109,19 +118,6 @@ public class Poste  {
 
 	public final void setPersonnel(final Integer personnel) {
 		this.personnelProperty().setValue(personnel);
-	}
-
-	
-	public final Property<Integer> personnel_actuProperty() {
-		return this.personnel_actuel;
-	}
-
-	public final Integer getPersonnel_actu() {
-		return this.personnel_actuProperty().getValue();
-	}
-
-	public final void setPersonnel_actu(final Integer personnel) {
-		this.personnel_actuProperty().setValue(personnel);
 	}
 	
 	
@@ -189,6 +185,21 @@ public class Poste  {
 		Poste other = (Poste) obj;
 		return Objects.equals(id_poste.getValue(), other.id_poste.getValue() );
 	}
+
+	public final Property<Integer> personnel_actuelProperty() {
+		return this.personnel_actuel;
+	}
+	
+
+	public final Integer getPersonnel_actuel() {
+		return this.personnel_actuelProperty().getValue();
+	}
+	
+
+	public final void setPersonnel_actuel(final Integer personnel_actuel) {
+		this.personnel_actuelProperty().setValue(personnel_actuel);
+	}
+	
 	
 }
 

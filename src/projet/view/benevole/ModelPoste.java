@@ -74,7 +74,7 @@ public class ModelPoste  {
 			message.append( "\nLe nom est trop long : 25 maxi." );
 		}
 		
-		if( courant.getDescription() == null || courant.getDescription().isEmpty() ) {
+		if( courant.getDescription_poste() == null || courant.getDescription_poste().isEmpty() ) {
 			message.append( "\nLa description ne doit pas être vide." );
 		}
 		

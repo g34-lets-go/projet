@@ -135,7 +135,13 @@ public class ModelBenevole {
 
 	public void supprimer( Benevole item ) {
 		daoBenevole.supprimer( item.getMatBene() );
-		mapper.update( courant, UtilFX.findNext( liste, item ) );
+		//mapper.update( courant, UtilFX.findNext( liste, item ) );
+	}
+	
+	public Benevole rechercher(int matricule_b ) {
+			System.out.println("Je recherche !");
+		return daoBenevole.retrouver(matricule_b);
+		
 	}
 	
 	/*

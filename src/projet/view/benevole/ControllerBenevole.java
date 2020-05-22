@@ -17,13 +17,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 //import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Benevole;
-import projet.data.Poste;
 import projet.view.EnumView;
 
 public class ControllerBenevole implements Initializable{
@@ -42,11 +42,18 @@ public class ControllerBenevole implements Initializable{
 	private TableColumn<Benevole, String> columnAdresse;
 //	@FXML
 //	private TableColumn<Benevole, Poste> columnPoste;
+	@FXML
+	private TextField	textFieldRecherche;
+	
+	
 	
 	ObservableList<Benevole> donnees = FXCollections.observableArrayList();  
 	
 	@FXML
 	public void viewBenevoles() {
+		for ( int i = 0; i<tableViewBenevoles.getItems().size(); i++) {
+		    tableViewBenevoles.getItems().clear();
+		}
 		Connection cn = null;
 		PreparedStatement stmt=null;
 		ResultSet rs = null;
@@ -75,6 +82,7 @@ public class ControllerBenevole implements Initializable{
 		tableViewBenevoles.setItems(donnees);
 	
 	}
+	
 	// Autres champs		
 		@Inject
 		private IManagerGui			managerGui;
@@ -157,6 +165,10 @@ public class ControllerBenevole implements Initializable{
 		managerGui.showView( EnumView.Benevole);
 	}
 	
+	@FXML public void doPoste() {
+		managerGui.showView( EnumView.Poste);
+	}
+	
 	@FXML
 	public void doBenevoleAjouter() {
 		modelBenevole.preparerAjouter();;
@@ -174,6 +186,29 @@ public class ControllerBenevole implements Initializable{
 		}
 	}
 
+	@FXML
+	private void doSupprimer() {
+		Benevole item = tableViewBenevoles.getSelectionModel().getSelectedItem();
+		if ( item == null ) {
+			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
+		} else {
+			if ( managerGui.showDialogConfirm("Etes-vous sûr de voulir supprimer cette personne ?" ) ) {
+				modelBenevole.supprimer( item );
+				viewBenevoles();
+				managerGui.showView( EnumView.Benevole);
+			}
+			
+		}
+	}
+	
+	@FXML
+	private void doRechercher() {
+		int matricule = Integer.parseInt(textFieldRecherche.getText());
+		System.out.println("Je vais commencer la recherche \n");
+		modelBenevole.rechercher(matricule);
+	}
+	
+	
 	// Gestion des évènements
 
 	// Clic sur la liste

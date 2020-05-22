@@ -144,6 +144,7 @@ public class DaoBenevole {
             rs = stmt.executeQuery();
 
             if ( rs.next() ) {
+            	System.out.println("Je l'ai trouvé !");
                 return construireBenevole(rs, true );
             } else {
             	return null;

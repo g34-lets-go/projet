@@ -11,15 +11,18 @@ public class ControllerAccueil {
 	@Inject
 	private IManagerGui			managerGui;
 	
-	@FXML public void doAccueil() {
+	@FXML 
+	public void doAccueil() {
 		managerGui.showView( EnumView.Accueil);
 	}
 	
-	@FXML public void doParticipant() {
+	@FXML 
+	public void doParticipant() {
 		managerGui.showView( EnumView.Participant);
 	}
 	
-	@FXML public void doBenevole() {
+	@FXML 
+	public void doBenevole() {
 		managerGui.showView( EnumView.Benevole);
 	}
 }

@@ -39,13 +39,13 @@ public class DaoPoste {
 			sql = "INSERT INTO poste ( nom_poste, description_poste, horaires_poste, personnel_poste, localisation_poste, Equipement_necessaire, id_course, nb_personnel ) VALUES( ?, ?, ?, ?, ?, ?, ?, ? ) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, poste.getNom_Poste() );
-			stmt.setObject( 2, poste.getDescription() );
-			stmt.setObject( 3, poste.getHoraires() );
+			stmt.setObject( 2, poste.getDescription_poste() );
+			stmt.setObject( 3, poste.getHoraire_poste() );
 			stmt.setObject( 4, poste.getPersonnel() );
 			stmt.setObject( 5, poste.getLocalisation() );
 			stmt.setObject( 6, poste.getEquipement() );
 			stmt.setObject( 7, poste.getId_Course() );
-			stmt.setObject( 8, poste.getPersonnel_actu() );
+			stmt.setObject( 8, poste.getPersonnel_actuel() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -73,13 +73,13 @@ public class DaoPoste {
 			sql = "UPDATE poste SET nom_poste = ?, description_poste = ?, horaires_poste = ?, personnel_poste = ?, localisation_poste = ?, Equipement_necessaire = ?, id_course = ?, nb_personnel = ? WHERE id_poste =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, poste.getNom_Poste() );
-			stmt.setObject( 2, poste.getDescription() );
-			stmt.setObject( 3, poste.getHoraires() );
+			stmt.setObject( 2, poste.getDescription_poste() );
+			stmt.setObject( 3, poste.getHoraire_poste() );
 			stmt.setObject( 4, poste.getPersonnel() );
 			stmt.setObject( 5, poste.getLocalisation() );
 			stmt.setObject( 6, poste.getEquipement() );
 			stmt.setObject( 7, poste.getId_Course() );
-			stmt.setObject( 8, poste.getPersonnel_actu() );
+			stmt.setObject( 8, poste.getPersonnel_actuel() );
 			stmt.setObject( 9, poste.getId_Poste() );
 			stmt.executeUpdate();
 
@@ -202,12 +202,12 @@ public class DaoPoste {
 		Poste poste = new Poste();
 		poste.setId_Poste( rs.getObject( "id_poste", Integer.class ) );
 		poste.setNom_Poste( rs.getObject( "nom_poste", String.class ) );
-		poste.setDescription( rs.getObject( "description_poste", String.class ) );
-		poste.setHoraires( rs.getObject( "horaires_poste", LocalTime.class ) );
+		poste.setDescription_poste( rs.getObject( "description_poste", String.class ) );
+		poste.setHoraire_poste( rs.getObject( "horaires_poste", LocalTime.class ) );
 		poste.setLocalisation( rs.getObject( "localisation_poste", String.class ) );
 		poste.setEquipement( rs.getObject( "Equipement_necessaire", String.class ) );
 		poste.setPersonnel( rs.getObject( "personnel_poste", Integer.class ) );
-		poste.setPersonnel_actu( rs.getObject( "nb_personnel", Integer.class ) );
+		poste.setPersonnel_actuel( rs.getObject( "nb_personnel", Integer.class ) );
 		poste.setId_Course( rs.getObject( "id_course", Integer.class ) );
 		
 		return poste;

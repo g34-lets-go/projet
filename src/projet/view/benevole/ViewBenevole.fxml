@@ -27,7 +27,7 @@
             <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Bénévoles" />
             <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070" />
-            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070" />
+            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doPoste" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
@@ -54,6 +54,7 @@
             <Button mnemonicParsing="false" onAction="#viewBenevoles" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doBenevoleEditer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doSupprimer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Supprimer" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
                <VBox.margin>
@@ -79,12 +80,12 @@
                <children>
                   <HBox GridPane.columnIndex="3">
                      <children>
-                        <TextField prefHeight="26.0" prefWidth="136.0">
+                        <TextField fx:id="textFieldRecherche" prefHeight="26.0" prefWidth="136.0">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: transparent;">
+                        <Button mnemonicParsing="false" onAction="#doRechercher" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
