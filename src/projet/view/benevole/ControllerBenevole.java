@@ -83,6 +83,41 @@ public class ControllerBenevole implements Initializable{
 	
 	}
 	
+	public void viewBenevoleRecherche(String text1, String text2) {
+		for ( int i = 0; i<tableViewBenevoles.getItems().size(); i++) {
+		    tableViewBenevoles.getItems().clear();
+		}
+		Connection cn = null;
+		PreparedStatement stmt=null;
+		ResultSet rs = null;
+		String sql;
+		try {
+
+			cn=dataSource.getConnection();
+			sql = "SELECT matricule_b,nom,prenom,id_poste FROM benevole WHERE nom LIKE ? OR nom LIKE ?";
+            stmt = cn.prepareStatement(sql);
+            stmt.setObject( 1, text1+"%");
+            stmt.setObject( 2, text2+"%");
+            rs = stmt.executeQuery();
+			
+			while(rs.next()) {				
+				donnees.add(new Benevole(  new SimpleObjectProperty<>( rs.getInt(1)) , new SimpleStringProperty(rs.getString(2)) ,  new SimpleStringProperty(rs.getString(3)),  new SimpleStringProperty(rs.getString(4))));
+				//donnees.add(new Benevole(  new SimpleObjectProperty<>( rs.getInt(1)) , new SimpleStringProperty(rs.getString(2)) ,  new SimpleStringProperty(rs.getString(3)), rs.getInt(4) ));
+			}
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
+		columnNom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("nomBene"));
+		columnPrenom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("prenomBene"));
+		columnAdresse.setCellValueFactory(new PropertyValueFactory<Benevole,String>("AdresseBene"));
+		//columnPoste.setCellValueFactory(new PropertyValueFactory<Benevole,Poste>("posteBene"));
+		tableViewBenevoles.setItems(donnees);
+	
+	}
+	
 	// Autres champs		
 		@Inject
 		private IManagerGui			managerGui;
@@ -97,56 +132,6 @@ public class ControllerBenevole implements Initializable{
 			// TODO Auto-generated method stub
 			
 		}
-		
-		
-		// Initialisation du Controller
-
-//		@FXML
-//		private void initialize() {
-//			 
-//		        donnees.clear();
-//		        donnees = modelBenevole.getListe();//méthode qui retourne la liste de données par SQL
-           //retourner une liste observable
-		        
-
-			// Configuration du TableView
-
-
-			// Data binding
-//			tableViewBenevoles.setItems(donnees);//permet d'attribuer la liste au tableau
-//			
-//			columnId.setCellValueFactory( t -> t.getValue().matBeneProperty() );
-//			columnNom.setCellValueFactory( t -> t.getValue().nomBeneProperty() );
-//			columnPrenom.setCellValueFactory( t -> t.getValue().prenomBeneProperty() );
-////			columnPoste.setCellValueFactory( t -> t.getValue().posteBeneProperty() );
-//			
-//
-//			columnNom.setCellFactory(  p -> new EditingCell<>() );
-//			columnPrenom.setCellFactory(  p -> new EditingCell<>() );
-//			tableViewBenevoles.refresh();
-//
-//		}
-		
-//		public void refresh() {
-//			modelBenevole.actualiserListe();
-////			UtilFX.selectInTableView( tableViewBenevoles, modelBenevole.getCourant() );
-////			tableViewBenevoles.requestFocus();
-			
-//			 tableViewBenevoles.getColumns().get(0).setVisible(false);
-//            tableViewBenevoles.getColumns().get(0).setVisible(true);
-            
-//            final ObservableList<Benevole> items = tableViewBenevoles.getItems();
-//            if( items == null || items.size() == 0) return;
-//
-//            final Benevole item = tableViewBenevoles.getItems().get(0);
-//            items.remove(0);
-//            Platform.runLater(new Runnable(){
-//                @Override
-//                public void run() {
-//                    items.add(0, item);
-//                }
-//            });
-//		}
 
 		
     //Actions
@@ -203,9 +188,10 @@ public class ControllerBenevole implements Initializable{
 	
 	@FXML
 	private void doRechercher() {
-		int matricule = Integer.parseInt(textFieldRecherche.getText());
+		//int matricule = Integer.parseInt(textFieldRecherche.getText());
 		System.out.println("Je vais commencer la recherche \n");
-		modelBenevole.rechercher(matricule);
+		viewBenevoleRecherche(textFieldRecherche.getText(),textFieldRecherche.getText().toUpperCase());
+		managerGui.showView( EnumView.Benevole);
 	}
 	
 	
