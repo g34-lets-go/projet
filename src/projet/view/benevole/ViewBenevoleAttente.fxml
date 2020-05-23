@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevole">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevoleAttente">
    <top>
       <HBox style="-fx-background-color: #06B9C7;" BorderPane.alignment="CENTER">
          <children>
@@ -51,11 +51,10 @@
                   <Insets left="65.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#viewBenevoles" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+            <Button mnemonicParsing="false" onAction="#doBenevole" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textFill="#707070" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doBenevoleEditer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
-            <Button mnemonicParsing="false" onAction="#doSupprimer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Supprimer" />
-            <Button mnemonicParsing="false" onAction="#doBenevoleAttente" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#viewBenevoles" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />
@@ -108,7 +107,16 @@
                   <TableColumn fx:id="columnPrenom" minWidth="2.39996337890625" prefWidth="200.0" text="Prenom" />
                   <TableColumn fx:id="columnAdresse" prefWidth="115.0" text="Poste" />
               </columns>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </TableView>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="100.0" spacing="20.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#doAjouter" text="Ajouter" />
+                  <Button mnemonicParsing="false" onAction="#doAjouterTous" text="Ajouter tous" />
+               </children>
+            </HBox>
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" top="15.0" />

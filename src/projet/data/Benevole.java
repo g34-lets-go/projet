@@ -24,6 +24,7 @@ public class Benevole {
 	private final Property<Poste>	 posteBene		= new SimpleObjectProperty<>();
 	private final Property<Boolean> permisBene 	= new SimpleObjectProperty<>(false);
 	private final Property<Boolean> membreClub 	= new SimpleObjectProperty<>(false);
+	private final Property<Boolean> valider 	= new SimpleObjectProperty<>(true);
 	
 
 	//@Inject	public DaoPoste daoPoste;
@@ -181,6 +182,21 @@ public class Benevole {
 		Benevole other = (Benevole) obj;
 		return Objects.equals(matBene.getValue(), other.matBene.getValue());
 	}
+
+	public final Property<Boolean> validerProperty() {
+		return this.valider;
+	}
+	
+
+	public final Boolean getValider() {
+		return this.validerProperty().getValue();
+	}
+	
+
+	public final void setValider(final Boolean valider) {
+		this.validerProperty().setValue(valider);
+	}
+	
 	
 	
 }

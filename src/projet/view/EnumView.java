@@ -37,6 +37,8 @@ public enum EnumView implements IEnumView {
 	BenevoleAjouter     ( "benevole/ViewBenevoleAjouter.fxml" ),
 	Poste			    ( "benevole/ViewPoste.fxml"),
 	BenevoleEditer      ( "benevole/ViewBenevoleEditer.fxml" ),
+	BenevoleAttente     ( "benevole/ViewBenevoleAttente.fxml" ),
+	
 	;
 
 	

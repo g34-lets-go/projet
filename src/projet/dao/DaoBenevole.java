@@ -36,7 +36,7 @@ public class DaoBenevole {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO benevole ( nom, prenom, adresse, email, id_poste, permis_conduire, date_naissance, membre_ok) VALUES( ?, ?, ?, ?, ?, ?, ?, ?) ";
+			sql = "INSERT INTO benevole ( nom, prenom, adresse, email, id_poste, permis_conduire, date_naissance, membre_ok, valider) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, benevole.getNomBene());
 			stmt.setObject( 2, benevole.getPrenomBene());
@@ -46,12 +46,9 @@ public class DaoBenevole {
 			stmt.setObject( 6, benevole.getPermisBene());
 			stmt.setObject( 7, benevole.getDateNaiBene());
 			stmt.setObject( 8, benevole.getMembreCLub());
+			stmt.setObject( 9, benevole.getValider());
 			stmt.executeUpdate();
 			
-			//Les benevoles doivent être à 2 niveaux 
-			//Les internes et les externes
-			//Refléchir comment récupérer le type sur l'observablelist
-			//Revoir les postes
 			
 			// Récupère l'identifiant généré par le SGBD
 			rs = stmt.getGeneratedKeys();
@@ -78,16 +75,17 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Modifie le bénévole
-			sql = "UPDATE benevole SET nom = ?, prenom = ?, adresse = ?, email = ?, id_poste = ?, permis_conduire = ?, date_naissance = ?, membre_ok = ? WHERE matricule_b =  ?";
+			sql = "UPDATE benevole SET nom = ?, prenom = ?, adresse = ?, email = ?, id_poste = ?, permis_conduire = ?, date_naissance = ?, membre_ok = ?, valider = TRUE WHERE matricule_b =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, benevole.getNomBene());
 			stmt.setObject( 2, benevole.getPrenomBene());
 			stmt.setObject( 3, benevole.getAdresseBene());
 			stmt.setObject( 4, benevole.getEmailBene());
-			stmt.setObject( 5, benevole.getPosteBene());
+			stmt.setObject( 5, benevole.getPosteBene().getId_Poste());
 			stmt.setObject( 6, benevole.getPermisBene());
 			stmt.setObject( 7, benevole.getDateNaiBene());
 			stmt.setObject( 8, benevole.getMembreCLub());
+//			stmt.setObject( 9, benevole.getValider());
 			stmt.setObject( 9, benevole.getMatBene());
 			stmt.executeUpdate();
 			
@@ -100,6 +98,33 @@ public class DaoBenevole {
 		// Modifie les telephones
 		//daoTelephone.modifierPourPersonne( personne );
 	}
+
+	
+	//Validation	
+	public void valider(int matricule_b)  {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		String 				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			// Modifie le bénévole
+			sql = "UPDATE benevole SET valider = TRUE WHERE matricule_b =  ?";
+			stmt = cn.prepareStatement( sql );
+			stmt.setObject( 1, matricule_b);
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( stmt, cn );
+		}
+
+	}
+	
+	
 	
 	// Supprime un bénévole
 	public void supprimer(int matricule_b)  {
@@ -144,7 +169,6 @@ public class DaoBenevole {
             rs = stmt.executeQuery();
 
             if ( rs.next() ) {
-            	System.out.println("Je l'ai trouvé !");
                 return construireBenevole(rs, true );
             } else {
             	return null;
@@ -283,6 +307,7 @@ public class DaoBenevole {
 			benevole.setEmailBene(rs.getObject( "email", String.class ));
 			benevole.setDateNaiBene(rs.getObject( "date_naissance", LocalDate.class ));
 			benevole.setMembreClub(rs.getObject( "membre_ok", Boolean.class ));
+			benevole.setMembreClub(rs.getObject( "valider", Boolean.class ));
 			benevole.setPermisBene(rs.getObject( "permis_conduire", Boolean.class ));
 			
 			if ( flagComplet ) {

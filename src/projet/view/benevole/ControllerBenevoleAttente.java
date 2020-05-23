@@ -26,7 +26,7 @@ import jfox.javafx.view.IManagerGui;
 import projet.data.Benevole;
 import projet.view.EnumView;
 
-public class ControllerBenevole implements Initializable{
+public class ControllerBenevoleAttente implements Initializable{
 	
 // Composants de la vue
 	
@@ -61,7 +61,7 @@ public class ControllerBenevole implements Initializable{
 		try {
 
 			cn=dataSource.getConnection();
-			sql=  "SELECT matricule_b,nom,prenom,id_poste FROM benevole WHERE valider = true";
+			sql=  "SELECT matricule_b,nom,prenom,id_poste FROM benevole WHERE valider = false";
 			stmt=cn.prepareStatement(sql);
 			rs=stmt.executeQuery();
 			
@@ -94,7 +94,7 @@ public class ControllerBenevole implements Initializable{
 		try {
 
 			cn=dataSource.getConnection();
-			sql = "SELECT matricule_b,nom,prenom,id_poste FROM benevole WHERE nom LIKE ? OR nom LIKE ? AND valider = true";
+			sql = "SELECT matricule_b,nom,prenom,id_poste FROM benevole WHERE nom LIKE ? OR nom LIKE ? AND valider = false";
             stmt = cn.prepareStatement(sql);
             stmt.setObject( 1, text1+"%");
             stmt.setObject( 2, text2+"%");
@@ -158,6 +158,7 @@ public class ControllerBenevole implements Initializable{
 	
 	@FXML 
 	public void doBenevoleAttente() {
+		
 		managerGui.showView( EnumView.BenevoleAttente);
 	}
 	
@@ -179,18 +180,31 @@ public class ControllerBenevole implements Initializable{
 	}
 
 	@FXML
-	private void doSupprimer() {
+	private void doAjouter() {
 		Benevole item = tableViewBenevoles.getSelectionModel().getSelectedItem();
 		if ( item == null ) {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
-			if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir supprimer ce bnévole ?" ) ) {
-				modelBenevole.supprimer( item );
+			if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir ajouter ce bénévole ?" ) ) {
+				modelBenevole.validation(item);
 				viewBenevoles();
-				managerGui.showView( EnumView.Benevole);
+				managerGui.showView( EnumView.BenevoleAttente);
 			}
 			
 		}
+	}
+	
+	@FXML
+	private void doAjouterTous() {
+		if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir ajouter ce bénévole ?" ) ) {
+			for(Benevole item : tableViewBenevoles.getItems()) {
+				System.out.println(item.getNomBene()+"\n");
+				modelBenevole.validation(item);
+			}
+			
+		}
+		viewBenevoles();
+		managerGui.showView( EnumView.BenevoleAttente);
 	}
 	
 	@FXML
@@ -198,7 +212,7 @@ public class ControllerBenevole implements Initializable{
 		//int matricule = Integer.parseInt(textFieldRecherche.getText());
 		System.out.println("Je vais commencer la recherche \n");
 		viewBenevoleRecherche(textFieldRecherche.getText(),textFieldRecherche.getText().toUpperCase());
-		managerGui.showView( EnumView.Benevole);
+		managerGui.showView( EnumView.BenevoleAttente);
 	}
 	
 	

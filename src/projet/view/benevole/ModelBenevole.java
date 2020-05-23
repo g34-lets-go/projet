@@ -139,19 +139,13 @@ public class ModelBenevole {
 	}
 	
 	public Benevole rechercher(int matricule_b ) {
-			System.out.println("Je recherche !");
 		return daoBenevole.retrouver(matricule_b);
 		
 	}
 	
-	/*
-	public void ajouterTelephone() {
-//		courant.getTelephones().add( new Telephone() );
+	public void validation (Benevole item) {
+		daoBenevole.valider(item.getMatBene());
 	}
 	
 
-	public void supprimerTelephone( Telephone telephone )  {
-//		courant.getTelephones().remove( telephone );
-	}
-	*/
 }

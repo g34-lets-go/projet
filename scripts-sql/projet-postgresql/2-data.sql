@@ -90,11 +90,11 @@ ALTER TABLE poste ALTER COLUMN id_poste RESTART WITH 13;
 
 -- Benevole
 
-INSERT INTO benevole (matricule_b, nom, prenom, adresse, email, id_poste, permis_conduire, date_naissance, membre_ok) VALUES 
-  ( 1, 'MOUAFO', 'Paul Denilson', '184 avenue albert thomas', 'mouafo@gmail.com', 1, TRUE, '2020-06-07', TRUE),
-  ( 2, 'MOUAPO', 'Mark', '154 avenue albert thomas', 'mouapo@gmail.com', 2, FALSE, '2020-06-06', TRUE),
-  ( 3, 'MOUABO', 'Jeremy', '14 avenue albert', 'mouabo@gmail.com', 3, TRUE, '2020-05-06', FALSE),
-  ( 4, 'MOUANO', 'Jeremy', '14 ave albert', 'mouab@gmail.com', 1, TRUE, '2020-05-10', FALSE);
+INSERT INTO benevole (matricule_b, nom, prenom, adresse, email, id_poste, permis_conduire, date_naissance, membre_ok, valider) VALUES 
+  ( 1, 'MOUAFO', 'Paul Denilson', '184 avenue albert thomas', 'mouafo@gmail.com', 1, TRUE, '2020-06-07', TRUE, TRUE),
+  ( 2, 'MOUAPO', 'Mark', '154 avenue albert thomas', 'mouapo@gmail.com', 2, FALSE, '2020-06-06', TRUE, TRUE),
+  ( 3, 'MOUABO', 'Jeremy', '14 avenue albert', 'mouabo@gmail.com', 3, TRUE, '2020-05-06', FALSE, TRUE),
+  ( 4, 'MOUANO', 'Jeremy', '14 ave albert', 'mouab@gmail.com', 1, TRUE, '2020-05-10', FALSE, FALSE);
 
  ALTER TABLE benevole ALTER COLUMN matricule_b RESTART WITH 5;
 
