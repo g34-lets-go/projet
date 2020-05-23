@@ -47,6 +47,7 @@ public class ControllerParticipant implements Initializable{
 	
 	@FXML public void doAccueil() {
 		managerGui.showView( EnumView.Accueil);
+		System.out.println("Aomine");
 	}
 	
 	@FXML public void listerParticipant() {
