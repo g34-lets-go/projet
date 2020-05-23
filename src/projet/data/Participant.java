@@ -18,7 +18,7 @@ public class Participant {
 	private final Property<Integer>	tel = new SimpleObjectProperty<>();
 	private final StringProperty	adresse	= new SimpleStringProperty();
 	private final StringProperty	email 		= new SimpleStringProperty();
-	private final Property<Boolean> attestation = new SimpleObjectProperty<>();
+	private final Property<Boolean> attestation = new SimpleObjectProperty<>(false);
 	private final Property<Integer> frais_paye = new SimpleObjectProperty<>(0);
 	private final Property<Integer> repasSup = new SimpleObjectProperty<>();
 	private final Property<Integer> idVelo = new SimpleObjectProperty<>();

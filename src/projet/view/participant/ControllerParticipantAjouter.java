@@ -8,6 +8,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
@@ -53,7 +54,7 @@ public class ControllerParticipantAjouter {
 
 		UtilFX.bindBidirectional( dateNC.getEditor(), courantCapitain.dateNProperty(), new ConverterStringLocalDate() );
 		
-		telC.textProperty().unbindBidirectional( courantCapitain.telProperty() );
+		telC.textProperty().bindBidirectional( courantCapitain.telProperty(), new ConverterStringInteger() );
 		adresseC.textProperty().bindBidirectional( courantCapitain.adresseProperty() );
 		emailC.textProperty().bindBidirectional( courantCapitain.emailProperty() );
 		
@@ -65,7 +66,7 @@ public class ControllerParticipantAjouter {
 
 		UtilFX.bindBidirectional( dateNE.getEditor(), courantEquipier.dateNProperty(), new ConverterStringLocalDate() );
 		
-		telE.textProperty().unbindBidirectional( courantEquipier.telProperty() );
+		telE.textProperty().bindBidirectional( courantEquipier.telProperty(), new ConverterStringInteger() );
 		adresseE.textProperty().bindBidirectional( courantEquipier.adresseProperty() );
 		emailE.textProperty().bindBidirectional( courantEquipier.emailProperty() );
 		
@@ -97,6 +98,8 @@ public class ControllerParticipantAjouter {
 	}
 	
 	@FXML public void doEnregistrer() {
+		System.out.println("---"+modelParticipant.getCourantCapitain().getTel()+"------"+modelParticipant.getCourantEquipier().getTel());
+		
 		modelParticipant.validerMiseAJour();
 		//Equipe equipe = new Equipe(courantCapitain.getId()+"-"+courantEquipier.getId() ,"Team", courantCapitain, courantEquipier, 1, 20);
 		managerGui.showView( EnumView.ParticipantAjouter);

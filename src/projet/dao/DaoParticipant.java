@@ -37,16 +37,16 @@ public int inserer (Participant participant) {
 				+ "		VALUES( ?,?,?,?,?,?,?,?,?,? ) ";			
 		stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 		//stmt.setObject( 1, participant.getId());
-		stmt.setObject( 2, participant.getNom() );
-		stmt.setObject( 3, participant.getPrenom() );
-		stmt.setObject( 4, participant.getDateN() );
-		stmt.setObject( 5, participant.getTel() );
-		stmt.setObject( 6, participant.getEmail() );
-		stmt.setObject( 7, participant.getAdresse() );
-		stmt.setObject( 8, participant.getAttestation() );
-		stmt.setObject( 9, participant.getFrais_paye() );
-		stmt.setObject( 10, participant.getRepasSup() );
-		stmt.setObject( 11, participant.getIdVelo() );
+		stmt.setObject( 1, participant.getNom() );
+		stmt.setObject( 2, participant.getPrenom() );
+		stmt.setObject( 3, participant.getDateN() );
+		stmt.setObject( 4, participant.getTel() );
+		stmt.setObject( 5, participant.getEmail() );
+		stmt.setObject( 6, participant.getAdresse() );
+		stmt.setObject( 7, participant.getAttestation() );
+		stmt.setObject( 8, participant.getFrais_paye() );
+		stmt.setObject( 9, participant.getRepasSup() );
+		stmt.setObject( 10, participant.getIdVelo() );
 		stmt.executeUpdate(); 
 
 		// Récupère l'identifiant généré par le SGBD

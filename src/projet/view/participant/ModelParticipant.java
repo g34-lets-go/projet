@@ -92,9 +92,9 @@ public class ModelParticipant {
 			message.append( "\nLe prénom est trop long." );
 		}
 
-		if( courantCapitain.getTel() == null || courantCapitain.getEmail() == null || courantCapitain.getAttestation() == null   ) {
-			message.append( "\nTous les champs doivent être indiquées." );
-		}
+		/*if( courantCapitain.getTel() == null || courantCapitain.getEmail() == null   ) {
+			message.append( "\nTous les champs doivent être indiquées 1." );
+		}*/
 		
 		//Equipier
 		if( courantEquipier.getNom() == null || courantEquipier.getNom().isEmpty() ) {
@@ -109,9 +109,9 @@ public class ModelParticipant {
 			message.append( "\nLe prénom est trop long." );
 		}
 
-		if( courantEquipier.getTel() == null || courantEquipier.getEmail() == null || courantEquipier.getAttestation() == null  ) {
-			message.append( "\nTous les champs doivent être indiquées." );
-		}
+		/*if( courantEquipier.getTel() == null || courantEquipier.getEmail() == null  ) {
+			message.append( "\nTous les champs doivent être indiquées 2." );
+		}*/
 		
 		
 		if ( message.length() > 0 ) {
