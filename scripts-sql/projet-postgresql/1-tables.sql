@@ -45,6 +45,7 @@ CREATE TABLE participant (
     frais_paye                	INT  ,
     repas_supplementaire      	INT ,
     id_velo                   	INT ,
+    valider						BOOLEAN,
 	PRIMARY KEY (matricule_p),
 	FOREIGN KEY (id_velo) REFERENCES velo (id_velo)
 );

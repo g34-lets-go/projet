@@ -11,20 +11,31 @@ public class Participant {
 
 	// Proprietes
 	
-	private final Property<Integer>	id			= new SimpleObjectProperty<>();
-	private final StringProperty	nom = new SimpleStringProperty();
-	private final StringProperty	prenom	= new SimpleStringProperty();
+	private Property<Integer>	id			= new SimpleObjectProperty<>();
+	private StringProperty	nom = new SimpleStringProperty();
+	private StringProperty	prenom	= new SimpleStringProperty();
 	private final Property<LocalDate>	dateN	= new SimpleObjectProperty<>();
 	private final Property<Integer>	tel = new SimpleObjectProperty<>();
 	private final StringProperty	adresse	= new SimpleStringProperty();
 	private final StringProperty	email 		= new SimpleStringProperty();
 	private final Property<Boolean> attestation = new SimpleObjectProperty<>(false);
-	private final Property<Integer> frais_paye = new SimpleObjectProperty<>(0);
+	private Property<Integer> frais_paye = new SimpleObjectProperty<>(0);
 	private final Property<Integer> repasSup = new SimpleObjectProperty<>();
 	private final Property<Integer> idVelo = new SimpleObjectProperty<>();
+	private final Property<Boolean> valider = new SimpleObjectProperty<>(true);
 	
 	public Participant() {
+		super();
 	
+	}
+	
+	public Participant(Property<Integer> idParti,StringProperty nomParti,StringProperty prenomParti,Property<Integer> frais_payeParti) {
+		
+		super();
+		this.id = idParti;
+		this.nom = nomParti;
+		this.prenom = prenomParti;
+		this.frais_paye = frais_payeParti; 
 	}
 	
 	// getters setters
