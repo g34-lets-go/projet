@@ -154,7 +154,7 @@ public class Benevole {
 		return membreClub;
 	}
 
-	public final Boolean getMembreCLub() {
+	public final Boolean getMembreClub() {
 		return membreClub.getValue();
 	}
 	

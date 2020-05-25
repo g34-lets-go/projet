@@ -45,7 +45,7 @@ public class DaoBenevole {
 			stmt.setObject( 5, benevole.getPosteBene().getId_Poste());
 			stmt.setObject( 6, benevole.getPermisBene());
 			stmt.setObject( 7, benevole.getDateNaiBene());
-			stmt.setObject( 8, benevole.getMembreCLub());
+			stmt.setObject( 8, benevole.getMembreClub());
 			stmt.setObject( 9, benevole.getValider());
 			stmt.executeUpdate();
 			
@@ -84,7 +84,7 @@ public class DaoBenevole {
 			stmt.setObject( 5, benevole.getPosteBene().getId_Poste());
 			stmt.setObject( 6, benevole.getPermisBene());
 			stmt.setObject( 7, benevole.getDateNaiBene());
-			stmt.setObject( 8, benevole.getMembreCLub());
+			stmt.setObject( 8, benevole.getMembreClub());
 //			stmt.setObject( 9, benevole.getValider());
 			stmt.setObject( 9, benevole.getMatBene());
 			stmt.executeUpdate();
@@ -190,9 +190,39 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM benevole ORDER BY nom, prenom";
+			sql = "SELECT * FROM benevole WHERE valider = true";
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
+			
+			List<Benevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	//Rechercher un bénévole
+	public List<Benevole> rechercher(String text1, String text2)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM benevole WHERE nom LIKE ? OR nom LIKE ? AND valider = true";
+            stmt = cn.prepareStatement(sql);
+            stmt.setObject( 1, text1+"%");
+            stmt.setObject( 2, text2+"%");
+            rs = stmt.executeQuery();
 			
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {

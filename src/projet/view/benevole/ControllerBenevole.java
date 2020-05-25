@@ -1,20 +1,12 @@
 package projet.view.benevole;
 
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ResourceBundle;
+
 
 import javax.inject.Inject;
-import javax.sql.DataSource;
 
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -26,7 +18,7 @@ import jfox.javafx.view.IManagerGui;
 import projet.data.Benevole;
 import projet.view.EnumView;
 
-public class ControllerBenevole implements Initializable{
+public class ControllerBenevole {
 	
 // Composants de la vue
 	
@@ -49,88 +41,34 @@ public class ControllerBenevole implements Initializable{
 	
 	ObservableList<Benevole> donnees = FXCollections.observableArrayList();  
 	
-	@FXML
-	public void viewBenevoles() {
-		for ( int i = 0; i<tableViewBenevoles.getItems().size(); i++) {
-		    tableViewBenevoles.getItems().clear();
-		}
-		Connection cn = null;
-		PreparedStatement stmt=null;
-		ResultSet rs = null;
-		String sql;
-		try {
-
-			cn=dataSource.getConnection();
-			sql=  "SELECT matricule_b,nom,prenom,id_poste FROM benevole WHERE valider = true";
-			stmt=cn.prepareStatement(sql);
-			rs=stmt.executeQuery();
-			
-			while(rs.next()) {				
-				donnees.add(new Benevole(  new SimpleObjectProperty<>( rs.getInt(1)) , new SimpleStringProperty(rs.getString(2)) ,  new SimpleStringProperty(rs.getString(3)),  new SimpleStringProperty(rs.getString(4))));
-				//donnees.add(new Benevole(  new SimpleObjectProperty<>( rs.getInt(1)) , new SimpleStringProperty(rs.getString(2)) ,  new SimpleStringProperty(rs.getString(3)), rs.getInt(4) ));
-			}
-
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
-		columnNom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("nomBene"));
-		columnPrenom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("prenomBene"));
-		columnAdresse.setCellValueFactory(new PropertyValueFactory<Benevole,String>("AdresseBene"));
-		//columnPoste.setCellValueFactory(new PropertyValueFactory<Benevole,Poste>("posteBene"));
-		tableViewBenevoles.setItems(donnees);
 	
-	}
 	
-	public void viewBenevoleRecherche(String text1, String text2) {
-		for ( int i = 0; i<tableViewBenevoles.getItems().size(); i++) {
-		    tableViewBenevoles.getItems().clear();
-		}
-		Connection cn = null;
-		PreparedStatement stmt=null;
-		ResultSet rs = null;
-		String sql;
-		try {
 
-			cn=dataSource.getConnection();
-			sql = "SELECT matricule_b,nom,prenom,id_poste FROM benevole WHERE nom LIKE ? OR nom LIKE ? AND valider = true";
-            stmt = cn.prepareStatement(sql);
-            stmt.setObject( 1, text1+"%");
-            stmt.setObject( 2, text2+"%");
-            rs = stmt.executeQuery();
-			
-			while(rs.next()) {				
-				donnees.add(new Benevole(  new SimpleObjectProperty<>( rs.getInt(1)) , new SimpleStringProperty(rs.getString(2)) ,  new SimpleStringProperty(rs.getString(3)),  new SimpleStringProperty(rs.getString(4))));
-				//donnees.add(new Benevole(  new SimpleObjectProperty<>( rs.getInt(1)) , new SimpleStringProperty(rs.getString(2)) ,  new SimpleStringProperty(rs.getString(3)), rs.getInt(4) ));
-			}
-
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
-		columnNom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("nomBene"));
-		columnPrenom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("prenomBene"));
-		columnAdresse.setCellValueFactory(new PropertyValueFactory<Benevole,String>("AdresseBene"));
-		//columnPoste.setCellValueFactory(new PropertyValueFactory<Benevole,Poste>("posteBene"));
-		tableViewBenevoles.setItems(donnees);
-	
-	}
-	
 	// Autres champs		
 		@Inject
 		private IManagerGui			managerGui;
 		@Inject
-		private ModelBenevole		modelBenevole;
-		@Inject
-		private DataSource dataSource;
+		private ModelBenevole		modelBenevole;		
 		
 		
-		@Override
-		public void initialize(URL location, ResourceBundle ressources) {
-			// TODO Auto-generated method stub
+		public void initialize() {
 			
+			tableViewBenevoles.setItems(modelBenevole.getListe());
+			columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
+			columnNom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("nomBene"));
+			columnPrenom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("prenomBene"));
+			columnAdresse.setCellValueFactory(new PropertyValueFactory<Benevole,String>("AdresseBene"));
+			//columnPoste.setCellValueFactory(new PropertyValueFactory<Benevole,Poste>("posteBene"));
+			
+		}
+		
+		public void refresh() {
+			if(textFieldRecherche.getText()==null || textFieldRecherche.getText().isEmpty() )
+				modelBenevole.actualiserListe();
+			else
+				modelBenevole.rechercher(textFieldRecherche.getText(), textFieldRecherche.getText().toUpperCase());
+//			UtilFX.selectInListView( listView, modelBenevole.getCourant() );
+//			listView.requestFocus();
 		}
 
 		
@@ -163,7 +101,7 @@ public class ControllerBenevole implements Initializable{
 	
 	@FXML
 	public void doBenevoleAjouter() {
-		modelBenevole.preparerAjouter();;
+		modelBenevole.preparerAjouter();
 		managerGui.showView( EnumView.BenevoleAjouter );
 	}
 
@@ -186,7 +124,7 @@ public class ControllerBenevole implements Initializable{
 		} else {
 			if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir supprimer ce bnévole ?" ) ) {
 				modelBenevole.supprimer( item );
-				viewBenevoles();
+			//	viewBenevoles();
 				managerGui.showView( EnumView.Benevole);
 			}
 			
@@ -195,9 +133,7 @@ public class ControllerBenevole implements Initializable{
 	
 	@FXML
 	private void doRechercher() {
-		//int matricule = Integer.parseInt(textFieldRecherche.getText());
-		System.out.println("Je vais commencer la recherche \n");
-		viewBenevoleRecherche(textFieldRecherche.getText(),textFieldRecherche.getText().toUpperCase());
+		modelBenevole.rechercher(textFieldRecherche.getText(), textFieldRecherche.getText().toUpperCase());
 		managerGui.showView( EnumView.Benevole);
 	}
 	

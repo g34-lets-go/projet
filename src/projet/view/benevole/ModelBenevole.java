@@ -88,9 +88,12 @@ public class ModelBenevole {
 	
 
 	public void preparerModifier( Benevole item ) {
-//		modelCategorie.actualiserListe();
 		mapper.update( courant, daoBenevole.retrouver( item.getMatBene() ) );
 		
+	}
+	
+	public void rechercher(String text1, String text2) {
+		liste.setAll( daoBenevole.rechercher(text1, text2) );
 	}
 	
 

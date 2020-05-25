@@ -28,6 +28,7 @@ public interface IMapper {
 
 	Service update( @MappingTarget Service target, Service source );
 	
+	@Mapping( target="posteBene", expression="java( source.getPosteBene() )" )
 	Benevole update( @MappingTarget Benevole target, Benevole source );
 	
 	Poste update( @MappingTarget Poste target, Poste source );
