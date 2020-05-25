@@ -24,8 +24,8 @@
                </image>
             </ImageView>
             <Button mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="89.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
-            <Button mnemonicParsing="false" onAction="#doBenevole" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
-            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="49.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Participants" />
+            <Button mnemonicParsing="false" onAction="#listerParticipant" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#viewParticipants" prefHeight="49.0" prefWidth="78.0" style="-fx-background-color: transparent;" text="Participants" />
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Résultat" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="54.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="61.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
@@ -42,7 +42,7 @@
             <Insets left="5.0" right="5.0" top="-290.0" />
          </BorderPane.margin>
          <children>
-            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Lister" />
+            <Button mnemonicParsing="false" onAction="#viewParticipants" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Lister" />
             <Button mnemonicParsing="false" onAction="#doParticipantAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Justificatifs" textFill="#707070" />
@@ -55,7 +55,7 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #16818A;" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefHeight="277.0" prefWidth="475.0" style="-fx-background-color: #16818A;">
                <columnConstraints>
@@ -83,13 +83,16 @@
                   </HBox>
                </children>
             </GridPane>
-            <TableView prefHeight="645.0" prefWidth="590.0">
+            <TableView fx:id="tableViewParticipants" prefHeight="645.0" prefWidth="590.0">
               <columns>
-                <TableColumn prefWidth="69.60004580020905" text="id" />
-                <TableColumn prefWidth="174.39995574951172" text="Nom" />
-                  <TableColumn prefWidth="156.79998779296875" text="Prenom" />
-                  <TableColumn prefWidth="188.79998779296875" text="Engagement" />
+                <TableColumn fx:id="columnId" prefWidth="69.60004580020905" text="id" />
+                <TableColumn fx:id="columnNom" prefWidth="174.39995574951172" text="Nom" />
+                  <TableColumn fx:id="columnPrenom" prefWidth="156.79998779296875" text="Prenom" />
+                  <TableColumn fx:id="columnEngagement" prefWidth="188.79998779296875" text="Engagement" />
               </columns>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="5.0" right="10.0" top="10.0" />
+               </VBox.margin>
             </TableView>
          </children>
       </VBox>

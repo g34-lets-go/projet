@@ -43,11 +43,11 @@ ALTER TABLE dossard ALTER COLUMN numero_dossard RESTART WITH 5;
 
 -- Participant
 
-INSERT INTO participant (matricule_p, nom, prenom, date_naiss, telephone, email, adresse, attestations_ok, frais_paye, repas_supplementaire, id_velo ) VALUES 
- 	( 1, 'MOUAFO', 'Paul Denilson', '2020-02-03', '05 55 99 11 11', 'mouafo@gmail.com', '13 rue pasteur', TRUE, TRUE, 2, 1 ),
-  	( 2, 'MALO', 'Paul', '2020-03-02', '05 55 99 11 11', 'malo@gmail.com', '15 rue patrick', TRUE, TRUE, 1, 2 ),
-	( 3, 'MOUFO', 'Denilson', '2020-05-03', '05 55 99 11 11', 'moufo@gmail.com', '3 avenue paul', FALSE, TRUE, 0, 3 ),
-	( 4, 'MAFO', 'Paulo', '2020-03-05', '05 55 99 11 11', 'mafo@gmail.com', '16 rue pere', TRUE, TRUE, 2, 4 );
+INSERT INTO participant (matricule_p, nom, prenom, date_naiss, telephone, email, adresse, attestations_ok, frais_paye, repas_supplementaire, id_velo,valider ) VALUES 
+ 	( 1, 'MOUAFO', 'Paul Denilson', '2020-02-03', '05 55 99 11 11', 'mouafo@gmail.com', '13 rue pasteur', TRUE, 0, 2, 1, TRUE),
+  	( 2, 'MALO', 'Paul', '2020-03-02', '05 55 99 11 11', 'malo@gmail.com', '15 rue patrick', TRUE, 1, 1, 2, TRUE ),
+	( 3, 'MOUFO', 'Denilson', '2020-05-03', '05 55 99 11 11', 'moufo@gmail.com', '3 avenue paul', FALSE, 1, 0, 3, TRUE ),
+	( 4, 'MAFO', 'Paulo', '2020-03-05', '05 55 99 11 11', 'mafo@gmail.com', '16 rue pere', TRUE, 0, 2, 4, TRUE );
   	
 ALTER TABLE participant ALTER COLUMN matricule_p RESTART WITH 5;
 
