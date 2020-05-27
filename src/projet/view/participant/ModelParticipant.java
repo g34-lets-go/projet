@@ -21,7 +21,7 @@ public class ModelParticipant {
 	
 	// Données observables 
 	
-	private final ObservableList<Participant> liste = FXCollections.observableArrayList();
+	private final static ObservableList<Participant> liste = FXCollections.observableArrayList();
 	
 	private final Participant	courantCapitain = new Participant();
 	private final Participant	courantEquipier = new Participant();
@@ -37,7 +37,7 @@ public class ModelParticipant {
 	
 	// Getters 
     
-    public ObservableList<Participant> getListe() {
+    public static ObservableList<Participant> getListe() {
 		return liste;
 	}
     
