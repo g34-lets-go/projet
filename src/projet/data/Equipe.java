@@ -15,7 +15,7 @@ public class Equipe {
 
 	// Données observables
 
-	private final StringProperty		id	 		= new SimpleStringProperty();
+	private final Property<Integer>			id	 	= new SimpleObjectProperty<>();
 	private final StringProperty		nom	 		= new SimpleStringProperty();
 	private final Property<Participant>	capt		= new SimpleObjectProperty<>();
 	private final Property<Participant>	equip		= new SimpleObjectProperty<>();
@@ -30,8 +30,7 @@ public class Equipe {
 	public Equipe() {
 	}
 	
-	public Equipe( String id, String nom, Participant capitaine, Participant equipier, int idCourse, int numDossard) {
-		setId(id);
+	public Equipe( String nom, Participant capitaine, Participant equipier, int idCourse, int numDossard) {
 		setNom(nom);
 		setCapitaine(capitaine);
 		setEquipier(equipier);
@@ -142,18 +141,18 @@ public class Equipe {
 		this.numDossardProperty().setValue(numDossard);
 	}
 
-	public final StringProperty idProperty() {
+	public final Property<Integer> idProperty() {
 		return this.id;
 	}
 	
 
-	public final String getId() {
-		return this.idProperty().get();
+	public final Integer getId() {
+		return this.idProperty().getValue();
 	}
 	
 
-	public final void setId(final String id) {
-		this.idProperty().set(id);
+	public final void setId(final Integer id) {
+		this.idProperty().setValue(id);
 	}
 	
 	

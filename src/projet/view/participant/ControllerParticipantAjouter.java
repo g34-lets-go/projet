@@ -12,10 +12,15 @@ import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
+import projet.dao.DaoEquipe;
+import projet.data.Equipe;
 import projet.data.Participant;
 import projet.view.EnumView;
 
 public class ControllerParticipantAjouter {
+	
+	@FXML private TextField 		idEquipe;
+	@FXML private TextField 		nomEquipe;
 	
 	@FXML private TextField		nomC;	
 	@FXML private TextField		prenomC;	
@@ -41,12 +46,13 @@ public class ControllerParticipantAjouter {
 
 	@Inject	private IManagerGui			managerGui;
 	@Inject private ModelParticipant modelParticipant;
-	
+	@Inject private DaoEquipe		 daoEquipe;
 	
 	public void initialize() {
 		
 		Participant courantCapitain = modelParticipant.getCourantCapitain();
 		Participant courantEquipier = modelParticipant.getCourantEquipier();
+		
 		
 		// Capitain
 		nomC.textProperty().bindBidirectional( courantCapitain.nomProperty() );
@@ -94,6 +100,12 @@ public class ControllerParticipantAjouter {
 	}
 	
 	@FXML public void doParticipant_Ajouter() {
+		if(nomEquipe.getText() == "" || nomEquipe.getText().isEmpty()) {
+			System.out.println("Le nom d'equipe ne dois pas etre vide");
+		}else {
+			Equipe equipe = new Equipe(nomEquipe.getText(), modelParticipant.getCourantCapitain(), modelParticipant.getCourantEquipier(), 0, 0);
+			daoEquipe.inserer(equipe);
+		}
 		managerGui.showView( EnumView.ParticipantAjouter);
 	}
 	
@@ -127,4 +139,5 @@ public class ControllerParticipantAjouter {
 		toggleGroupChoixBol.selectToggle(  boutonC );
 		toggleGroupChoixBol.selectToggle(  boutonE );
 	}
+	
 }

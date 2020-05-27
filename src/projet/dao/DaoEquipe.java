@@ -15,7 +15,7 @@ import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Equipe;
 
 
-public class DaoEquipier {
+public class DaoEquipe {
 
 	
 	// Champs
@@ -40,25 +40,27 @@ public class DaoEquipier {
 			cn = dataSource.getConnection();
 
 			// Insère l4equipe
-			sql = "INSERT INTO equipe ( id, nom_equipe, id_capitaine, id_equipier, id_course, numero_dossard ) "
+			sql = "INSERT INTO equipe ( nom_equipe, id_capitaine, id_equipier, id_course, numero_dossard ) "
 					+ "VALUES ( ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
-			stmt.setString(	1, equipe.getCapitaine().getId() +"-"+equipe.getEquipier().getId() );
-			stmt.setString(	2, equipe.getNom() );
-			stmt.setInt( 3, equipe.getCapitaine().getId() );
-			stmt.setInt( 4, equipe.getEquipier().getId() );
-			stmt.setInt( 5, equipe.getIdCourse());
-			stmt.setInt( 6, equipe.getNumDossard());
+			stmt.setString(	1, equipe.getNom() );
+			stmt.setInt( 2, equipe.getCapitaine().getId() );
+			stmt.setInt( 3, equipe.getEquipier().getId() );
+			stmt.setInt( 4, equipe.getIdCourse());
+			stmt.setInt( 5, equipe.getNumDossard());
 			stmt.executeUpdate();
+			
+			// Récupère l'identifiant généré par le SGBD
+			rs = stmt.getGeneratedKeys();
+			rs.next();
+			equipe.setId( rs.getObject( 1, Integer.class) );
+			return equipe.getId();
 	
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
-		
-		// Retourne l'identifiant
-		return equipe.getNumDossard();
 	}
 
 	
@@ -227,7 +229,7 @@ public class DaoEquipier {
 	private Equipe construireEquipe( ResultSet rs, boolean flagComplet ) throws SQLException {
 
 		Equipe equipe = new Equipe();
-		equipe.setId(rs.getObject( "id", String.class ));
+		equipe.setId(rs.getObject( "id", Integer.class ));
 		equipe.setNom(rs.getObject( "nom", String.class ));
 
 		if ( flagComplet ) {
