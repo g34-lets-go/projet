@@ -1,11 +1,8 @@
 package projet.view.participant;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ResourceBundle;
-
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
@@ -14,7 +11,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,7 +18,7 @@ import jfox.javafx.view.IManagerGui;
 import projet.data.Participant;
 import projet.view.EnumView;
 
-public class ControllerParticipant implements Initializable{
+public class ControllerParticipant {
 
 	@Inject
 	private IManagerGui			managerGui;
@@ -126,9 +122,12 @@ public class ControllerParticipant implements Initializable{
 	
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle ressources) {
-		// TODO Auto-generated method stub
+	public void initialize() {
+		tableViewParticipants.setItems(ModelParticipant.getListe());
+		columnId.setCellValueFactory(new PropertyValueFactory<Participant,Integer>("id"));
+		columnNom.setCellValueFactory(new PropertyValueFactory<Participant,String>("nom"));
+		columnPrenom.setCellValueFactory(new PropertyValueFactory<Participant,String>("prenom"));
+		columnEngagement.setCellValueFactory(new PropertyValueFactory<Participant,String>("frais_paye"));
 		
 	}
 }
