@@ -61,6 +61,9 @@ public class ModelPoste  {
 		mapper.update( courant, daoPoste.retrouver( item.getId_Poste() ) );
 	}
 	
+	public void rechercher(String text1) {
+		liste.setAll( daoPoste.rechercher(text1.toLowerCase(), text1.toUpperCase()) );
+	}
 	
 	public void validerMiseAJour() {
 
@@ -74,7 +77,7 @@ public class ModelPoste  {
 			message.append( "\nLe nom est trop long : 25 maxi." );
 		}
 		
-		if( courant.getDescription_poste() == null || courant.getDescription_poste().isEmpty() ) {
+		if( courant.getDescription_Poste() == null || courant.getDescription_Poste().isEmpty() ) {
 			message.append( "\nLa description ne doit pas être vide." );
 		}
 		

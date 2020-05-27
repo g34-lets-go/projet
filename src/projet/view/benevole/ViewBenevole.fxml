@@ -51,7 +51,7 @@
                   <Insets left="65.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+            <Button mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doBenevoleEditer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doSupprimer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Supprimer" />
@@ -80,7 +80,7 @@
                <children>
                   <HBox GridPane.columnIndex="3">
                      <children>
-                        <TextField fx:id="textFieldRecherche" prefHeight="26.0" prefWidth="136.0">
+                        <TextField fx:id="textFieldRecherche" onAction="#refresh" prefHeight="26.0" prefWidth="136.0">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>

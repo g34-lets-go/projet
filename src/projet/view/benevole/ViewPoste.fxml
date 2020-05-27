@@ -55,7 +55,7 @@
                   <Insets left="65.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#viewPostes" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+            <Button mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />
@@ -80,12 +80,12 @@
                <children>
                   <HBox GridPane.columnIndex="3">
                      <children>
-                        <TextField prefHeight="26.0" prefWidth="136.0">
+                        <TextField fx:id="textFieldRecherche" prefHeight="26.0" prefWidth="136.0">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: transparent;">
+                        <Button mnemonicParsing="false" onAction="#doRechercher" prefHeight="25.0" prefWidth="36.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

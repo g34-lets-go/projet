@@ -52,7 +52,7 @@ public class ControllerBenevole {
 		
 		
 		public void initialize() {
-			
+			textFieldRecherche.clear();
 			tableViewBenevoles.setItems(modelBenevole.getListe());
 			columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
 			columnNom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("nomBene"));
@@ -66,7 +66,7 @@ public class ControllerBenevole {
 			if(textFieldRecherche.getText()==null || textFieldRecherche.getText().isEmpty() )
 				modelBenevole.actualiserListe();
 			else
-				modelBenevole.rechercher(textFieldRecherche.getText(), textFieldRecherche.getText().toUpperCase());
+				modelBenevole.rechercher(textFieldRecherche.getText());
 //			UtilFX.selectInListView( listView, modelBenevole.getCourant() );
 //			listView.requestFocus();
 		}
@@ -133,7 +133,7 @@ public class ControllerBenevole {
 	
 	@FXML
 	private void doRechercher() {
-		modelBenevole.rechercher(textFieldRecherche.getText(), textFieldRecherche.getText().toUpperCase());
+		modelBenevole.rechercher(textFieldRecherche.getText());
 		managerGui.showView( EnumView.Benevole);
 	}
 	

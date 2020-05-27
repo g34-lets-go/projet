@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class DaoPoste {
 			sql = "INSERT INTO poste ( nom_poste, description_poste, horaires_poste, personnel_poste, localisation_poste, Equipement_necessaire, id_course, nb_personnel ) VALUES( ?, ?, ?, ?, ?, ?, ?, ? ) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, poste.getNom_Poste() );
-			stmt.setObject( 2, poste.getDescription_poste() );
+			stmt.setObject( 2, poste.getDescription_Poste() );
 			stmt.setObject( 3, poste.getHoraire_poste() );
 			stmt.setObject( 4, poste.getPersonnel() );
 			stmt.setObject( 5, poste.getLocalisation() );
@@ -73,7 +74,7 @@ public class DaoPoste {
 			sql = "UPDATE poste SET nom_poste = ?, description_poste = ?, horaires_poste = ?, personnel_poste = ?, localisation_poste = ?, Equipement_necessaire = ?, id_course = ?, nb_personnel = ? WHERE id_poste =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, poste.getNom_Poste() );
-			stmt.setObject( 2, poste.getDescription_poste() );
+			stmt.setObject( 2, poste.getDescription_Poste() );
 			stmt.setObject( 3, poste.getHoraire_poste() );
 			stmt.setObject( 4, poste.getPersonnel() );
 			stmt.setObject( 5, poste.getLocalisation() );
@@ -140,7 +141,6 @@ public class DaoPoste {
 	
 	
 	
-	
 	public Poste retrouverPoste( int id_poste ) {
 
 		Connection			cn 		= null;
@@ -196,13 +196,44 @@ public class DaoPoste {
 	}
 	
 	
+	//Rechercher un poste
+	public List<Poste> rechercher(String text1, String text2)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM poste WHERE nom LIKE ? OR nom LIKE ?";
+	        stmt = cn.prepareStatement(sql);
+	        stmt.setObject( 1, text1+"%");
+	        stmt.setObject( 2, text2+"%");
+	        rs = stmt.executeQuery();
+				
+			List<Poste> postes = new ArrayList<>();
+			while (rs.next()) {
+				postes.add( construirePoste(rs) );
+			}
+			return postes;
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+		
+
+	
 	// Méthodes auxiliaires
 	
 	private Poste construirePoste( ResultSet rs ) throws SQLException {
 		Poste poste = new Poste();
 		poste.setId_Poste( rs.getObject( "id_poste", Integer.class ) );
 		poste.setNom_Poste( rs.getObject( "nom_poste", String.class ) );
-		poste.setDescription_poste( rs.getObject( "description_poste", String.class ) );
+		poste.setDescription_Poste( rs.getObject( "description_poste", String.class ) );
 		poste.setHoraire_poste( rs.getObject( "horaires_poste", LocalTime.class ) );
 		poste.setLocalisation( rs.getObject( "localisation_poste", String.class ) );
 		poste.setEquipement( rs.getObject( "Equipement_necessaire", String.class ) );

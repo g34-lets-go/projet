@@ -56,7 +56,7 @@
             <Button mnemonicParsing="false" onAction="#doBenevole" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Justificatifs" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doBenevoleAttente" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />

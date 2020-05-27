@@ -77,6 +77,10 @@ public class ModelBenevole {
 	public void actualiserListe() {
 		liste.setAll( daoBenevole.listerTout() );
 	}
+	
+	public void actualiserListeAttente() {
+		liste.setAll( daoBenevole.listerToutAttente() );
+	}
 
 	
 	// Actions
@@ -92,8 +96,8 @@ public class ModelBenevole {
 		
 	}
 	
-	public void rechercher(String text1, String text2) {
-		liste.setAll( daoBenevole.rechercher(text1, text2) );
+	public void rechercher(String text1) {
+		liste.setAll( daoBenevole.rechercher(text1.toLowerCase(), text1.toUpperCase()) );
 	}
 	
 

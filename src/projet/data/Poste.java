@@ -35,7 +35,7 @@ public class Poste  {
 	public Poste( final int id, final String nom, final String description, final LocalTime horaire_poste, final int personnel,final int personnel_actu, final String localisation, final String equipement, final int id_course ) {
 		setId_Poste(id);
 		setNom_Poste(nom);
-		setDescription_poste(description);
+		setDescription_Poste(description);
 		setHoraire_poste(horaire_poste);
 		setPersonnel(personnel);
 		setPersonnel_actuel(personnel_actu);
@@ -86,11 +86,11 @@ public class Poste  {
 		return this.description_poste;
 	}
 
-	public final String getDescription_poste() {
+	public final String getDescription_Poste() {
 		return this.description_posteProperty().getValue();
 	}
 
-	public final void setDescription_poste(final String description) {
+	public final void setDescription_Poste(final String description) {
 		this.description_posteProperty().setValue(description);
 	}
 	

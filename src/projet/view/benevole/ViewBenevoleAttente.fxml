@@ -54,7 +54,7 @@
             <Button mnemonicParsing="false" onAction="#doBenevole" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textFill="#707070" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doBenevoleEditer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
-            <Button mnemonicParsing="false" onAction="#viewBenevoles" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" />
+            <Button mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />
@@ -79,7 +79,7 @@
                <children>
                   <HBox GridPane.columnIndex="3">
                      <children>
-                        <TextField fx:id="textFieldRecherche" prefHeight="26.0" prefWidth="136.0">
+                        <TextField fx:id="textFieldRecherche" onAction="#refresh" prefHeight="26.0" prefWidth="136.0">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -100,7 +100,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <TableView fx:id="tableViewBenevoles" maxHeight="500.0" onSort="#viewBenevoles" prefHeight="388.0" prefWidth="590.0">
+            <TableView fx:id="tableViewBenevoles" maxHeight="500.0" onMouseClicked="#gererClicSurListe" onSort="#refresh" prefHeight="388.0" prefWidth="590.0">
               <columns>
                 <TableColumn fx:id="columnId" prefWidth="75.0" text="Matricule" />
                 <TableColumn fx:id="columnNom" prefWidth="200.0" text="Nom" />

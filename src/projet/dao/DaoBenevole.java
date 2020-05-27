@@ -64,6 +64,7 @@ public class DaoBenevole {
 		}
 	}
 	
+	
 	// Modifie les bénévoles
 	public void modifier(Benevole benevole)  {
 
@@ -95,8 +96,7 @@ public class DaoBenevole {
 			UtilJdbc.close( stmt, cn );
 		}
 
-		// Modifie les telephones
-		//daoTelephone.modifierPourPersonne( personne );
+		
 	}
 
 	
@@ -125,7 +125,6 @@ public class DaoBenevole {
 	}
 	
 	
-	
 	// Supprime un bénévole
 	public void supprimer(int matricule_b)  {
 
@@ -133,9 +132,7 @@ public class DaoBenevole {
 		PreparedStatement	stmt	= null;
 		String 				sql;
 
-		// Supprime les telephones
-//		daoTelephone.supprimerPourPersonne( matricule_b );
-
+		
 		try {
 			cn = dataSource.getConnection();
 
@@ -151,6 +148,7 @@ public class DaoBenevole {
 			UtilJdbc.close( stmt, cn );
 		}
 	}
+	
 	
 	//Retrouver un bénévole
 	public Benevole retrouver(int matricule_b)  {
@@ -179,6 +177,7 @@ public class DaoBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+	
 	
 	public List<Benevole> listerTout()   {
 
@@ -236,6 +235,36 @@ public class DaoBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+	
+	//Lister les benevoles en attente
+	public List<Benevole> listerToutAttente()   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM benevole WHERE valider = false";
+			stmt = cn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			
+			List<Benevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	
 	
 	public List<Benevole> listerParPoste( int id_poste )   {
 

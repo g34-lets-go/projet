@@ -107,6 +107,10 @@ public class ControllerBenevoleAjouter {
 	public void doBenevoleAjouter() {
 		//managerGui.showView( EnumView.BenevoleAjouter);
 	}
+	@FXML 
+	public void doBenevoleAttente() {
+		managerGui.showView( EnumView.BenevoleAttente);
+	}
 	
 	@FXML 
 	public void doEnregistrer() {
