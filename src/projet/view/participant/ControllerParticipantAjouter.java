@@ -38,15 +38,20 @@ public class ControllerParticipantAjouter {
 	@FXML private TextField		emailE;
 	@FXML private CheckBox		attestationE;
 
-	@FXML private ToggleGroup		toggleGroupChoixBol;
+	@FXML private ToggleGroup	toggleGroupChoixBol;
 	@FXML private RadioButton	choixMiniBol;
 	@FXML private RadioButton	choixGrandBol;
+	
+	@FXML private ToggleGroup	toggleGroupCategorie;
+	//@FXML private RadioButton	
 	
 	@FXML private TextField		repasSupp;
 
 	@Inject	private IManagerGui			managerGui;
 	@Inject private ModelParticipant modelParticipant;
-	@Inject private DaoEquipe		 daoEquipe;
+	
+	@Inject private DaoEquipe	daoEquipe;
+	@Inject Equipe 				equipe ;
 	
 	public void initialize() {
 		
@@ -80,14 +85,19 @@ public class ControllerParticipantAjouter {
 		
 		// Choix du bol
 		toggleGroupChoixBol = new ToggleGroup();
-		choixMiniBol.setToggleGroup(toggleGroupChoixBol);
-		choixGrandBol.setToggleGroup(toggleGroupChoixBol);
+		//choixMiniBol.setToggleGroup(toggleGroupChoixBol);
+		//choixGrandBol.setToggleGroup(toggleGroupChoixBol);
 		
-		toggleGroupChoixBol.selectedToggleProperty().addListener( obs -> actualiserStatutDansModele() ) ;
-		courantCapitain.frais_payeProperty().addListener(  obs -> actualiserStatutDansVue() );
-		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserStatutDansVue() );
-		actualiserStatutDansVue();
+		/*toggleGroupChoixBol.selectedToggleProperty().addListener( obs -> actualiserStatutDansModele() ) ;
+		courantCapitain.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
+		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
+		actualiserChoixDansVue();*/
 		
+
+		toggleGroupChoixBol.selectedToggleProperty().addListener( obs -> actualiserStatutDansModele() ) ; 
+		courantCapitain.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
+		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
+		//actualiserChoixDansVue();
 
 	}
 	
@@ -100,22 +110,27 @@ public class ControllerParticipantAjouter {
 	}
 	
 	@FXML public void doParticipant_Ajouter() {
-		if(nomEquipe.getText() == "" || nomEquipe.getText().isEmpty()) {
-			System.out.println("Le nom d'equipe ne dois pas etre vide");
-		}else {
-			Equipe equipe = new Equipe(nomEquipe.getText(), modelParticipant.getCourantCapitain(), modelParticipant.getCourantEquipier(), 0, 0);
-			daoEquipe.inserer(equipe);
-		}
 		managerGui.showView( EnumView.ParticipantAjouter);
 	}
 	
 	@FXML public void doEnregistrer() {
-		System.out.println("---"+modelParticipant.getCourantCapitain().getTel()+"------"+modelParticipant.getCourantEquipier().getTel());
-		
 		modelParticipant.validerMiseAJour();
-		//Equipe equipe = new Equipe(courantCapitain.getId()+"-"+courantEquipier.getId() ,"Team", courantCapitain, courantEquipier, 1, 20);
+		if(nomEquipe.getText() == "" || nomEquipe.getText().isEmpty()) {
+			System.out.println("Le nom d'equipe ne dois pas etre vide");
+		}else {
+			Equipe equipe = new Equipe(nomEquipe.getText(), modelParticipant.getCourantCapitain(), modelParticipant.getCourantEquipier(), 1, 2);
+			daoEquipe.inserer(equipe);
+		}
+		
+		modelParticipant.preparerAjouter();
 		managerGui.showView( EnumView.ParticipantAjouter);
+		
 	}
+	
+	@FXML public void doClub() {		
+		managerGui.showView( EnumView.ParticipantEquipe);
+	}
+
 	
 	@FXML public void doAnnuler() {
 		managerGui.showView( EnumView.ParticipantAjouter);
@@ -125,12 +140,12 @@ public class ControllerParticipantAjouter {
 	private void actualiserStatutDansModele() {
 		// Modifie le statut en fonction du bouton radio sélectionné 
 		Toggle bouton = toggleGroupChoixBol.getSelectedToggle();
-		int statut = toggleGroupChoixBol.getToggles().indexOf( bouton  );
-		modelParticipant.getCourantCapitain().setFrais_paye( statut );
-		modelParticipant.getCourantEquipier().setFrais_paye( statut );
+		int choix = toggleGroupChoixBol.getToggles().indexOf( bouton  );
+		modelParticipant.getCourantCapitain().setFrais_paye( choix );
+		modelParticipant.getCourantEquipier().setFrais_paye( choix );
 	}
 	
-	private void actualiserStatutDansVue() {
+	private void actualiserChoixDansVue() {
 		// Sélectionne le bouton radio correspondant au statut
 		int choixC = modelParticipant.getCourantCapitain().getFrais_paye();
 		int choixE = modelParticipant.getCourantEquipier().getFrais_paye();
@@ -139,5 +154,16 @@ public class ControllerParticipantAjouter {
 		toggleGroupChoixBol.selectToggle(  boutonC );
 		toggleGroupChoixBol.selectToggle(  boutonE );
 	}
+	
+	/*public void refraichir() {
+		nomEquipe.setText(null);
+		nomC.setText(null);	
+		prenomC.setText(null);
+		dateNC.set	
+		telC;	
+		adresseC;
+		emailC;	
+		attestationC;
+	}*/
 	
 }

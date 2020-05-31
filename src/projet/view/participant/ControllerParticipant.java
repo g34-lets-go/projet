@@ -55,6 +55,11 @@ public class ControllerParticipant {
 		managerGui.showView( EnumView.ParticipantAjouter);
 	}
 	
+	@FXML public void doClub() {		
+		managerGui.showView( EnumView.ParticipantEquipe);
+	}
+
+	
 	
 	@FXML	public void viewParticipants() {
 		for ( int i = 0; i<tableViewParticipants.getItems().size(); i++) {

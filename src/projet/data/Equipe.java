@@ -15,7 +15,7 @@ public class Equipe {
 
 	// Données observables
 
-	private final Property<Integer>			id	 	= new SimpleObjectProperty<>();
+	private final Property<Integer>		id	 		= new SimpleObjectProperty<>();
 	private final StringProperty		nom	 		= new SimpleStringProperty();
 	private final Property<Participant>	capt		= new SimpleObjectProperty<>();
 	private final Property<Participant>	equip		= new SimpleObjectProperty<>();

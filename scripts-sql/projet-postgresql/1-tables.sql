@@ -38,7 +38,7 @@ CREATE TABLE participant (
 	nom                  		VARCHAR (50) 	NOT NULL ,
     prenom                    	VARCHAR (50) 	NOT NULL ,
     date_naiss                	DATE	 		NOT NULL ,
-    telephone                 	VARCHAR (25) 	NOT NULL ,
+    telephone                 	INT			 	NOT NULL ,
     email                      	VARCHAR (50) 	NOT NULL ,
     adresse                    	VARCHAR (50) 	NOT NULL ,
     attestations_ok			 	BOOLEAN  ,
@@ -114,7 +114,6 @@ CREATE TABLE posteSouhaiter (
 	Prenom		VARCHAR(25) 	NOT NULL,
 	PRIMARY KEY (id)
 );
-
 
 -- Vues
 

@@ -89,7 +89,7 @@ public class DaoEquipe {
 	}
 
 	
-	public void supprimer(String id)  {
+	public void supprimer(int id)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -112,7 +112,7 @@ public class DaoEquipe {
 	}
 
 	
-	public Equipe retrouver(String id)  {
+	public Equipe retrouver(int id)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -122,7 +122,7 @@ public class DaoEquipe {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM equipe WHERE id = ?";
+			sql = "SELECT * FROM equipe WHERE id_equipe = ?";
             stmt = cn.prepareStatement(sql);
             stmt.setObject( 1, id);
             rs = stmt.executeQuery();
@@ -150,7 +150,7 @@ public class DaoEquipe {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM equipe ORDER BY nom";
+			sql = "SELECT * FROM equipe ORDER BY nom_equipe";
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
@@ -229,12 +229,12 @@ public class DaoEquipe {
 	private Equipe construireEquipe( ResultSet rs, boolean flagComplet ) throws SQLException {
 
 		Equipe equipe = new Equipe();
-		equipe.setId(rs.getObject( "id", Integer.class ));
-		equipe.setNom(rs.getObject( "nom", String.class ));
+		equipe.setId(rs.getObject( "id_equipe", Integer.class ));
+		equipe.setNom(rs.getObject( "nom_equipe", String.class ));
 
 		if ( flagComplet ) {
-			equipe.setCapitaine(daoParticipant.retrouver(rs.getObject("id", Integer.class)) );
-			equipe.setEquipier(daoParticipant.retrouver(rs.getObject("id", Integer.class)) );
+			equipe.setCapitaine(daoParticipant.retrouver(rs.getObject("id_equipe", Integer.class)) );
+			equipe.setEquipier(daoParticipant.retrouver(rs.getObject("id_equipe", Integer.class)) );
 		}
 		
 		return equipe;

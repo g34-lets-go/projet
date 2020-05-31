@@ -44,7 +44,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#viewParticipants" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Lister" />
             <Button mnemonicParsing="false" onAction="#doParticipantAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Ajouter" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doClub" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Justificatifs" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070">
                <VBox.margin>

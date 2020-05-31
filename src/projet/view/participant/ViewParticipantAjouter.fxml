@@ -36,7 +36,7 @@
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="54.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="61.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
-                  <Insets left="170.0" />
+                  <Insets left="350.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -50,8 +50,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Lister" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Ajouter" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Club" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doClub" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Justificatifs" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070">
                <VBox.margin>
@@ -76,8 +75,8 @@
                <children>
                   <Label text="Id" />
                   <Label text="Nom de l'equipe" GridPane.rowIndex="1" />
-                  <TextField maxWidth="50.0" GridPane.columnIndex="1" />
-                  <TextField maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="idEquipe" editable="false" maxWidth="50.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="nomEquipe" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
@@ -89,7 +88,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <GridPane layoutY="1.0" prefHeight="242.0" prefWidth="404.0">
+                              <GridPane layoutX="100.0" layoutY="50.0" prefHeight="250.0" prefWidth="400.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -162,15 +161,12 @@
                                        </GridPane.margin>
                                     </TextField>
                                     <CheckBox fx:id="attestationC" mnemonicParsing="false" text=" Attestations" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <DatePicker fx:id="dateNC" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <DatePicker fx:id="dateNC" prefHeight="25.0" prefWidth="197.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </DatePicker>
                                  </children>
-                                 <padding>
-                                    <Insets right="20.0" />
-                                 </padding>
                               </GridPane>
                            </children>
                         </AnchorPane>
@@ -178,9 +174,9 @@
                   </Tab>
                   <Tab closable="false" text="Equipier">
                      <content>
-                        <HBox alignment="CENTER" fillHeight="false" prefHeight="398.0" prefWidth="754.0">
+                        <HBox alignment="CENTER" fillHeight="false" prefHeight="382.0" prefWidth="753.0">
                            <children>
-                              <GridPane prefHeight="386.0" prefWidth="586.0">
+                              <GridPane layoutX="100.0" layoutY="50.0" prefHeight="250.0" prefWidth="400.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -252,15 +248,15 @@
                                        </GridPane.margin>
                                     </TextField>
                                     <CheckBox fx:id="attestationE" mnemonicParsing="false" text="Attestations" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <DatePicker fx:id="dateNE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <DatePicker fx:id="dateNE" prefHeight="25.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </DatePicker>
                                  </children>
-                                 <padding>
-                                    <Insets right="20.0" />
-                                 </padding>
+                                 <HBox.margin>
+                                    <Insets right="100.0" top="-50.0" />
+                                 </HBox.margin>
                               </GridPane>
                            </children>
                         </HBox>
@@ -270,7 +266,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <VBox layoutX="14.0" layoutY="14.0" prefHeight="82.0" prefWidth="271.0">
+                              <VBox alignment="CENTER" layoutX="50.0" layoutY="50.0">
                                  <children>
                                     <RadioButton fx:id="choixMiniBol" mnemonicParsing="false" text="Mini bol     2x 20€ (40€ au total)">
                                        <VBox.margin>
@@ -285,14 +281,78 @@
                                           <Insets bottom="20.0" />
                                        </VBox.margin>
                                     </RadioButton>
+                                    <HBox>
+                                       <children>
+                                          <Label text="Repas supplementaire">
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField fx:id="repasSupp" prefHeight="25.0" prefWidth="116.0">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <Label text=" x 7 € = ">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <TextField editable="false" prefHeight="25.0" prefWidth="77.0" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="17.0" prefWidth="474.0">
+                                       <children>
+                                          <Label prefHeight="17.0" prefWidth="72.0" text="Categorie :">
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <RadioButton mnemonicParsing="false" text="Hommes">
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="toggleGroupCategorie" />
+                                             </toggleGroup>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Femmes" toggleGroup="$toggleGroupCategorie">
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Mixte" toggleGroup="$toggleGroupCategorie">
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="V.A.E" toggleGroup="$toggleGroupCategorie" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#doAnnuler" text="Annuler" />
+                                          <Button mnemonicParsing="false" onAction="#doEnregistrer" text="Enregistrer">
+                                             <HBox.margin>
+                                                <Insets left="30.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                    </HBox>
                                  </children>
                               </VBox>
-                              <HBox alignment="CENTER_RIGHT" layoutX="21.0" layoutY="204.0" prefHeight="26.0" prefWidth="294.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#doAnnuler" text="Annuler" />
-                                    <Button mnemonicParsing="false" onAction="#doEnregistrer" text="Enregistrer" />
-                                 </children>
-                              </HBox>
                            </children>
                         </AnchorPane>
                      </content>
@@ -305,7 +365,6 @@
                   <Insets left="10.0" right="10.0" top="30.0" />
                </VBox.margin>
             </TabPane>
-            <HBox alignment="CENTER" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />

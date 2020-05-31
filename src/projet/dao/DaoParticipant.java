@@ -36,7 +36,6 @@ public int inserer (Participant participant) {
 				+ "	attestations_ok, frais_paye, repas_supplementaire, id_velo) "
 				+ "		VALUES( ?,?,?,?,?,?,?,?,?,? ) ";			
 		stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
-		//stmt.setObject( 1, participant.getId());
 		stmt.setObject( 1, participant.getNom() );
 		stmt.setObject( 2, participant.getPrenom() );
 		stmt.setObject( 3, participant.getDateN() );
@@ -85,6 +84,7 @@ public void modifier(Participant participant)  {
 		stmt.setObject( 8, participant.getFrais_paye());
 		stmt.setObject( 9, participant.getRepasSup());
 		stmt.setObject( 10, participant.getIdVelo());
+		stmt.setObject( 11, participant.getId());
 		stmt.executeUpdate();
 		
 	} catch (SQLException e) {
@@ -130,7 +130,7 @@ public void modifier(Participant participant)  {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant WHERE matricule_b = ?";
+			sql = "SELECT * FROM participant WHERE matricule_p = ?";
             stmt = cn.prepareStatement(sql);
             stmt.setObject( 1, id);
             rs = stmt.executeQuery();
@@ -177,16 +177,16 @@ public void modifier(Participant participant)  {
 	private Participant construireParticipant( ResultSet rs, boolean flagComplet ) throws SQLException {
 
 		Participant participant = new Participant();
-		participant.setId(rs.getObject( "id", Integer.class ));
+		participant.setId(rs.getObject( "matricule_p", Integer.class ));
 		participant.setNom(rs.getObject( "nom", String.class ));
 		participant.setPrenom(rs.getObject( "prenom", String.class ));
 		participant.setDateN(rs.getObject( "date_naiss", LocalDate.class ));
-		participant.setTel(rs.getObject( "tel", Integer.class ));
+		participant.setTel(rs.getObject( "telephone", Integer.class ));
 		participant.setAdresse(rs.getObject( "adresse", String.class ));
 		participant.setEmail(rs.getObject( "email", String.class ));
-		participant.setAttestation(rs.getObject( "attestation", Boolean.class ));
-		participant.setRepasSup(rs.getObject( "repasSup", Integer.class ));
-		participant.setIdVelo(rs.getObject( "idvelo", Integer.class ));
+		participant.setAttestation(rs.getObject( "attestations_ok", Boolean.class ));
+		participant.setRepasSup(rs.getObject( "repas_supplementaire", Integer.class ));
+		participant.setIdVelo(rs.getObject( "id_velo", Integer.class ));
 		
 		
 		if ( flagComplet ) {
