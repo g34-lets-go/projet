@@ -56,6 +56,7 @@
                </VBox.margin>
             </ImageView>
             <Button mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+            <Button mnemonicParsing="false" onAction="#doLocalisation" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: #8FAF9E;" text="Localisation" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />

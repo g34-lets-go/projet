@@ -91,4 +91,9 @@ public class ControllerPoste {
 		managerGui.showView( EnumView.Poste);
 	}
 	
+	@FXML
+	private void doLocalisation() {
+		managerGui.showView( EnumView.PosteLocalisation);
+	}
+	
 }

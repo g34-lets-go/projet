@@ -100,7 +100,7 @@ public class DaoBenevole {
 	}
 
 	
-	//Validation	
+	// Validation	
 	public void valider(int matricule_b)  {
 
 		Connection			cn		= null;
@@ -150,7 +150,7 @@ public class DaoBenevole {
 	}
 	
 	
-	//Retrouver un bénévole
+	// Retrouver un bénévole
 	public Benevole retrouver(int matricule_b)  {
 
 		Connection			cn		= null;
@@ -195,7 +195,7 @@ public class DaoBenevole {
 			
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
-				benevoles.add( construireBenevole(rs, false) );
+				benevoles.add( construireBenevole(rs, true) );
 			}
 			return benevoles;
 
@@ -206,7 +206,7 @@ public class DaoBenevole {
 		}
 	}
 	
-	//Rechercher un bénévole
+	// Rechercher un bénévole
 	public List<Benevole> rechercher(String text1, String text2)   {
 
 		Connection			cn		= null;
@@ -225,7 +225,7 @@ public class DaoBenevole {
 			
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
-				benevoles.add( construireBenevole(rs, false) );
+				benevoles.add( construireBenevole(rs, true) );
 			}
 			return benevoles;
 
@@ -236,7 +236,7 @@ public class DaoBenevole {
 		}
 	}
 	
-	//Lister les benevoles en attente
+	// Lister les benevoles en attente
 	public List<Benevole> listerToutAttente()   {
 
 		Connection			cn		= null;
@@ -253,7 +253,7 @@ public class DaoBenevole {
 			
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
-				benevoles.add( construireBenevole(rs, false) );
+				benevoles.add( construireBenevole(rs, true) );
 			}
 			return benevoles;
 
@@ -286,7 +286,7 @@ public class DaoBenevole {
 			
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
-				benevoles.add( construireBenevole(rs, false) );
+				benevoles.add( construireBenevole(rs, true) );
 			}
 			return benevoles;
 
@@ -318,7 +318,7 @@ public class DaoBenevole {
 			
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
-				benevoles.add( construireBenevole(rs, false) );
+				benevoles.add( construireBenevole(rs, true) );
 			}
 			return benevoles;
 
