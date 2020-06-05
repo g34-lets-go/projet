@@ -80,11 +80,11 @@ public class ControllerBenevoleAjouter {
 		}
 		
 //		Refresh
-		
+		/*
 		public void refresh() {
 			modelPoste.actualiserListe();
 		}
-	
+	*/
 	
 	// Actions
 	

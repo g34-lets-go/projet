@@ -7,11 +7,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jfox.commun.exception.ExceptionValidation;
-import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoBenevole;
 import projet.data.Benevole;
-import projet.data.Categorie;
 import projet.data.Poste;
 
 
@@ -86,12 +84,13 @@ public class ModelBenevole {
 	// Actions
 	
 	public void preparerAjouter() {
-//		modelCategorie.actualiserListe();
+		modelPoste.actualiserListe();
 		mapper.update( courant, new Benevole() );
 	}
 	
 
 	public void preparerModifier( Benevole item ) {
+		modelPoste.actualiserListe();
 		mapper.update( courant, daoBenevole.retrouver( item.getMatBene() ) );
 		
 	}

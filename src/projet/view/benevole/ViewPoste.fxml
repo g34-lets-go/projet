@@ -31,7 +31,7 @@
             <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070" />
-            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" />
+            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
@@ -105,8 +105,8 @@
             <TableView fx:id="tableViewPostes" prefHeight="391.0" prefWidth="590.0">
               <columns>
                   <TableColumn fx:id="columnId" prefWidth="33.60003626346588" text="Id" />
-                <TableColumn fx:id="columnNom" prefWidth="132.80005645751953" text="Postes" />
-                <TableColumn fx:id="columnDescription" prefWidth="242.39996337890625" text="Description" />
+                <TableColumn fx:id="columnNom" prefWidth="134.39997100830078" text="Postes" />
+                <TableColumn fx:id="columnDescription" prefWidth="242.40008544921875" text="Description" />
                   <TableColumn fx:id="columnNbActuel" prefWidth="107.19998168945312" text="Personnel actuel" />
                   <TableColumn fx:id="columnPersonnel" prefWidth="75.0" text="Sur" />
               </columns>

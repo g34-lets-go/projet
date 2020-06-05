@@ -171,26 +171,70 @@ SET search_path TO projet;
 --END;
 --$ccode$ LANGUAGE plpgsql;
 
-CREATE PROCEDURE nb_personnel_update()
-
+CREATE FUNCTION nb_personnel_update1()
+RETURNS TRIGGER
 AS $ccode$
 BEGIN
-UPDATE poste SET (nb_personnel) = ( SELECT COUNT(b.matricule_b)
-					 
-					 from poste po inner join benevole b
-					 ON po.id_poste = b.id_poste
-					 WHERE matricule_b = new.matricule_b)
-WHERE id_poste = new.id_poste
+UPDATE poste SET nb_personnel = nb_personnel + 1 
+WHERE id_poste = new.id_poste;
+return null;
 END;
-$ccode$ LANGUAGE SQL;
+$ccode$ LANGUAGE plpgsql;
+
+
+CREATE FUNCTION nb_personnel_update2()
+RETURNS TRIGGER
+AS $ccode$
+BEGIN
+UPDATE poste SET nb_personnel = nb_personnel - 1 
+WHERE id_poste = old.id_poste;
+UPDATE poste SET nb_personnel = nb_personnel + 1 
+WHERE id_poste = new.id_poste;
+return null;
+END;
+$ccode$ LANGUAGE plpgsql;
+
+
+CREATE FUNCTION nb_personnel_update3()
+RETURNS TRIGGER
+AS $ccode$
+BEGIN
+UPDATE poste SET nb_personnel = nb_personnel - 1 
+WHERE id_poste = old.id_poste;
+return null;
+END;
+$ccode$ LANGUAGE plpgsql;
 
 
 
-CREATE TRIGGER poste_update
-    AFTER INSERT ON benevole
+CREATE TRIGGER poste_update1
+    AFTER INSERT
+    ON benevole
     FOR EACH ROW
-    EXECUTE PROCEDURE nb_personnel_update();
-
+    WHEN (new.valider IS TRUE)
+    EXECUTE FUNCTION nb_personnel_update1();
+    
+CREATE TRIGGER poste_update2
+    AFTER UPDATE
+    ON benevole
+    FOR EACH ROW
+    WHEN (old.* IS DISTINCT FROM new.*)
+    EXECUTE FUNCTION nb_personnel_update2();
+    
+CREATE TRIGGER poste_update4
+    AFTER UPDATE
+    ON benevole
+    FOR EACH ROW
+    WHEN (old.valider IS FALSE)
+    EXECUTE FUNCTION nb_personnel_update1();
+    
+CREATE TRIGGER poste_update3
+    AFTER DELETE
+    ON benevole
+    FOR EACH ROW
+    WHEN (old.valider IS TRUE)
+    EXECUTE FUNCTION nb_personnel_update3();    
+    
 
 
 

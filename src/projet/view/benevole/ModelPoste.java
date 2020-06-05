@@ -46,8 +46,12 @@ public class ModelPoste  {
 	
 	// Actualisations
 	
-	public void actualiserListe() {
+	public void actualiserListe() {		
 		liste.setAll( daoPoste.listerTout() );
+		/*
+		for( Poste poste : liste) {
+			daoPoste.modifierNB(poste);
+		}*/
  	}
 
 

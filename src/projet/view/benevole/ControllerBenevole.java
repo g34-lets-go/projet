@@ -24,8 +24,8 @@ public class ControllerBenevole {
 	
 	@FXML
 	private TableView<Benevole>	tableViewBenevoles;
-	@FXML
-	private TableColumn<Benevole, Integer> columnId;
+//	@FXML
+//	private TableColumn<Benevole, Integer> columnId;
 	@FXML
 	private TableColumn<Benevole, String> columnNom;
 	@FXML
@@ -54,7 +54,7 @@ public class ControllerBenevole {
 		public void initialize() {
 			textFieldRecherche.clear();
 			tableViewBenevoles.setItems(modelBenevole.getListe());
-			columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
+//			columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
 			columnNom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("nomBene"));
 			columnPrenom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("prenomBene"));
 			columnAdresse.setCellValueFactory(new PropertyValueFactory<Benevole,String>("AdresseBene"));
@@ -122,7 +122,7 @@ public class ControllerBenevole {
 		if ( item == null ) {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
-			if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir supprimer ce bnévole ?" ) ) {
+			if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir supprimer ce bénévole ?" ) ) {
 				modelBenevole.supprimer( item );
 			//	viewBenevoles();
 				managerGui.showView( EnumView.Benevole);

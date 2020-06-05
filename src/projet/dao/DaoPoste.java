@@ -91,6 +91,27 @@ public class DaoPoste {
 		}
 	}
 
+	
+	public void modifierNB( Poste poste ) {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+			sql = "UPDATE poste SET nom_poste = ( SELECT COUNT(b.matricule_b) FROM poste po INNER JOIN benevole b ON po.id_poste = b.id_poste WHERE matricule_b = new.matricule_b)";
+			stmt = cn.prepareStatement( sql );
+			
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( stmt, cn );
+		}
+	}
+
 
 	public void supprimer( int id_poste ) {
 
@@ -196,7 +217,7 @@ public class DaoPoste {
 	}
 	
 	
-	//Rechercher un poste
+	// Rechercher un poste
 	public List<Poste> rechercher(String text1, String text2)   {
 
 		Connection			cn		= null;

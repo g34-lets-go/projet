@@ -128,9 +128,8 @@ public class ControllerBenevoleAttente {
 	
 	@FXML
 	private void doAjouterTous() {
-		if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir ajouter ce bénévole ?" ) ) {
+		if ( managerGui.showDialogConfirm("Etes-vous sûr de vouloir ajouter ce(s) bénévole(s) ?" ) ) {
 			for(Benevole item : tableViewBenevoles.getItems()) {
-				System.out.println(item.getNomBene()+"\n");
 				modelBenevole.validation(item);
 			}
 			
