@@ -115,7 +115,10 @@ public class ControllerBenevoleAjouter {
 	@FXML 
 	public void doEnregistrer() {
 		modelBenevole.validerMiseAJour();
+		managerGui.showDialogMessage("Vous venez d'ajouter un nouveau bénévole !");
 		managerGui.showView( EnumView.Benevole );
+		
+		
 	}
 	
 	@FXML 
