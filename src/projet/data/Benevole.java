@@ -3,13 +3,10 @@ package projet.data;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import javax.inject.Inject;
-
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import projet.dao.DaoPoste;
 
 public class Benevole {
 	
