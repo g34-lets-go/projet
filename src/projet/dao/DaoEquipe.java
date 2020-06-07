@@ -35,6 +35,9 @@ public class DaoEquipe {
 		PreparedStatement	stmt	= null;
 		ResultSet 			rs 		= null;
 		String				sql;
+		
+		daoParticipant.inserer(equipe.getCapitaine());
+		daoParticipant.inserer(equipe.getEquipier());
 
 		try {
 			cn = dataSource.getConnection();
@@ -69,6 +72,10 @@ public class DaoEquipe {
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
 		String 				sql;
+		
+
+		daoParticipant.modifier(equipe.getCapitaine());
+		daoParticipant.modifier(equipe.getEquipier());
 
 		try {
 			cn = dataSource.getConnection();

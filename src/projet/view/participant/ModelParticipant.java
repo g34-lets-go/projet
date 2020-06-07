@@ -80,7 +80,7 @@ public class ModelParticipant {
 		StringBuilder message = new StringBuilder();
 		
 		//Capitain
-		if( courantCapitain.getNom() == null || courantCapitain.getNom().isEmpty() ) {
+		/*if( courantCapitain.getNom() == null || courantCapitain.getNom().isEmpty() ) {
 			message.append( "\nLe nom ne doit pas être vide." );
 		} else  if ( courantCapitain.getNom().length()> 25 ) {
 			message.append( "\nLe nom est trop long." );
@@ -94,7 +94,7 @@ public class ModelParticipant {
 
 		if( courantCapitain.getTel() == null || courantCapitain.getEmail() == null   ) {
 			message.append( "\nTous les champs doivent être indiquées 1." );
-		}
+		}*/
 		
 		//Equipier
 		if( courantEquipier.getNom() == null || courantEquipier.getNom().isEmpty() ) {

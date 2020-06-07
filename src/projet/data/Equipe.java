@@ -17,8 +17,8 @@ public class Equipe {
 
 	private final Property<Integer>		id	 		= new SimpleObjectProperty<>();
 	private final StringProperty		nom	 		= new SimpleStringProperty();
-	private final Property<Participant>	capt		= new SimpleObjectProperty<>();
-	private final Property<Participant>	equip		= new SimpleObjectProperty<>();
+	private final Property<Participant>	capt		= new SimpleObjectProperty<>(new Participant());
+	private final Property<Participant>	equip		= new SimpleObjectProperty<>(new Participant());
 	private final Property<Integer>		idCourse	= new SimpleObjectProperty<>();
 	private final Property<Integer>		numDossard	= new SimpleObjectProperty<>();
 	

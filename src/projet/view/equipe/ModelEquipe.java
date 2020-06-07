@@ -17,6 +17,7 @@ import projet.dao.DaoEquipe;
 import projet.dao.DaoPersonne;
 import projet.data.Equipe;
 import projet.data.Memo;
+import projet.data.Participant;
 import projet.data.Personne;
 import projet.view.participant.ModelParticipant;
 import projet.view.systeme.ModelConfig;
@@ -100,6 +101,9 @@ public class ModelEquipe  {
 	}
 	
 	public void preparerModifier( Equipe item ) {
+		
+		
+		
 		modelParticipant.actualiserListe();
 		mapper.update( courant, daoEquipe.retrouver( item.getId() ) );
 		/*File fichier = getFichierSchemaCourant();
@@ -127,23 +131,10 @@ public class ModelEquipe  {
 		if(courant.getCapitaine().getNom() == null || courant.getCapitaine().getNom().isEmpty()) {
 			message.append("\nLe nom ne dois pas etre null");
 		}
-
-		/*
-		 * if( courant.getEffectif() != null ) { if ( courant.getEffectif() < 0 ) {
-		 * message.append( "\nL'effectif ne peut pas être inféireur à zéro." ); } else
-		 * if ( courant.getEffectif() > 1000 ) { message.append(
-		 * "\nEffectif trop grand : 1000 maxi." ); } }
-		 * 
-		 * if( courant.getBudget() != null ) { if ( courant.getBudget().doubleValue() <
-		 * 0 ) { message.append( "\nLe budget ne peut pas être inféireur à zéro." ); }
-		 * else if ( courant.getBudget().doubleValue() > 1000000 ) { message.append(
-		 * "\nBudget trop grand : 1 000 000 maxi." ); } } if( courant.getEcheance() !=
-		 * null ) { if ( courant.getEcheance().isBefore( LocalDate.of( 2000, 1, 1) ) ||
-		 * courant.getEcheance().isAfter( LocalDate.of( 2099, 12, 31) ) ) {
-		 * message.append(
-		 * "\nLa date d'échéance doit être compirse entre la 01/01/2000 et le 31/12/2099."
-		 * ); } }
-		 */
+		
+		validerParticipant(courant.getCapitaine());
+		validerParticipant(courant.getEquipier());
+		
 		
 		if ( message.length() > 0 ) {
 			throw new ExceptionValidation( message.toString().substring(1) );
@@ -169,6 +160,34 @@ public class ModelEquipe  {
 		 */		
 	}
 	
+	private void validerParticipant(Participant p) {
+		// Vérifie la validité des données
+		
+				StringBuilder message = new StringBuilder();
+				
+				//Equipier
+				if( p.getNom() == null || p.getNom().isEmpty() ) {
+					message.append( "\nLe nom ne doit pas être vide." );
+				} else  if ( p.getNom().length()> 25 ) {
+					message.append( "\nLe nom est trop long." );
+				}
+
+				if( p.getPrenom() == null || p.getPrenom().isEmpty() ) {
+					message.append( "\nLe prénom ne doit pas être vide." );
+				} else if ( p.getPrenom().length()> 25 ) {
+					message.append( "\nLe prénom est trop long." );
+				}
+
+				if( p.getTel() == null || p.getEmail() == null  ) {
+					message.append( "\nTous les champs doivent être indiquées 2." );
+				}
+				
+				
+				if ( message.length() > 0 ) {
+					throw new ExceptionValidation( message.toString().substring(1) );
+				}
+				
+	}
 	
 	public void supprimer( Equipe item ) {
 		

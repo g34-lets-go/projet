@@ -16,6 +16,7 @@ import projet.dao.DaoEquipe;
 import projet.data.Equipe;
 import projet.data.Participant;
 import projet.view.EnumView;
+import projet.view.equipe.ModelEquipe;
 
 public class ControllerParticipantAjouter {
 	
@@ -49,15 +50,22 @@ public class ControllerParticipantAjouter {
 
 	@Inject	private IManagerGui			managerGui;
 	@Inject private ModelParticipant modelParticipant;
+	@Inject private ModelEquipe modelEquipe;
 	
-	@Inject private DaoEquipe	daoEquipe;
-	@Inject Equipe 				equipe ;
+	private Equipe 		equipe ;
 	
 	public void initialize() {
+
+		equipe = modelEquipe.getCourant();
+
+		Participant courantCapitain = equipe.getCapitaine();
+		Participant courantEquipier = equipe.getEquipier();
 		
-		Participant courantCapitain = modelParticipant.getCourantCapitain();
-		Participant courantEquipier = modelParticipant.getCourantEquipier();
+		//Participant courantCapitain = modelParticipant.getCourantCapitain();
+		//Participant courantEquipier = modelParticipant.getCourantEquipier();
 		
+		idEquipe.textProperty().bindBidirectional(equipe.idProperty(), new ConverterStringInteger());
+		nomEquipe.textProperty().bindBidirectional(equipe.nomProperty());
 		
 		// Capitain
 		nomC.textProperty().bindBidirectional( courantCapitain.nomProperty() );
@@ -114,15 +122,9 @@ public class ControllerParticipantAjouter {
 	}
 	
 	@FXML public void doEnregistrer() {
-		modelParticipant.validerMiseAJour();
-		if(nomEquipe.getText() == "" || nomEquipe.getText().isEmpty()) {
-			System.out.println("Le nom d'equipe ne dois pas etre vide");
-		}else {
-			Equipe equipe = new Equipe(nomEquipe.getText(), modelParticipant.getCourantCapitain(), modelParticipant.getCourantEquipier(), 1, 2);
-			daoEquipe.inserer(equipe);
-		}
+		modelEquipe.validerMiseAJour();
 		
-		modelParticipant.preparerAjouter();
+		modelEquipe.preparerAjouter();
 		managerGui.showView( EnumView.ParticipantAjouter);
 		
 	}
