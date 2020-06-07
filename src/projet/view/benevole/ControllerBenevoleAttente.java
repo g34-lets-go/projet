@@ -24,8 +24,6 @@ public class ControllerBenevoleAttente {
 	@FXML
 	private TableView<Benevole>	tableViewBenevoles;
 	@FXML
-	private TableColumn<Benevole, Integer> columnId;
-	@FXML
 	private TableColumn<Benevole, String> columnNom;
 	@FXML
 	private TableColumn<Benevole, String> columnPrenom;
@@ -49,7 +47,6 @@ public class ControllerBenevoleAttente {
 		public void initialize() {
 			textFieldRecherche.clear();
 			tableViewBenevoles.setItems(modelBenevole.getListe());
-			columnId.setCellValueFactory(new PropertyValueFactory<Benevole,Integer>("matBene"));
 			columnNom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("nomBene"));
 			columnPrenom.setCellValueFactory(new PropertyValueFactory<Benevole,String>("prenomBene"));
 			columnAdresse.setCellValueFactory(new PropertyValueFactory<Benevole,String>("AdresseBene"));
