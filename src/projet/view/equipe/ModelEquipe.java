@@ -39,6 +39,7 @@ public class ModelEquipe  {
 	//private boolean		flagModifSchema;
 
 	
+	
 	// Autres champs
     @Inject
 	private IMapper			mapper;
@@ -53,6 +54,7 @@ public class ModelEquipe  {
 	@PostConstruct
 	public void init() {
 		//schema.addListener( obs -> flagModifSchema = true );
+		//System.out.println("test");
 	}
 	
 	
