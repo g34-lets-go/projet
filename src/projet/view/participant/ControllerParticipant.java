@@ -46,6 +46,11 @@ public class ControllerParticipant {
 		System.out.println("Aomine");
 	}
 	
+	@FXML 
+	public void doBenevole() {
+		managerGui.showView( EnumView.Benevole);
+	}
+	
 	@FXML public void listerParticipant() {
 		
 		managerGui.showView( EnumView.Participant);

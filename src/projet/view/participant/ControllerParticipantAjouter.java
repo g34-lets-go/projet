@@ -117,6 +117,11 @@ public class ControllerParticipantAjouter {
 		managerGui.showView( EnumView.Participant);
 	}
 	
+	@FXML 
+	public void doBenevole() {
+		managerGui.showView( EnumView.Benevole);
+	}
+	
 	@FXML public void doParticipant_Ajouter() {
 		managerGui.showView( EnumView.ParticipantAjouter);
 	}

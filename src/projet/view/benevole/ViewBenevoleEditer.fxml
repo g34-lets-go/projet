@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevoleAjouter">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevoleAjouter">
    <top>
       <HBox style="-fx-background-color: #06B9C7;" BorderPane.alignment="CENTER">
          <children>
@@ -34,7 +34,7 @@
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
-                  <Insets />
+                  <Insets left="200.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -46,13 +46,6 @@
             <Insets bottom="200.0" left="5.0" right="5.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <ImageView fitHeight="30.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets left="65.0" />
-               </VBox.margin>
-               <image>
-                  <Image url="@../../../img/options.png" />
-               </image></ImageView>
             <Button mnemonicParsing="false" onAction="#doBenevole" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" />
@@ -147,7 +140,7 @@
                   <Insets right="20.0" />
                </padding>
             </GridPane>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="575.0">
+            <HBox alignment="CENTER">
                <children>
                   <Label text="Permis de conduire :">
                      <padding>
@@ -164,7 +157,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER">
                <children>
                   <Label text="Êtes-vous membre du club ? ">
                      <padding>
@@ -177,6 +170,22 @@
                      </HBox.margin>
                   </CheckBox>
                </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#doAnnuler" text="Annuler">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#doEnregistrer" text="Enregistrer" />
+               </children>
+               <VBox.margin>
+                  <Insets right="30.0" />
+               </VBox.margin>
             </HBox>
          </children>
          <BorderPane.margin>
@@ -184,16 +193,4 @@
          </BorderPane.margin>
       </VBox>
    </center>
-   <bottom>
-      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#doAnnuler" text="Annuler">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#doEnregistrer" text="Enregistrer" />
-         </children>
-      </HBox>
-   </bottom>
 </BorderPane>

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevoleAttente">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevoleAttente">
    <top>
       <HBox style="-fx-background-color: #06B9C7;" BorderPane.alignment="CENTER">
          <children>
@@ -31,26 +31,18 @@
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
-                  <Insets />
+                  <Insets left="200.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="286.0" prefWidth="100.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="264.0" prefWidth="100.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="200.0" left="5.0" right="5.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <ImageView fitHeight="30.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/options.png" />
-               </image>
-               <VBox.margin>
-                  <Insets left="65.0" />
-               </VBox.margin>
-            </ImageView>
             <Button mnemonicParsing="false" onAction="#doBenevole" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textFill="#707070" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doBenevoleEditer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
@@ -66,18 +58,15 @@
    <center>
       <VBox maxHeight="500.0" prefHeight="415.0" prefWidth="590.0" style="-fx-background-color: #16818A;" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="38.0" prefWidth="590.0" style="-fx-background-color: #16818A;">
+            <GridPane alignment="CENTER_RIGHT" style="-fx-background-color: #16818A;">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="173.0" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox GridPane.columnIndex="3">
+                  <HBox>
                      <children>
                         <TextField fx:id="textFieldRecherche" onAction="#refresh" prefHeight="26.0" prefWidth="136.0">
                            <HBox.margin>
@@ -107,7 +96,7 @@
                   <TableColumn fx:id="columnAdresse" prefWidth="188.00009155273438" text="Adresse" />
               </columns>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </TableView>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="100.0" spacing="20.0" VBox.vgrow="ALWAYS">
@@ -118,7 +107,7 @@
             </HBox>
          </children>
          <BorderPane.margin>
-            <Insets bottom="10.0" top="15.0" />
+            <Insets bottom="10.0" right="10.0" top="-20.0" />
          </BorderPane.margin>
       </VBox>
    </center>
