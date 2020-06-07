@@ -102,10 +102,9 @@
             </GridPane>
             <TableView fx:id="tableViewBenevoles" maxHeight="500.0" onMouseClicked="#gererClicSurListe" onSort="#refresh" prefHeight="388.0" prefWidth="590.0">
               <columns>
-                <TableColumn fx:id="columnId" prefWidth="75.0" text="Matricule" />
                 <TableColumn fx:id="columnNom" prefWidth="200.0" text="Nom" />
                   <TableColumn fx:id="columnPrenom" minWidth="2.39996337890625" prefWidth="200.0" text="Prenom" />
-                  <TableColumn fx:id="columnAdresse" prefWidth="115.0" text="Poste" />
+                  <TableColumn fx:id="columnAdresse" prefWidth="188.00009155273438" text="Adresse" />
               </columns>
                <VBox.margin>
                   <Insets top="10.0" />
