@@ -42,14 +42,15 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
+            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
             <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Paramètres" textFill="#707070">
                <font>
                   <Font name="System Bold" size="15.0" />
-               </font></Button>
-            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
                   <Insets />
