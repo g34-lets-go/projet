@@ -67,12 +67,12 @@
                <children>
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="78.0">
+                        <TextField fx:id="textFieldRecherche" onAction="#refresh" prefHeight="25.0" prefWidth="78.0">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="36.0" text="Ok" />
+                        <Button mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="36.0" text="Ok" />
                      </children>
                      <GridPane.margin>
                         <Insets right="10.0" top="5.0" />

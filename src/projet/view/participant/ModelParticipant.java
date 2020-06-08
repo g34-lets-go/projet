@@ -72,6 +72,11 @@ public class ModelParticipant {
 		mapper.update( courantEquipier, daoParticipant.retrouver( itemE.getId() ) );
 		
 	}
+	
+	public void rechercher(String text1) {
+		liste.setAll( daoParticipant.rechercher(text1.toLowerCase(), text1.toUpperCase()) );
+	}
+	
 
 	public void validerMiseAJour() {
 

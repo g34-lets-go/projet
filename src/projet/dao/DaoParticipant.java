@@ -62,63 +62,37 @@ public int inserer (Participant participant) {
 }
 	
 	// Modifie les bénévoles
-public void modifier(Participant participant)  {
-
-	Connection			cn		= null;
-	PreparedStatement	stmt	= null;
-	String 				sql;
-
-	try {
-		cn = dataSource.getConnection();
-
-		// Modifie le bénévole
-		sql = "UPDATE benevole SET nom = ?, prenom = ?, date_naiss  = ?, telephone = ?, email = ?, adresse = ?, attestations_ok = ?, frais_paye = ?, repas_supplementaire = ?, id_velo = ? WHERE matricule_p =  ?";
-		stmt = cn.prepareStatement( sql );
-		stmt.setObject( 1, participant.getNom());
-		stmt.setObject( 2, participant.getPrenom());
-		stmt.setObject( 3, participant.getDateN());
-		stmt.setObject( 4, participant.getTel());
-		stmt.setObject( 5, participant.getEmail());
-		stmt.setObject( 6, participant.getAdresse());
-		stmt.setObject( 7, participant.getAttestation());
-		stmt.setObject( 8, participant.getFrais_paye());
-		stmt.setObject( 9, participant.getRepasSup());
-		stmt.setObject( 10, participant.getIdVelo());
-		stmt.setObject( 11, participant.getId());
-		stmt.executeUpdate();
-		
-	} catch (SQLException e) {
-		throw new RuntimeException(e);
-	} finally {
-		UtilJdbc.close( stmt, cn );
+	public void modifier(Participant participant)  {
+	
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		String 				sql;
+	
+		try {
+			cn = dataSource.getConnection();
+	
+			// Modifie le bénévole
+			sql = "UPDATE participant SET nom = ?, prenom = ?, date_naiss  = ?, telephone = ?, email = ?, adresse = ?, attestations_ok = ?, frais_paye = ?, repas_supplementaire = ?, id_velo = ? WHERE matricule_p =  ?";
+			stmt = cn.prepareStatement( sql );
+			stmt.setObject( 1, participant.getNom());
+			stmt.setObject( 2, participant.getPrenom());
+			stmt.setObject( 3, participant.getDateN());
+			stmt.setObject( 4, participant.getTel());
+			stmt.setObject( 5, participant.getEmail());
+			stmt.setObject( 6, participant.getAdresse());
+			stmt.setObject( 7, participant.getAttestation());
+			stmt.setObject( 8, participant.getFrais_paye());
+			stmt.setObject( 9, participant.getRepasSup());
+			stmt.setObject( 10, participant.getIdVelo());
+			stmt.setObject( 11, participant.getId());
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( stmt, cn );
+		}
 	}
-}
-
-// Supprime un bénévole
-/*public void supprimer(int matricule_b)  {
-
-	Connection			cn		= null;
-	PreparedStatement	stmt	= null;
-	String 				sql;
-
-	// Supprime les telephones
-//	daoTelephone.supprimerPourPersonne( matricule_b );
-
-	try {
-		cn = dataSource.getConnection();
-
-		// Supprime le personne
-		sql = "DELETE FROM benevole WHERE matricule_b = ? ";
-		stmt = cn.prepareStatement(sql);
-		stmt.setObject( 1, matricule_b );
-		stmt.executeUpdate();
-
-	} catch (SQLException e) {
-		throw new RuntimeException(e);
-	} finally {
-		UtilJdbc.close( stmt, cn );
-	}
-}*/
 	
 	public Participant retrouver(int id)  {
 
@@ -173,6 +147,36 @@ public void modifier(Participant participant)  {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+	
+	// Rechercher un participant
+		public List<Participant> rechercher(String text1, String text2)   {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "SELECT * FROM participant WHERE nom LIKE ? OR nom LIKE ? AND valider = true";
+	            stmt = cn.prepareStatement(sql);
+	            stmt.setObject( 1, text1+"%");
+	            stmt.setObject( 2, text2+"%");
+	            rs = stmt.executeQuery();
+				
+				List<Participant> participants = new ArrayList<>();
+				while (rs.next()) {
+					participants.add( construireParticipant(rs, true) );
+				}
+				return participants;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
 	
 	private Participant construireParticipant( ResultSet rs, boolean flagComplet ) throws SQLException {
 

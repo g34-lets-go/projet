@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Participant;
@@ -22,6 +23,8 @@ public class ControllerParticipant {
 
 	@Inject
 	private IManagerGui			managerGui;
+	@Inject
+	private ModelParticipant	modelParticipant;
 	
 	
 	@FXML
@@ -34,6 +37,8 @@ public class ControllerParticipant {
 	private TableColumn<Participant, String> columnPrenom;
 	@FXML
 	private TableColumn<Participant, String> columnEngagement;
+	@FXML
+	private TextField textFieldRecherche;
 	
 	ObservableList<Participant> donnees = FXCollections.observableArrayList();  
 	
@@ -43,7 +48,7 @@ public class ControllerParticipant {
 	
 	@FXML public void doAccueil() {
 		managerGui.showView( EnumView.Accueil);
-		System.out.println("Aomine");
+		//System.out.println("Aomine");	
 	}
 	
 	@FXML 
@@ -139,5 +144,12 @@ public class ControllerParticipant {
 		columnPrenom.setCellValueFactory(new PropertyValueFactory<Participant,String>("prenom"));
 		columnEngagement.setCellValueFactory(new PropertyValueFactory<Participant,String>("frais_paye"));
 		
+	}
+	
+	public void refresh() {
+		if(textFieldRecherche.getText()==null || textFieldRecherche.getText().isEmpty() )
+			modelParticipant.actualiserListe();
+		else
+			modelParticipant.rechercher(textFieldRecherche.getText());
 	}
 }
