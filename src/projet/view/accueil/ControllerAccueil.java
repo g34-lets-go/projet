@@ -25,4 +25,9 @@ public class ControllerAccueil {
 	public void doBenevole() {
 		managerGui.showView( EnumView.Benevole);
 	}
+	
+	@FXML 
+	public void doPoste() {
+		managerGui.showView( EnumView.Poste);
+	}
 }

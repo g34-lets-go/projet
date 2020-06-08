@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevole">
    <top>
@@ -24,15 +25,33 @@
                   <Image url="@../../../img/logo.png" />
                </image>
             </ImageView>
-            <Button maxWidth="206.0" mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="138.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
-            <Button maxWidth="143.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="Bénévoles" />
-            <Button maxWidth="152.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070" />
-            <Button maxWidth="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070" />
-            <Button maxWidth="124.0" mnemonicParsing="false" onAction="#doPoste" prefHeight="50.0" prefWidth="124.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070" />
-            <Button maxWidth="131.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="131.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
-            <Button maxWidth="146.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="143.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
+            <Button maxWidth="206.0" mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="152.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Bénévoles">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="172.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="130.0" mnemonicParsing="false" onAction="#doPoste" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="131.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Paramètres" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="146.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
-                  <Insets left="200.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>
@@ -49,7 +68,7 @@
             <Button mnemonicParsing="false" onAction="#doBenevoleEditer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Editer" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doSupprimer" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Supprimer" />
             <Button mnemonicParsing="false" onAction="#doBenevoleAttente" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Paramètres" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -62,6 +81,11 @@
          <children>
             <AnchorPane prefHeight="500.0" prefWidth="780.0">
                <children>
+                  <ImageView fitHeight="429.0" fitWidth="782.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/bénévoles2.jpg" />
+                     </image>
+                  </ImageView>
                   <GridPane layoutX="600.0" layoutY="14.0" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #16818A;">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="173.0" />
@@ -93,11 +117,11 @@
                         </HBox>
                      </children>
                   </GridPane>
-                  <TableView fx:id="tableViewBenevoles" layoutX="13.0" layoutY="56.0" maxHeight="500.0" onMouseClicked="#gererClicSurListe" opacity="0.88" prefHeight="384.0" prefWidth="753.0">
+                  <TableView fx:id="tableViewBenevoles" layoutX="-1.0" layoutY="56.0" maxHeight="500.0" onMouseClicked="#gererClicSurListe" opacity="0.88" prefHeight="384.0" prefWidth="784.0">
                     <columns>
-                      <TableColumn fx:id="columnNom" prefWidth="147.19994509220123" text="Nom" />
-                        <TableColumn fx:id="columnPrenom" minWidth="2.39996337890625" prefWidth="232.79998779296875" text="Prenom" />
-                        <TableColumn fx:id="columnAdresse" prefWidth="209.5999816894531" text="Adresse" />
+                      <TableColumn fx:id="columnNom" prefWidth="217.5999984741211" text="Nom" />
+                        <TableColumn fx:id="columnPrenom" minWidth="2.39996337890625" prefWidth="222.40005493164062" text="Prenom" />
+                        <TableColumn fx:id="columnAdresse" prefWidth="335.19989013671875" text="Adresse" />
                     </columns>
                   </TableView>
                   <Button layoutX="659.0" layoutY="455.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="107.0" text="Imprimer" />

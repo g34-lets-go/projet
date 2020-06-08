@@ -1,7 +1,7 @@
 SET search_path TO projet;
 
 
--- Supprime toutes les fonctions du schéma
+ --Supprime toutes les fonctions du schéma
 
 --DO $ccode$
 --DECLARE 
@@ -34,7 +34,7 @@ SET search_path TO projet;
 --	INSERT INTO compte ( pseudo, motdepasse, email )
 --	VALUES ( p_pseudo, p_motdepasse,p_email )
 --	RETURNING idcompte INTO p_idcompte;
-	
+
 --	FOREACH v_role IN ARRAY p_roles LOOP
 --		INSERT INTO role ( idcompte, role )
 --		VALUES ( p_idcompte, v_role );

@@ -24,18 +24,33 @@
                   <Image url="@../../../img/logo.png" />
                </image>
             </ImageView>
-            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070">
+            <Button maxWidth="110.0" mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
-            <Button maxWidth="100.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070" />
-            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070" />
-            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Postes" />
-            <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
+            <Button maxWidth="120.0" mnemonicParsing="false" onAction="#doBenevole" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Bénévoles" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="120.0" mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Participants" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Postes">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Paramètres" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
             <Button maxWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
-                  <Insets left="200.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>
@@ -49,7 +64,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
             <Button mnemonicParsing="false" onAction="#doLocalisation" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: #8FAF9E;" text="Localisation" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Setting" textFill="#707070">
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Paramètres" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
@@ -91,17 +106,14 @@
                   </HBox>
                </children>
             </GridPane>
-            <TableView fx:id="tableViewPostes">
+            <TableView fx:id="tableViewPostes" prefHeight="398.0" prefWidth="724.0">
               <columns>
-                  <TableColumn fx:id="columnId" prefWidth="53.0" text="Id" />
-                <TableColumn fx:id="columnNom" prefWidth="116.0" text="Postes" />
-                <TableColumn fx:id="columnDescription" prefWidth="242.40008544921875" text="Description" />
-                  <TableColumn fx:id="columnNbActuel" prefWidth="107.19998168945312" text="Personnel actuel" />
-                  <TableColumn fx:id="columnPersonnel" prefWidth="86.0" text="Sur" />
+                  <TableColumn fx:id="columnId" minWidth="0.0" prefWidth="71.99999618530273" text="Id" />
+                <TableColumn fx:id="columnNom" prefWidth="182.3999786376953" text="Postes" />
+                <TableColumn fx:id="columnDescription" prefWidth="309.6000061035156" text="Descriptions" />
+                  <TableColumn fx:id="columnNbActuel" prefWidth="137.5999755859375" text="Présent" />
+                  <TableColumn fx:id="columnPersonnel" prefWidth="53.60009765625" text="Sur" />
               </columns>
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>

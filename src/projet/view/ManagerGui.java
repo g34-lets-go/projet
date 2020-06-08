@@ -35,7 +35,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 	protected void configureStage()  {
 		
 		// Choisit la vue à afficher
-		showView( EnumView.Accueil);
+		showView(EnumView.Accueil);
 		
 		// Configure le stage
 		stage.setTitle( "Gestion de BOLS d'AIR" );
