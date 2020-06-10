@@ -1,6 +1,7 @@
 package projet.view.participant;
 import javax.inject.Inject;
 
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -8,6 +9,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.util.StringConverter;
 import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
@@ -101,28 +103,28 @@ public class ControllerParticipantAjouter {
             @Override
             public String fromString(String repas ) {
                 try {
-                    double d = Double.parseDouble();
-                    d=d*0.8967;
-                    return String.format("%.2f", d);                    
+                    int d = Integer.parseInt(repas);
+                    d=d*7;
+                    return String.format("%d €", d);                    
                 } catch (Exception e) {
-                    return ("ERR $");
+                    return ("");
                 }
             }
 
  
 
             @Override
-            public String toString(String $Val) {
+            public String toString(String prixrepas) {
                 try {
-                    double d = Double.parseDouble($Val);
-                    d=d*1.1151;
-                    return String.format("%.2f", d);
+                    int d = Integer.parseInt(prixrepas) ;
+                    d=d/7;
+                    return String.format("%d", d);
                 } catch (Exception e) {
-                    return ("ERR €");
+                    return ("");
                 }
             }
-            
-            Bindings.bindBidirectional(repasSupp.textProperty(),tfDollar.textProperty(),monConverteur);
+        };
+        Bindings.bindBidirectional(repasSupp.textProperty(),prixrepasSupp.textProperty(),monConverteur);
 		
 		// Choix du bol
 		toggleGroupChoixBol = new ToggleGroup();
@@ -140,8 +142,9 @@ public class ControllerParticipantAjouter {
 		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
 		//actualiserChoixDansVue();
 		
-		prixrepasSupp.setText("0000000");
+		prixrepasSupp.setText("0 €");
 
+		
 	}
 	
 	@FXML public void doAccueil() {
