@@ -60,6 +60,17 @@ public class ControllerParticipant {
 		managerGui.showView( EnumView.Benevole);
 	}
 	
+	@FXML 
+	public void doParticipantAttente() {
+		managerGui.showView( EnumView.ParticipantAttente);
+	}
+	
+	@FXML 
+	public void doPoste() {
+		managerGui.showView( EnumView.Poste);
+	}
+	
+	
 	@FXML public void listerParticipant() {
 		
 		managerGui.showView( EnumView.Participant);

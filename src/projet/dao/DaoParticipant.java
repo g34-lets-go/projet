@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
+import projet.data.Benevole;
 import projet.data.Participant;
 
 public class DaoParticipant {
@@ -132,7 +133,7 @@ public int inserer (Participant participant) {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant ORDER BY nom, prenom";
+			sql = "SELECT * FROM participant WHERE valider = true ORDER BY nom, prenom";
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
@@ -148,6 +149,34 @@ public int inserer (Participant participant) {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+	
+	// Lister les participants en attente
+		public List<Participant> listerToutAttente()   {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+
+				sql = "SELECT * FROM participant WHERE valider = false";
+				stmt = cn.prepareStatement(sql);
+				rs = stmt.executeQuery();
+				
+				List<Participant> participants = new ArrayList<>();
+				while (rs.next()) {
+					participants.add( construireParticipant(rs, true) );
+				}
+				return participants;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
 	
 	// Rechercher un participant
 		public List<Participant> rechercher(String text1, String text2)   {
@@ -177,6 +206,30 @@ public int inserer (Participant participant) {
 			} finally {
 				UtilJdbc.close( rs, stmt, cn );
 			}
+		}
+		
+		// Validation	
+		public void valider(int matricule_p)  {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			String 				sql;
+
+			try {
+				cn = dataSource.getConnection();
+
+				// Modifie le bénévole
+				sql = "UPDATE participant SET valider = TRUE WHERE matricule_p =  ?";
+				stmt = cn.prepareStatement( sql );
+				stmt.setObject( 1, matricule_p);
+				stmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( stmt, cn );
+			}
+
 		}
 	
 	private Participant construireParticipant( ResultSet rs, boolean flagComplet ) throws SQLException {

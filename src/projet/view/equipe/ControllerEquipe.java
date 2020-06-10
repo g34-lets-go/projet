@@ -82,6 +82,16 @@ public class ControllerEquipe {
 		managerGui.showView( EnumView.Participant);
 	}
 	
+	@FXML 
+	public void doParticipantAttente() {
+		managerGui.showView( EnumView.ParticipantAttente);
+	}
+	
+	@FXML 
+	public void doPoste() {
+		managerGui.showView( EnumView.Poste);
+	}
+	
 	@FXML public void doParticipantAjouter() {
 		modelParticipant.preparerAjouter();
 		managerGui.showView( EnumView.ParticipantAjouter);

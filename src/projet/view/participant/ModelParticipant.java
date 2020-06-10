@@ -55,6 +55,10 @@ public class ModelParticipant {
 	public void actualiserListe() {
 		liste.setAll( daoParticipant.listerTout() );
 	}
+	
+	public void actualiserListeAttente() {
+		liste.setAll( daoParticipant.listerToutAttente() );
+	}
 
 	
 	
@@ -135,6 +139,10 @@ public class ModelParticipant {
 			daoParticipant.modifier( courantCapitain );
 			daoParticipant.modifier( courantEquipier );
 		}
+	}
+	
+	public void validation (Participant item) {
+		daoParticipant.valider(item.getId());
 	}
 	
 

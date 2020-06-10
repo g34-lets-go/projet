@@ -94,7 +94,7 @@ public class ControllerBenevoleAttente {
 	
 	@FXML
 	public void doBenevoleAjouter() {
-		modelBenevole.preparerAjouter();;
+		modelBenevole.preparerAjouter();
 		managerGui.showView( EnumView.BenevoleAjouter );
 	}
 

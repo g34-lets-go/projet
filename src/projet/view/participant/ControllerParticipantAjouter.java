@@ -179,6 +179,16 @@ public class ControllerParticipantAjouter {
 	@FXML public void doClub() {		
 		managerGui.showView( EnumView.ParticipantEquipe);
 	}
+	
+	@FXML 
+	public void doParticipantAttente() {
+		managerGui.showView( EnumView.ParticipantAttente);
+	}
+	
+	@FXML 
+	public void doPoste() {
+		managerGui.showView( EnumView.Poste);
+	}
 
 
 	@FXML public void doAnnuler() {

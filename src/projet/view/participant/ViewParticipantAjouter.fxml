@@ -40,11 +40,11 @@
                </font></Button>
             <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="49.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Participants">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="49.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Postes">
+            <Button mnemonicParsing="false" onAction="#doPoste" prefHeight="49.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
             <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070">
@@ -72,7 +72,7 @@
             <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textFill="#707070" />
             <Button mnemonicParsing="false" onAction="#doParticipant_Ajouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" />
             <Button mnemonicParsing="false" onAction="#doClub" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Equipes" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doParticipantAttente" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Paramètres" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />
