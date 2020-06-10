@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #6F7A61;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.equipe.ControllerEquipe">
    <top>
@@ -20,30 +21,50 @@
                   <Image url="@../../../img/logo.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="89.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Benevoles" textFill="#707070" />
-            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="49.0" prefWidth="92.0" style="-fx-background-color: transparent;" text="Participants" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: transparent;" text="Résultat" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="61.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
+            <Button mnemonicParsing="false" onAction="#doAccueil" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" text="Accueil" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Bénévoles" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Participants">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Postes" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Paramètres" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Sign out" textFill="#707070">
                <HBox.margin>
-                  <Insets left="170.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
    </top>
    <left>
-      <VBox maxHeight="172.0" prefHeight="172.0" prefWidth="100.0" style="-fx-background-color: #8FAF9E;" BorderPane.alignment="CENTER">
+      <VBox maxHeight="172.0" prefHeight="172.0" prefWidth="100.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets left="5.0" right="5.0" top="-360.0" />
+            <Insets left="5.0" right="5.0" top="-355.0" />
          </BorderPane.margin>
          <children>
-            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Lister" textFill="#707070" />
-            <Button mnemonicParsing="false" onAction="#doParticipantAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Ajouter" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Justificatifs" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070">
+            <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Lister" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doParticipantAjouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #8FAF9E;" text="Ajouter" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #8FAF9E;" text="Equipes" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="En attente" textFill="#707070" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #8FAF9E;" text="Paramètres" textFill="#707070">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
