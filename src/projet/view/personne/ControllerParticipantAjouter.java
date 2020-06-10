@@ -1,4 +1,4 @@
-package projet.view.participant;
+package projet.view.personne;
 import javax.inject.Inject;
 
 import javafx.beans.binding.Bindings;
@@ -56,7 +56,6 @@ public class ControllerParticipantAjouter {
 	@Inject private ModelEquipe modelEquipe;
 	
 	private Equipe 		equipe ;
-	
 	
 	public void initialize() {
 
@@ -141,12 +140,7 @@ public class ControllerParticipantAjouter {
 		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
 		//actualiserChoixDansVue();
 		
-<<<<<<< HEAD
-		toggleGroupCategorie = new ToggleGroup();
-		toggleGroupCategorie.selectedToggleProperty().addListener( obs -> actualiserCategorieDansModel() );
-=======
 		prixrepasSupp.setText("0 €");
->>>>>>> branch 'master' of https://github.com/g34-lets-go/projet.git
 
 		
 	}
@@ -165,7 +159,6 @@ public class ControllerParticipantAjouter {
 	}
 	
 	@FXML public void doParticipant_Ajouter() {
-		modelParticipant.preparerAjouter();
 		managerGui.showView( EnumView.ParticipantAjouter);
 	}
 	
@@ -173,8 +166,7 @@ public class ControllerParticipantAjouter {
 		modelEquipe.validerMiseAJour();
 		
 		modelEquipe.preparerAjouter();
-		managerGui.showDialogMessage("Vous venez d'ajouter une nouvelle équipe !");
-		managerGui.showView( EnumView.Participant);
+		managerGui.showView( EnumView.ParticipantAjouter);
 		
 	}
 	
@@ -202,9 +194,6 @@ public class ControllerParticipantAjouter {
 		int choix = toggleGroupChoixBol.getToggles().indexOf( bouton  );
 		modelParticipant.getCourantCapitain().setFrais_paye( choix );
 		modelParticipant.getCourantEquipier().setFrais_paye( choix );
-		//modelEquipe.getCourant().getCapitaine().setFrais_paye(choix);
-		//modelEquipe.getCourant().getEquipier().setFrais_paye(choix);
-		modelEquipe.getCourant().setIdCourse(choix);
 	}
 	
 	private void actualiserChoixDansVue() {
@@ -215,26 +204,17 @@ public class ControllerParticipantAjouter {
 		Toggle boutonE = toggleGroupChoixBol.getToggles().get( choixE );
 		toggleGroupChoixBol.selectToggle(  boutonC );
 		toggleGroupChoixBol.selectToggle(  boutonE );
-		
-		/*int choixC = modelEquipe.getCourant().getCapitaine().getFrais_paye();
-		int choixE = modelEquipe.getCourant().getEquipier().getFrais_paye();
-		Toggle boutonC = toggleGroupChoixBol.getToggles().get( choixC );
-		Toggle boutonE = toggleGroupChoixBol.getToggles().get( choixE );
-		toggleGroupChoixBol.selectToggle(  boutonC );
-		toggleGroupChoixBol.selectToggle(  boutonE );*/
 	}
 	
-	private void actualiserCategorieDansModel() {
-		Toggle bouton = toggleGroupCategorie.getSelectedToggle();
-		int choix = toggleGroupCategorie.getToggles().indexOf( bouton  );
-		System.out.println("---------------------"+choix);
-		
-		modelParticipant.getCourantCapitain().setFrais_paye( choix );
-		modelParticipant.getCourantEquipier().setFrais_paye( choix );
-		//modelEquipe.getCourant().getCapitaine().setFrais_paye(choix);
-		//modelEquipe.getCourant().getEquipier().setFrais_paye(choix);
-		modelEquipe.getCourant().setIdCourse(choix);
-	}
-	
+	/*public void refraichir() {
+		nomEquipe.setText(null);
+		nomC.setText(null);	
+		prenomC.setText(null);
+		dateNC.set	
+		telC;	
+		adresseC;
+		emailC;	
+		attestationC;
+	}*/
 	
 }

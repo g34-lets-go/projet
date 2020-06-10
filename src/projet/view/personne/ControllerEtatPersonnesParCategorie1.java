@@ -74,7 +74,7 @@ public class ControllerEtatPersonnesParCategorie1 {
 	private void doEtat() {
 		Map<String, Object> params = new HashMap<>();
 		params.put( "idCategorie", listView.getSelectionModel().getSelectedItem().getId() );
-		managerReport.showViewer( EnumReport.PersonnesParCategorie1, params);
+		//managerReport.showViewer( EnumReport.PersonnesParCategorie1, params);
 	}
 	
 	

@@ -13,8 +13,9 @@ public class Categorie  {
 
 	// Données observables
 	
-	private final Property<Integer>	id		= new SimpleObjectProperty<>();
-	private final StringProperty	libelle	= new SimpleStringProperty();
+	private final Property<Integer>	id			= new SimpleObjectProperty<>();
+	private final StringProperty	libelle		= new SimpleStringProperty();
+	private final Property<Integer>	id_equipe	= new SimpleObjectProperty<>();
 	
 	
 	// Constructeurs
@@ -54,6 +55,21 @@ public class Categorie  {
 		this.libelleProperty().setValue(libelle);
 	}
 
+	public final Property<Integer> id_equipeProperty() {
+		return this.id_equipe;
+	}
+	
+
+	public final Integer getId_equipe() {
+		return this.id_equipeProperty().getValue();
+	}
+	
+
+	public final void setId_equipe(final Integer id_equipe) {
+		this.id_equipeProperty().setValue(id_equipe);
+	}
+
+	
 	
 	// toString()
 	
@@ -81,6 +97,7 @@ public class Categorie  {
 		Categorie other = (Categorie) obj;
 		return Objects.equals(id.getValue(), other.id.getValue() );
 	}
+	
 	
 }
 

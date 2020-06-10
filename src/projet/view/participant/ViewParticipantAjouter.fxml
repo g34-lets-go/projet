@@ -49,8 +49,8 @@
          </BorderPane.margin>
          <children>
             <Button mnemonicParsing="false" onAction="#doParticipant" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Lister" textFill="#707070" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Ajouter" />
-            <Button mnemonicParsing="false" onAction="#doClub" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Editer" textFill="#707070" />
+            <Button mnemonicParsing="false" onAction="#doParticipant_Ajouter" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Ajouter" />
+            <Button mnemonicParsing="false" onAction="#doClub" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: transparent;" text="Equipe" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Justificatifs" textFill="#707070" />
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Setting" textFill="#707070">
                <VBox.margin>
@@ -274,10 +274,10 @@
                                           <Insets bottom="10.0" top="10.0" />
                                        </VBox.margin>
                                        <toggleGroup>
-                                          <ToggleGroup fx:id="toggleGroupBol" />
+                                          <ToggleGroup fx:id="toggleGroupChoixBol" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="choixGrandBol" mnemonicParsing="false" text="Grand bol   2x 25€ (50€ au total)" toggleGroup="$toggleGroupBol">
+                                    <RadioButton fx:id="choixGrandBol" mnemonicParsing="false" text="Grand bol   2x 25€ (50€ au total)" toggleGroup="$toggleGroupChoixBol">
                                        <VBox.margin>
                                           <Insets bottom="20.0" />
                                        </VBox.margin>

@@ -35,9 +35,10 @@ public class DaoCategorie {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO categorie ( libelle ) VALUES( ? ) ";
+			sql = "INSERT INTO categorie ( libelle, id_equipe ) VALUES( ?, ? ) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, categorie.getLibelle() );
+			stmt.setObject( 2, categorie.getId_equipe() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -157,6 +158,7 @@ public class DaoCategorie {
 		Categorie categorie = new Categorie();
 		categorie.setId( rs.getObject( "idcategorie", Integer.class ) );
 		categorie.setLibelle( rs.getObject( "libelle", String.class ) );
+		categorie.setId_equipe( rs.getObject( "id_equipe", Integer.class ) );
 		return categorie;
 	}
 
