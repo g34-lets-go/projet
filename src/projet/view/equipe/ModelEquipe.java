@@ -14,6 +14,7 @@ import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoEquipe;
+import projet.dao.DaoParticipant;
 import projet.dao.DaoPersonne;
 import projet.data.Equipe;
 import projet.data.Memo;
@@ -45,6 +46,8 @@ public class ModelEquipe  {
 	private IMapper			mapper;
     @Inject
 	private DaoEquipe			daoEquipe;
+    @Inject
+	private DaoParticipant			daoParticipant;
     @Inject
     private ModelParticipant 	modelParticipant;
 	
@@ -182,7 +185,9 @@ public class ModelEquipe  {
 	}
 	
 	public void supprimer( Equipe item ) {
-		
+
+		daoParticipant.supprimer(item.getCapitaine().getId());
+		daoParticipant.supprimer(item.getEquipier().getId());
 		daoEquipe.supprimer( item.getId() );
 		mapper.update( courant, UtilFX.findNext( liste, item ) );
 		

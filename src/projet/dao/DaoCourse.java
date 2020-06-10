@@ -8,28 +8,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import jfox.dao.jdbc.UtilJdbc;
-import projet.data.Benevole;
+import projet.data.Course;
 import projet.data.Participant;
 
-public class DaoParticipant {
+public class DaoCourse {
 
 	
 	@Inject
 	private DataSource		dataSource;
 	
-public int inserer (Participant participant) {
+/*public int inserer (Participant participant) {
 	
 	Connection			cn		= null;
 	PreparedStatement	stmt	= null;
 	ResultSet 			rs		= null;
 	String				sql;
+	
 
 	try {
 		cn = dataSource.getConnection();
@@ -118,9 +124,9 @@ public int inserer (Participant participant) {
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
-	}
+	}*/
 	
-	public Participant retrouver(int id)  {
+	public Course retrouver(int id)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -130,13 +136,13 @@ public int inserer (Participant participant) {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant WHERE matricule_p = ?";
+			sql = "SELECT * FROM course WHERE id_course = ?";
             stmt = cn.prepareStatement(sql);
             stmt.setObject( 1, id);
             rs = stmt.executeQuery();
 
             if ( rs.next() ) {
-                return construireParticipant(rs, true );
+                return construireCourse(rs, true );
             } else {
             	return null;
             }
@@ -147,7 +153,7 @@ public int inserer (Participant participant) {
 		}
 	}
 	
-	public List<Participant> listerTout()   {
+	/*public List<Participant> listerTout()   {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -157,7 +163,7 @@ public int inserer (Participant participant) {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant WHERE valider = true ORDER BY nom, prenom";
+			sql = "SELECT * FROM participant ORDER BY nom, prenom";
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
@@ -173,34 +179,6 @@ public int inserer (Participant participant) {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-	
-	// Lister les participants en attente
-		public List<Participant> listerToutAttente()   {
-
-			Connection			cn		= null;
-			PreparedStatement	stmt	= null;
-			ResultSet 			rs 		= null;
-			String				sql;
-
-			try {
-				cn = dataSource.getConnection();
-
-				sql = "SELECT * FROM participant WHERE valider = false";
-				stmt = cn.prepareStatement(sql);
-				rs = stmt.executeQuery();
-				
-				List<Participant> participants = new ArrayList<>();
-				while (rs.next()) {
-					participants.add( construireParticipant(rs, true) );
-				}
-				return participants;
-
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			} finally {
-				UtilJdbc.close( rs, stmt, cn );
-			}
-		}
 	
 	// Rechercher un participant
 		public List<Participant> rechercher(String text1, String text2)   {
@@ -230,52 +208,29 @@ public int inserer (Participant participant) {
 			} finally {
 				UtilJdbc.close( rs, stmt, cn );
 			}
-		}
-		
-		// Validation	
-		public void valider(int matricule_p)  {
-
-			Connection			cn		= null;
-			PreparedStatement	stmt	= null;
-			String 				sql;
-
-			try {
-				cn = dataSource.getConnection();
-
-				// Modifie le bénévole
-				sql = "UPDATE participant SET valider = TRUE WHERE matricule_p =  ?";
-				stmt = cn.prepareStatement( sql );
-				stmt.setObject( 1, matricule_p);
-				stmt.executeUpdate();
-				
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			} finally {
-				UtilJdbc.close( stmt, cn );
-			}
-
-		}
+		}*/
 	
-	private Participant construireParticipant( ResultSet rs, boolean flagComplet ) throws SQLException {
+	
+	private Course construireCourse( ResultSet rs, boolean flagComplet ) throws SQLException {
 
-		Participant participant = new Participant();
-		participant.setId(rs.getObject( "matricule_p", Integer.class ));
-		participant.setNom(rs.getObject( "nom", String.class ));
-		participant.setPrenom(rs.getObject( "prenom", String.class ));
-		participant.setDateN(rs.getObject( "date_naiss", LocalDate.class ));
-		participant.setTel(rs.getObject( "telephone", Integer.class ));
-		participant.setAdresse(rs.getObject( "adresse", String.class ));
-		participant.setEmail(rs.getObject( "email", String.class ));
-		participant.setAttestation(rs.getObject( "attestations_ok", Boolean.class ));
-		participant.setRepasSup(rs.getObject( "repas_supplementaire", Integer.class ));
-		participant.setIdVelo(rs.getObject( "id_velo", Integer.class ));
+		Course course = new Course();
+		course.setId(rs.getObject( "id_course", Integer.class ));
+		course.setNom(rs.getObject( "nom_course", String.class ));
+		/*course.setPrenom(rs.getObject( "prenom", String.class ));
+		course.setDateN(rs.getObject( "date_naiss", LocalDate.class ));
+		course.setTel(rs.getObject( "telephone", Integer.class ));
+		course.setAdresse(rs.getObject( "adresse", String.class ));
+		course.setEmail(rs.getObject( "email", String.class ));
+		course.setAttestation(rs.getObject( "attestations_ok", Boolean.class ));
+		course.setRepasSup(rs.getObject( "repas_supplementaire", Integer.class ));
+		course.setIdVelo(rs.getObject( "id_velo", Integer.class ));*/
 		
 		
 		if ( flagComplet ) {
 			//participant.setPosteBene( daoPoste.retrouver( rs.getObject("id_poste", Integer.class) ) );
 		}
 		
-		return participant;
+		return course;
 	}
 	
 }

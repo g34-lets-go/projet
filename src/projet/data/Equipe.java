@@ -22,6 +22,7 @@ public class Equipe {
 	private final Property<Integer>		idCourse	= new SimpleObjectProperty<>(1);
 	private final Property<Integer>		numDossard	= new SimpleObjectProperty<>();
 	private final Property<Categorie>	categorie	= new SimpleObjectProperty<>();
+	private final Property<Integer>		repasSupplementaire	= new SimpleObjectProperty<>();
 	
 	// Constructeurs
 	
@@ -166,6 +167,21 @@ public class Equipe {
 	public final void setCategorie(final Categorie categorie) {
 		this.categorieProperty().setValue(categorie);
 	}
+
+	public final Property<Integer> repasSupplementaireProperty() {
+		return this.repasSupplementaire;
+	}
+	
+
+	public final Integer getRepasSupplementaire() {
+		return this.repasSupplementaireProperty().getValue();
+	}
+	
+
+	public final void setRepasSupplementaire(final Integer repasSupplementaire) {
+		this.repasSupplementaireProperty().setValue(repasSupplementaire);
+	}
+	
 	
 	
 	

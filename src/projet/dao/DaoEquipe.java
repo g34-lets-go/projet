@@ -82,7 +82,7 @@ public class DaoEquipe {
 			cn = dataSource.getConnection();
 
 			// Modifie une equipe
-			sql = "UPDATE equipe SET nom = ? WHERE id_equipe =  ?";
+			sql = "UPDATE equipe SET nom_equipe = ? WHERE id_equipe =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, equipe.getNom() );
 			stmt.setObject( 2, equipe.getId() );
@@ -107,7 +107,7 @@ public class DaoEquipe {
 			cn = dataSource.getConnection();
 
 			// Supprime une equipe
-			sql = "DELETE FROM equipe WHERE id = ? ";
+			sql = "DELETE FROM equipe WHERE id_equipe = ? ";
 			stmt = cn.prepareStatement(sql);
 			stmt.setObject( 1, id );
 			stmt.executeUpdate();
@@ -227,6 +227,8 @@ public class DaoEquipe {
 			equipe.setCapitaine(daoParticipant.retrouver(idCapitain) );
 			equipe.setEquipier(daoParticipant.retrouver(idEquipier) );
 		}
+		
+		equipe.setRepasSupplementaire(daoParticipant.retrouver(idCapitain).getRepasSup());
 		
 		return equipe;
 	}

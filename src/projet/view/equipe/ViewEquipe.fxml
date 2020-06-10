@@ -104,7 +104,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="buttonSupprimer" mnemonicParsing="false" text="Supprimer" />
+                        <Button fx:id="buttonSupprimer" mnemonicParsing="false" onAction="#doSupprimer" text="Supprimer" />
                      </children>
                      <VBox.margin>
                         <Insets top="30.0" />

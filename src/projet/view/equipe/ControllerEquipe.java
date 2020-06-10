@@ -117,6 +117,7 @@ public class ControllerEquipe {
 			boolean reponse = managerGui.showDialogConfirm( "Confirmez-vous la suppresion ?" );
 			if ( reponse ) {
 				modelEquipe.supprimer( item );
+				managerGui.showDialogMessage("Vous venez de supprimer une équipe !");
 				refresh();
 			}
 		}

@@ -14,6 +14,7 @@ import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
+import projet.dao.DaoCourse;
 import projet.dao.DaoEquipe;
 import projet.data.Equipe;
 import projet.data.Participant;
@@ -54,6 +55,7 @@ public class ControllerParticipantAjouter {
 	@Inject	private IManagerGui			managerGui;
 	@Inject private ModelParticipant modelParticipant;
 	@Inject private ModelEquipe modelEquipe;
+	@Inject private DaoCourse daoCourse;
 
 	private Equipe 		equipe ;
 
@@ -141,6 +143,7 @@ public class ControllerParticipantAjouter {
 		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
 		//actualiserChoixDansVue();
 
+		equipe.idCourseProperty().addListener( obs -> actualiserChoixDansVue());
 		toggleGroupCategorie = new ToggleGroup();
 		toggleGroupCategorie.selectedToggleProperty().addListener( obs -> actualiserCategorieDansModel() );
 
@@ -216,12 +219,18 @@ public class ControllerParticipantAjouter {
 
 	private void actualiserChoixDansVue() {
 		// Sélectionne le bouton radio correspondant au statut
-		int choixC = modelParticipant.getCourantCapitain().getFrais_paye();
+		int choix = daoCourse.retrouver(equipe.getIdCourse()).getId();
+		
+		Toggle bouton = toggleGroupChoixBol.getToggles().get( choix );
+		toggleGroupChoixBol.selectToggle(  bouton );
+		
+		
+		/*int choixC = modelParticipant.getCourantCapitain().getFrais_paye();
 		int choixE = modelParticipant.getCourantEquipier().getFrais_paye();
 		Toggle boutonC = toggleGroupChoixBol.getToggles().get( choixC );
 		Toggle boutonE = toggleGroupChoixBol.getToggles().get( choixE );
 		toggleGroupChoixBol.selectToggle(  boutonC );
-		toggleGroupChoixBol.selectToggle(  boutonE );
+		toggleGroupChoixBol.selectToggle(  boutonE );*/
 
 		/*int choixC = modelEquipe.getCourant().getCapitaine().getFrais_paye();
 		int choixE = modelEquipe.getCourant().getEquipier().getFrais_paye();
