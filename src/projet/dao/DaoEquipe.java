@@ -221,7 +221,7 @@ public class DaoEquipe {
 		Equipe equipe = new Equipe();
 		equipe.setId(rs.getObject( "id_equipe", Integer.class ));
 		equipe.setNom(rs.getObject( "nom_equipe", String.class ));
-		equipe.setIdCourse(rs.getObject( "idCourse", Integer.class ));
+		equipe.setIdCourse(rs.getObject( "id_course", Integer.class ));
 
 		if ( flagComplet ) {
 			equipe.setCapitaine(daoParticipant.retrouver(idCapitain) );

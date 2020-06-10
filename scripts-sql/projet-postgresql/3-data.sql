@@ -90,15 +90,10 @@ INSERT INTO course (id_course, nom_course, heure_depart, lieu_depart, lieu_arriv
 
 INSERT INTO equipe(id_equipe, nom_equipe, id_capitaine, id_equipier, id_course, numero_dossard) VALUES
 	(1,'Barca',	1, 2, 1, 1),
-<<<<<<< HEAD
-	(2,'3IL',	1, 2, 1, 1),
-	(3,'Teams',	1, 2, 1, 1),
-	(4,'Real', 3, 4, 2, 3);
-=======
-	(2,'Real', 3, 4, 2, 2),
-	(3,'Juv', 5, 8, 2, 3),
-	(4,'Elle&Moi', 6, 7, 1, 4),
-	(5,'Douala', 9, 10, 2, 5),
+	(2,'3IL',	3, 4, 1, 2),
+	(3,'Teams',	5, 6, 1, 3),
+	(4,'Real', 7, 8, 2, 4),
+	(5,'Douaba', 9, 10, 2, 5),
 	(6,'Fraternite', 11, 12, 2, 6),
 	(7,'Can', 13, 14, 1, 7),
 	(8,'Cer', 15, 16, 1, 8),
@@ -106,13 +101,8 @@ INSERT INTO equipe(id_equipe, nom_equipe, id_capitaine, id_equipier, id_course, 
 	(10,'Douala', 19, 20, 1, 10),
 	(11,'Les PORC', 21, 22, 1, 11),
 	(12,'Les Matchos', 23, 24, 1, 12);
->>>>>>> branch 'master' of https://github.com/g34-lets-go/projet.git
-
-<<<<<<< HEAD
-ALTER TABLE equipe ALTER COLUMN id_equipe RESTART WITH 5;
-=======
 ALTER TABLE equipe ALTER COLUMN id_equipe RESTART WITH 13;
->>>>>>> branch 'master' of https://github.com/g34-lets-go/projet.git
+
 
 
 -- Poste
@@ -170,20 +160,10 @@ INSERT INTO benevole (matricule_b, nom, prenom, adresse, email, id_poste, permis
  -- Categorie
  
  INSERT INTO categorie( id, libelle, id_equipe) VALUES
-<<<<<<< HEAD
      ( 1, 'HOMME', 1) ,
      ( 2, 'FEMME', 2) ,
      ( 3, 'MIXTE', 3) ,
      ( 4, 'VAE'  , 4);
      
  ALTER TABLE categorie ALTER COLUMN id RESTART WITH 5;
-=======
- 	( 1, 'HOMME', 1) ,
- 	( 2, 'FEMME', 2) ,
- 	( 3, 'MIXTE', 3) ,
- 	( 4, 'VAE'  , 4);
- 	
- ALTER TABLE categorie ALTER COLUMN id RESTART WITH 5;
-
->>>>>>> branch 'master' of https://github.com/g34-lets-go/projet.git
 
