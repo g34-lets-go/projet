@@ -109,7 +109,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </Label>
-                                    <Label text="Capitain" GridPane.columnIndex="1" />
+                                    <Label text="Capitaine" GridPane.columnIndex="1" />
                                     <TextField fx:id="nomC" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets right="5.0" />
@@ -253,6 +253,7 @@
                                           <Insets right="5.0" />
                                        </GridPane.margin>
                                     </DatePicker>
+                                    <Label text="Equipier" GridPane.columnIndex="1" />
                                  </children>
                                  <HBox.margin>
                                     <Insets right="100.0" top="-50.0" />
@@ -293,12 +294,16 @@
                                                 <Insets right="10.0" />
                                              </HBox.margin>
                                           </TextField>
-                                          <Label text=" x 7 € = ">
+                                          <Label text=" x 7 € ">
                                              <HBox.margin>
                                                 <Insets right="10.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <TextField editable="false" prefHeight="25.0" prefWidth="77.0" />
+                                          <Button mnemonicParsing="false" onAction="#docalculer" text="=" />
+                                          <TextField fx:id="prixrepasSupp" editable="false" prefHeight="25.0" prefWidth="77.0">
+                                             <HBox.margin>
+                                                <Insets left="15.0" />
+                                             </HBox.margin></TextField>
                                        </children>
                                        <VBox.margin>
                                           <Insets top="10.0" />

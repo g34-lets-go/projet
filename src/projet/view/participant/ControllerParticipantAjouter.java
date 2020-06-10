@@ -47,6 +47,7 @@ public class ControllerParticipantAjouter {
 	//@FXML private RadioButton	
 	
 	@FXML private TextField		repasSupp;
+	@FXML private TextField		prixrepasSupp;
 
 	@Inject	private IManagerGui			managerGui;
 	@Inject private ModelParticipant modelParticipant;
@@ -91,6 +92,38 @@ public class ControllerParticipantAjouter {
 		
 		attestationE.selectedProperty().bindBidirectional( courantEquipier.attestationProperty() );
 		
+		/* Reppas supplémentaire*/
+		
+		StringConverter<String> monConverteur = new StringConverter<String>() {
+
+			 
+
+            @Override
+            public String fromString(String repas ) {
+                try {
+                    double d = Double.parseDouble();
+                    d=d*0.8967;
+                    return String.format("%.2f", d);                    
+                } catch (Exception e) {
+                    return ("ERR $");
+                }
+            }
+
+ 
+
+            @Override
+            public String toString(String $Val) {
+                try {
+                    double d = Double.parseDouble($Val);
+                    d=d*1.1151;
+                    return String.format("%.2f", d);
+                } catch (Exception e) {
+                    return ("ERR €");
+                }
+            }
+            
+            Bindings.bindBidirectional(repasSupp.textProperty(),tfDollar.textProperty(),monConverteur);
+		
 		// Choix du bol
 		toggleGroupChoixBol = new ToggleGroup();
 		//choixMiniBol.setToggleGroup(toggleGroupChoixBol);
@@ -106,6 +139,8 @@ public class ControllerParticipantAjouter {
 		courantCapitain.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
 		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
 		//actualiserChoixDansVue();
+		
+		prixrepasSupp.setText("0000000");
 
 	}
 	
@@ -143,6 +178,14 @@ public class ControllerParticipantAjouter {
 		managerGui.showView( EnumView.ParticipantAjouter);
 		
 	}
+	
+	@FXML public void docalculer() {
+		System.out.println("Calul prix");
+		Participant val, prix;
+		
+	}
+		
+	
 	
 	private void actualiserStatutDansModele() {
 		// Modifie le statut en fonction du bouton radio sélectionné 
