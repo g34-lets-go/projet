@@ -172,6 +172,21 @@ public class Participant {
 	public final void setIdVelo(final Integer idVelo) {
 		this.idVeloProperty().setValue(idVelo);
 	}
+
+	public final Property<Boolean> validerProperty() {
+		return this.valider;
+	}
+	
+
+	public final Boolean getValider() {
+		return this.validerProperty().getValue();
+	}
+	
+
+	public final void setValider(final Boolean valider) {
+		this.validerProperty().setValue(valider);
+	}
+	
 	
 	
 	

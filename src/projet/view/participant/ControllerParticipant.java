@@ -17,12 +17,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Participant;
+import projet.report.EnumReport;
+import projet.report.ManagerReport;
 import projet.view.EnumView;
 
 public class ControllerParticipant {
 
 	@Inject
 	private IManagerGui			managerGui;
+	@Inject
+	private ManagerReport managerReport;
 	@Inject
 	private ModelParticipant	modelParticipant;
 	
@@ -67,6 +71,11 @@ public class ControllerParticipant {
 	
 	@FXML public void doClub() {		
 		managerGui.showView( EnumView.ParticipantEquipe);
+	}
+	
+	@FXML
+	public void doImprimer() {
+		managerReport.openFilePdf(EnumReport.ParticipantListeSimple, null);
 	}
 
 	

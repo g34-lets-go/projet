@@ -103,18 +103,8 @@ public class ModelEquipe  {
 	}
 	
 	public void preparerModifier( Equipe item ) {
-		
-		
-		
 		modelParticipant.actualiserListe();
 		mapper.update( courant, daoEquipe.retrouver( item.getId() ) );
-		/*File fichier = getFichierSchemaCourant();
-		if ( fichier.exists() ) {
-			schema.setValue( new Image( fichier.toURI().toString() ) );
-		} else {
-			schema.setValue( null );
-		}
-		flagModifSchema = false;*/
 	}
 	
 	

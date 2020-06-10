@@ -49,8 +49,9 @@ public class DaoEquipe {
 			stmt.setString(	1, equipe.getNom() );
 			stmt.setInt( 2, equipe.getCapitaine().getId() );
 			stmt.setInt( 3, equipe.getEquipier().getId() );
-			stmt.setInt( 4, equipe.getIdCourse());
-			stmt.setInt( 5, equipe.getNumDossard());
+			stmt.setInt( 4, equipe.getIdCourse() );
+			stmt.setInt( 5, dernierDossard()+1);
+			creerNouveauDossard();
 			stmt.executeUpdate();
 			
 			// Récupère l'identifiant généré par le SGBD
@@ -81,7 +82,7 @@ public class DaoEquipe {
 			cn = dataSource.getConnection();
 
 			// Modifie une equipe
-			sql = "UPDATE equipe SET nom = ? WHERE id =  ?";
+			sql = "UPDATE equipe SET nom = ? WHERE id_equipe =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, equipe.getNom() );
 			stmt.setObject( 2, equipe.getId() );
@@ -135,7 +136,7 @@ public class DaoEquipe {
             rs = stmt.executeQuery();
 
             if ( rs.next() ) {
-                return construireEquipe(rs, true );
+                return construireEquipe(rs, rs.getInt(3), rs.getInt(4), true );
             } else {
             	return null;
             }
@@ -166,38 +167,6 @@ public class DaoEquipe {
 				equipes.add( construireEquipe(rs, false) );
 			}
 			return equipes;
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			UtilJdbc.close( rs, stmt, cn );
-		}
-	}
-
-	
-	public List<Equipe> listerPourMemo( int idMemo )   {
-
-		Connection			cn		= null;
-		PreparedStatement	stmt	= null;
-		ResultSet 			rs 		= null;
-		String				sql;
-
-		try {
-			cn = dataSource.getConnection();
-
-			sql = "SELECT p.* FROM personne p" 
-				+ " INNER JOIN concerner c ON p.idpersonne = c.idpersonne" 
-				+ " WHERE c.idmemo = ?" 
-				+ " ORDER BY nom, prenom";
-			stmt = cn.prepareStatement(sql);
-			stmt.setObject( 1, idMemo ); 
-			rs = stmt.executeQuery();
-			
-			List<Equipe> personnes = new ArrayList<>();
-			while (rs.next()) {
-				personnes.add( construireEquipe(rs, false) );
-			}
-			return personnes;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -245,6 +214,62 @@ public class DaoEquipe {
 		}
 		
 		return equipe;
+	}
+	
+	private Equipe construireEquipe( ResultSet rs, int idCapitain, int idEquipier, boolean flagComplet ) throws SQLException {
+
+		Equipe equipe = new Equipe();
+		equipe.setId(rs.getObject( "id_equipe", Integer.class ));
+		equipe.setNom(rs.getObject( "nom_equipe", String.class ));
+		equipe.setIdCourse(rs.getObject( "idCourse", Integer.class ));
+
+		if ( flagComplet ) {
+			equipe.setCapitaine(daoParticipant.retrouver(idCapitain) );
+			equipe.setEquipier(daoParticipant.retrouver(idEquipier) );
+		}
+		
+		return equipe;
+	}
+	
+	public int dernierDossard() {
+		Connection			cn		= null;
+		PreparedStatement	stmt 	= null;
+		ResultSet 			rs		= null;
+		
+		try {
+			cn = dataSource.getConnection();
+            String sql = "SELECT numero_dossard FROM dossard ORDER BY numero_dossard DESC LIMIT 1";
+            stmt = cn.prepareStatement( sql );
+            rs = stmt.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public void creerNouveauDossard() {
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+		
+		try {
+			cn = dataSource.getConnection();
+
+			// Insère l4equipe
+			sql = "INSERT INTO dossard ( numero_dossard ) VALUES ( ? )";
+			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
+			stmt.setInt(	1,  dernierDossard()+1);
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( stmt, cn );
+		}
 	}
 	
 }

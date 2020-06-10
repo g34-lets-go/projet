@@ -33,8 +33,8 @@ public int inserer (Participant participant) {
 	try {
 		cn = dataSource.getConnection();
 		sql = "INSERT INTO participant ( nom, prenom, date_naiss, telephone, email, adresse, "
-				+ "	attestations_ok, frais_paye, repas_supplementaire, id_velo) "
-				+ "		VALUES( ?,?,?,?,?,?,?,?,?,? ) ";			
+				+ "	attestations_ok, frais_paye, repas_supplementaire, id_velo, valider) "
+				+ "		VALUES( ?,?,?,?,?,?,?,?,?,?,? ) ";			
 		stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 		stmt.setObject( 1, participant.getNom() );
 		stmt.setObject( 2, participant.getPrenom() );
@@ -46,6 +46,7 @@ public int inserer (Participant participant) {
 		stmt.setObject( 8, participant.getFrais_paye() );
 		stmt.setObject( 9, participant.getRepasSup() );
 		stmt.setObject( 10, participant.getIdVelo() );
+		stmt.setObject( 11, participant.getValider() );
 		stmt.executeUpdate(); 
 
 		// Récupère l'identifiant généré par le SGBD

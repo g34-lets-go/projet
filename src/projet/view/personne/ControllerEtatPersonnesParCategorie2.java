@@ -75,7 +75,7 @@ public class ControllerEtatPersonnesParCategorie2 {
 			liste.add( c.getId() );
 		}
 		params.put( "idCategories", liste );
-		managerReport.showViewer( EnumReport.PersonnesParCategorie2, params);
+		//managerReport.showViewer( EnumReport.PersonnesParCategorie2, params);
 	}
 	
 	

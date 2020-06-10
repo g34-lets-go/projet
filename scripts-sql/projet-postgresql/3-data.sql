@@ -10,6 +10,7 @@ DELETE FROM participant;
 DELETE FROM poste;
 DELETE FROM course;
 DELETE FROM equipe;
+DELETE FROM categorie;
 
 -- Compte
 
@@ -63,9 +64,11 @@ INSERT INTO course (id_course, nom_course, heure_depart, lieu_depart, lieu_arriv
 
 INSERT INTO equipe(id_equipe, nom_equipe, id_capitaine, id_equipier, id_course, numero_dossard) VALUES
 	(1,'Barca',	1, 2, 1, 1),
-	(2,'Real', 3, 4, 2, 3);
+	(2,'3IL',	1, 2, 1, 1),
+	(3,'Teams',	1, 2, 1, 1),
+	(4,'Real', 3, 4, 2, 3);
 
-ALTER TABLE equipe ALTER COLUMN id_equipe RESTART WITH 3;
+ALTER TABLE equipe ALTER COLUMN id_equipe RESTART WITH 5;
 
 
 -- Poste
@@ -119,5 +122,15 @@ INSERT INTO benevole (matricule_b, nom, prenom, adresse, email, id_poste, permis
   
   
  ALTER TABLE benevole ALTER COLUMN matricule_b RESTART WITH 26;
+ 
+ -- Categorie
+ 
+ INSERT INTO categorie( id, libelle, id_equipe) VALUES
+ 	( 1, 'HOMME', 1) ,
+ 	( 2, 'FEMME', 2) ,
+ 	( 3, 'MIXTE', 3) ,
+ 	( 4, 'VAE'  , 4);
+ 	
+ ALTER TABLE categorie ALTER COLUMN id RESTART WITH 5;
 
 

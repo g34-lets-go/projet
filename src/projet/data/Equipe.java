@@ -19,11 +19,9 @@ public class Equipe {
 	private final StringProperty		nom	 		= new SimpleStringProperty();
 	private final Property<Participant>	capt		= new SimpleObjectProperty<>(new Participant());
 	private final Property<Participant>	equip		= new SimpleObjectProperty<>(new Participant());
-	private final Property<Integer>		idCourse	= new SimpleObjectProperty<>();
+	private final Property<Integer>		idCourse	= new SimpleObjectProperty<>(1);
 	private final Property<Integer>		numDossard	= new SimpleObjectProperty<>();
-	
-	
-	
+	private final Property<Categorie>	categorie	= new SimpleObjectProperty<>();
 	
 	// Constructeurs
 	
@@ -154,6 +152,21 @@ public class Equipe {
 	public final void setId(final Integer id) {
 		this.idProperty().setValue(id);
 	}
+
+	public final Property<Categorie> categorieProperty() {
+		return this.categorie;
+	}
+	
+
+	public final Categorie getCategorie() {
+		return this.categorieProperty().getValue();
+	}
+	
+
+	public final void setCategorie(final Categorie categorie) {
+		this.categorieProperty().setValue(categorie);
+	}
+	
 	
 	
 	
