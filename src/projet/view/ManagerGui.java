@@ -53,7 +53,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 	@Override
 	public Scene createScene( Parent root ) {
 		BorderPane paneMenu = new BorderPane( root );
-		paneMenu.setTop( context.getBeanNew( MenuBarAppli.class ) );
+		//paneMenu.setTop( context.getBeanNew( MenuBarAppli.class ) );
 		Scene scene = new Scene( paneMenu );
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		return scene;

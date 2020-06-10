@@ -1,30 +1,16 @@
 package projet.view.equipe;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.inject.Inject;
-import javax.sql.DataSource;
 
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Equipe;
-import projet.data.Memo;
-import projet.data.Participant;
 import projet.view.EnumView;
-import projet.view.memo.ModelMemo;
 import projet.view.participant.ModelParticipant;
 
 public class ControllerEquipe {

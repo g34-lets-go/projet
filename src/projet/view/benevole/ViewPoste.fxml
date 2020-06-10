@@ -36,11 +36,11 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070">
+            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Postes">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Postes">
+            <Button maxWidth="120.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: transparent;" text="Résultats" textFill="#707070">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>

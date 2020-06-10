@@ -5,15 +5,9 @@ import javax.inject.Inject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jfox.commun.exception.ExceptionValidation;
-import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoParticipant;
-import projet.dao.DaoPersonne;
-import projet.data.Benevole;
-import projet.data.Categorie;
 import projet.data.Participant;
-import projet.data.Personne;
-import projet.data.Telephone;
 
 
 public class ModelParticipant {

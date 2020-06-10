@@ -1,27 +1,19 @@
 package projet.view.equipe;
 
-import java.io.File;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.image.Image;
 import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoEquipe;
 import projet.dao.DaoParticipant;
-import projet.dao.DaoPersonne;
 import projet.data.Equipe;
-import projet.data.Memo;
 import projet.data.Participant;
-import projet.data.Personne;
 import projet.view.participant.ModelParticipant;
-import projet.view.systeme.ModelConfig;
 
 
 public class ModelEquipe  {
