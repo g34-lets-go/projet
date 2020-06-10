@@ -1,6 +1,7 @@
 package projet.view.participant;
 import javax.inject.Inject;
 
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -8,6 +9,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.util.StringConverter;
 import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
@@ -47,6 +49,7 @@ public class ControllerParticipantAjouter {
 	//@FXML private RadioButton	
 	
 	@FXML private TextField		repasSupp;
+	@FXML private TextField		prixrepasSupp;
 
 	@Inject	private IManagerGui			managerGui;
 	@Inject private ModelParticipant modelParticipant;
@@ -92,6 +95,36 @@ public class ControllerParticipantAjouter {
 		
 		attestationE.selectedProperty().bindBidirectional( courantEquipier.attestationProperty() );
 		
+		/* Repas supplémentaire*/
+		
+		StringConverter<String> monConverteur = new StringConverter<String>() {
+
+            @Override
+            public String fromString(String repas ) {
+                try {
+                    int d = Integer.parseInt(repas);
+                    d=d*7;
+                    return String.format("%d €", d);                    
+                } catch (Exception e) {
+                    return ("");
+                }
+            }
+
+ 
+
+            @Override
+            public String toString(String prixrepas) {
+                try {
+                    int d = Integer.parseInt(prixrepas) ;
+                    d=d/7;
+                    return String.format("%d", d);
+                } catch (Exception e) {
+                    return ("");
+                }
+            }
+        };
+        Bindings.bindBidirectional(repasSupp.textProperty(),prixrepasSupp.textProperty(),monConverteur);
+		
 		// Choix du bol
 		toggleGroupChoixBol = new ToggleGroup();
 		//choixMiniBol.setToggleGroup(toggleGroupChoixBol);
@@ -108,9 +141,14 @@ public class ControllerParticipantAjouter {
 		courantEquipier.frais_payeProperty().addListener(  obs -> actualiserChoixDansVue() );
 		//actualiserChoixDansVue();
 		
+<<<<<<< HEAD
 		toggleGroupCategorie = new ToggleGroup();
 		toggleGroupCategorie.selectedToggleProperty().addListener( obs -> actualiserCategorieDansModel() );
+=======
+		prixrepasSupp.setText("0 €");
+>>>>>>> branch 'master' of https://github.com/g34-lets-go/projet.git
 
+		
 	}
 	
 	@FXML public void doAccueil() {
@@ -149,6 +187,14 @@ public class ControllerParticipantAjouter {
 		managerGui.showView( EnumView.ParticipantAjouter);
 		
 	}
+	
+	@FXML public void docalculer() {
+		System.out.println("Calul prix");
+		Participant val, prix;
+		
+	}
+		
+	
 	
 	private void actualiserStatutDansModele() {
 		// Modifie le statut en fonction du bouton radio sélectionné 

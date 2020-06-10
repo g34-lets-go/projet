@@ -25,11 +25,9 @@ ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
 
 INSERT INTO velo (id_velo, typevelo) VALUES 
   ( 1, 'VTT' ),
-  ( 2, 'VTT electrique' ),
-  ( 3, 'VTT' ),
-  ( 4, 'VTT electrique' );
+  ( 2, 'VTT electrique' );
 
-ALTER TABLE velo ALTER COLUMN id_velo RESTART WITH 5;
+ALTER TABLE velo ALTER COLUMN id_velo RESTART WITH 3;
 
 -- Dossard
 
@@ -37,20 +35,48 @@ INSERT INTO dossard ( numero_dossard ) VALUES
   ( 1 ),
   ( 2 ),
   ( 3 ),
-  ( 4 );
+  ( 4 ),
+  ( 5 ),
+  ( 6 ),
+  ( 7 ),
+  ( 8 ),
+  ( 9 ),
+  ( 10 ),
+  ( 11 ),
+  ( 12 );
 
-ALTER TABLE dossard ALTER COLUMN numero_dossard RESTART WITH 5;
+ALTER TABLE dossard ALTER COLUMN numero_dossard RESTART WITH 13;
 
 
 -- Participant
 
 INSERT INTO participant (matricule_p, nom, prenom, date_naiss, telephone, email, adresse, attestations_ok, frais_paye, repas_supplementaire, id_velo,valider ) VALUES 
  	( 1, 'MOUAFO', 'Paul Denilson', '2020-02-03', 753756979, 'mouafo@gmail.com', '13 rue pasteur', TRUE, 0, 2, 1, TRUE),
-  	( 2, 'MALO', 'Paul', '2020-03-02', 753756979, 'malo@gmail.com', '15 rue patrick', TRUE, 1, 1, 2, TRUE ),
-	( 3, 'MOUFO', 'Denilson', '2020-05-03', 753756979, 'moufo@gmail.com', '3 avenue paul', FALSE, 1, 0, 3, TRUE ),
-	( 4, 'MAFO', 'Paulo', '2020-03-05', 753756979, 'mafo@gmail.com', '16 rue pere', TRUE, 0, 2, 4, TRUE );
+  	( 2, 'MALO', 'Paul', '2020-03-02', 753756979, 'malo@gmail.com', '15 rue patrick', TRUE, 1, 2, 2, TRUE ),
+	( 3, 'MOUFO', 'Denilson', '2020-05-03', 753756979, 'moufo@gmail.com', '3 avenue paul', FALSE, 1, 0, 1, TRUE ),
+	( 4, 'DJIHOUA', 'Edy Wise', '2020-03-05', 753756979, 'edywise@gmail.com', '16 rue fraternite', TRUE, 0, 0, 2, TRUE ),
+	( 5, 'MAFO', 'Pule', '2020-03-05', 753756979, 'miafo@gmail.com', '1 rue descartes', TRUE, 1, 2, 2, TRUE ),
+	( 6, 'TCHAMENI', 'Rose Pierrette', '2020-06-12', 691544196, 'rosetchameni508@gmail.com', '6 rue bonamoussadi', FALSE, 1, 2, 1, TRUE ),
+	( 7, 'TCHATCHOU', 'Wilfried', '2020-07-07', 619351043, 'sinkamwilfried@gmail.com', '7 rue mendong', TRUE, 0, 3, 2, TRUE ),
+	( 8, 'ELOUNDOU', 'Kevin', '2020-03-05', 753456979, 'kevin@gmail.com', '8 rue degaulle', FALSE, 0, 3, 1, FALSE ),
+	( 9, 'KAMGA', 'Arien', '2020-03-05', 757756979, 'arien@gmail.com', '6 rue duchien', TRUE, 1, 0, 2, TRUE ),
+	( 10, 'DUPITEN', 'Coul', '2020-03-05', 763756979, 'coul@gmail.com', '3 rue patate', FALSE, 0, 0, 1, FALSE ),
+	( 11, 'AMOUR', 'Divine', '2020-02-14', 743756979, 'amour@gmail.com', '2 rue amour', FALSE, 0, 2, 2, FALSE ),
+	( 12, 'SIME', 'Kevin', '2020-10-05', 753756479, 'donne@gmail.com', '25 rue puce', TRUE, 1, 2, 1, TRUE ),
+	( 13, 'NANDA', 'Vianney', '2020-03-02', 753756979, 'pars@gmail.com', '1 rue perdre', FALSE, 0, 5, 1, FALSE ),
+	( 14, 'NDJIKI', 'Christian', '2020-03-03', 793056979, 'kiffnobeat@gmail.com', '16 rue lavine', TRUE, 1, 5, 1, TRUE ),
+	( 15, 'KENGO', 'Benito', '2020-11-05', 053758979, 'zuzu@gmail.com', '20 rue aloes', FALSE, 0, 1, 1, TRUE ),
+	( 16, 'NJOYA', 'Lauren', '2020-03-05', 053756979, 'pring@gmail.com', '2 rue cerra', FALSE, 1, 1, 1, FALSE ),
+	( 17, 'MASSADO', 'Brandy', '2020-07-05', 757756979, 'shullfke@gmail.com', '16 rue anatole', TRUE, 1, 2, 1, TRUE ),
+	( 18, 'AKANA', 'Judicäel', '2020-03-04', 753786979, 'rague@gmail.com', '5 rue peureux', TRUE, 1, 2, 1, FALSE ),
+	( 19, 'TATCHI', 'Raymond', '2020-03-05', 653756679, 'ruine@gmail.com', '13 rue gift', TRUE, 1, 0, 1, FALSE ),
+	( 20, 'RAYMOND', 'Redington', '2020-08-06', 756756989, 'poule@gmail.com', '1 rue simbock', FALSE, 0, 0, 2, FALSE ),
+	( 21, 'KOUAM', 'Arnold', '2020-03-05', 753556979, 'aero@gmail.com', '9 rue puceau', FALSE, 1, 2, 1, TRUE ),
+	( 22, 'CROCKMOU', 'Arold', '2020-04-01', 755055079, 'dine@gmail.com', '16 rue kong', TRUE, 0, 2, 2, FALSE ),
+	( 23, 'JUPITER', 'Marc', '2020-03-06', 705755970, 'pouabe@gmail.com', '27 rue douala', TRUE, 1, 1, 2, TRUE ),
+	( 24, 'SIMSOMS', 'Luc', '2020-05-04', 756753979, 'fille@gmail.com', '45 rue lauren', FALSE, 0, 1, 2, TRUE );
   	
-ALTER TABLE participant ALTER COLUMN matricule_p RESTART WITH 5;
+ALTER TABLE participant ALTER COLUMN matricule_p RESTART WITH 25;
 
 -- Course
 
@@ -64,11 +90,29 @@ INSERT INTO course (id_course, nom_course, heure_depart, lieu_depart, lieu_arriv
 
 INSERT INTO equipe(id_equipe, nom_equipe, id_capitaine, id_equipier, id_course, numero_dossard) VALUES
 	(1,'Barca',	1, 2, 1, 1),
+<<<<<<< HEAD
 	(2,'3IL',	1, 2, 1, 1),
 	(3,'Teams',	1, 2, 1, 1),
 	(4,'Real', 3, 4, 2, 3);
+=======
+	(2,'Real', 3, 4, 2, 2),
+	(3,'Juv', 5, 8, 2, 3),
+	(4,'Elle&Moi', 6, 7, 1, 4),
+	(5,'Douala', 9, 10, 2, 5),
+	(6,'Fraternite', 11, 12, 2, 6),
+	(7,'Can', 13, 14, 1, 7),
+	(8,'Cer', 15, 16, 1, 8),
+	(9,'Scorpion', 17, 18, 1, 9),
+	(10,'Douala', 19, 20, 1, 10),
+	(11,'Les PORC', 21, 22, 1, 11),
+	(12,'Les Matchos', 23, 24, 1, 12);
+>>>>>>> branch 'master' of https://github.com/g34-lets-go/projet.git
 
+<<<<<<< HEAD
 ALTER TABLE equipe ALTER COLUMN id_equipe RESTART WITH 5;
+=======
+ALTER TABLE equipe ALTER COLUMN id_equipe RESTART WITH 13;
+>>>>>>> branch 'master' of https://github.com/g34-lets-go/projet.git
 
 
 -- Poste
