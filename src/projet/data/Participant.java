@@ -173,10 +173,4 @@ public class Participant {
 		this.idVeloProperty().setValue(idVelo);
 	}
 	
-	public Participant calcul( Participant participant) throws Exception{
-		Property<Integer> p = 7;
-		participant = participant.repasSup * p ;
-		return participant;
-	}
-	
 }

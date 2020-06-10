@@ -94,11 +94,9 @@ public class ControllerParticipantAjouter {
 		
 		attestationE.selectedProperty().bindBidirectional( courantEquipier.attestationProperty() );
 		
-		/* Reppas supplémentaire*/
+		/* Repas supplémentaire*/
 		
 		StringConverter<String> monConverteur = new StringConverter<String>() {
-
-			 
 
             @Override
             public String fromString(String repas ) {

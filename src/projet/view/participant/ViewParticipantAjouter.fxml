@@ -299,7 +299,7 @@
                                                 <Insets right="10.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Button mnemonicParsing="false" onAction="#docalculer" text="=" />
+                                          <Button mnemonicParsing="false" text="=" />
                                           <TextField fx:id="prixrepasSupp" editable="false" prefHeight="25.0" prefWidth="77.0">
                                              <HBox.margin>
                                                 <Insets left="15.0" />
